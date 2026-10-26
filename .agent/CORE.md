@@ -17,3 +17,12 @@ Read `.agents/skills/ux-ui-design/SKILL.md` and `.agent/workflows/uiux-reference
 
 ## Quality bar
 Prefer simple, maintainable code, meaningful names, focused components, accessible responsive interfaces, explicit error states, reliable tests, documented assumptions, and evidence-based production recommendations.
+
+## Error handling and validation
+For forms, API failures, user-facing messages, or input rules, load:
+- `.agents/skills/error-handling/SKILL.md`
+- `.agents/skills/validation/SKILL.md`
+- `.agents/skills/meaningful-product-messages/SKILL.md`
+
+Use actual product/API constraints, preserve user input on recoverable failures, avoid leaking internal diagnostics, and test failure/boundary states. Never invent limits, success outcomes, retry timing, or request IDs.
+
