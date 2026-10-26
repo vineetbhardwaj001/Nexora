@@ -4,9 +4,11 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const readline = require('node:readline/promises');
+const { execFile } = require('node:child_process');
 const { stdin, stdout } = require('node:process');
 
 const VERSION = require('../package.json').version;
+const GITHUB_PROFILE = 'https://github.com/vineetbhardwaj001';
 const ROOT = path.resolve(__dirname, '..');
 const C = {
   reset: '\x1b[0m', bold: '\x1b[1m', dim: '\x1b[2m',
@@ -47,6 +49,7 @@ function banner() {
     '├──────────────────────────────────────────────────────────────┤',
     '│  Skill-driven workflows for your AI coding environment       │',
     '│  UI/UX  ·  Frontend  ·  Validation  ·  Error handling         │',
+    '│  GitHub: github.com/vineetbhardwaj001                         │',
     '╰──────────────────────────────────────────────────────────────╯'
   ];
   console.log(color(C.cyan, lines.join('\n')));
@@ -192,7 +195,9 @@ async function menu() {
       console.log('  ' + color(C.cyan, '[2]') + ' Check Nexora installation');
       console.log('  ' + color(C.cyan, '[3]') + ' Browse included files');
       console.log('  ' + color(C.cyan, '[4]') + ' Show CLI help');
-      console.log('  ' + color(C.cyan, '[5]') + ' Exit');
+      console.log('  ' + color(C.cyan, '[5]') + ' Follow Nexora on GitHub');
+      console.log('  ' + color(C.cyan, '[6]') + ' Exit');
+      console.log('\\n  ' + color(C.purple, '★') + ' ' + color(C.gray, 'Open-source project · Feedback and contributions welcome'));
       console.log('\n  Project: ' + color(C.gray, process.cwd()));
       const choice = (await rl.question('\n  Choose an option [1-5]: ')).trim();
       if (choice === '1') {
