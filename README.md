@@ -133,31 +133,31 @@ Nexora is released under the [MIT License](LICENSE). This license applies to the
 Nexora provides an npm CLI installer. Once the package is published to npm:
 
 ```bash
-npx nexora-agent init
+npx nexora-agent-vineetbhardwaj init
 ```
 
 Install only missing files and leave existing files untouched:
 
 ```bash
-npx nexora-agent init --yes
+npx nexora-agent-vineetbhardwaj init --yes
 ```
 
 Back up and replace conflicting Nexora files explicitly:
 
 ```bash
-npx nexora-agent init --force
+npx nexora-agent-vineetbhardwaj init --force
 ```
 
 Check an existing installation:
 
 ```bash
-npx nexora-agent doctor
+npx nexora-agent-vineetbhardwaj doctor
 ```
 
 Install into a different project folder:
 
 ```bash
-npx nexora-agent init --path ../my-app
+npx nexora-agent-vineetbhardwaj init --path ../my-app
 ```
 
 The CLI requires Node.js 18 or newer. It does not install application dependencies, modify application source code, or guarantee automatic skill discovery in every IDE. Existing files are not overwritten by default; `--force` creates timestamped backups.
@@ -173,20 +173,24 @@ The repository includes a release workflow at `.github/workflows/publish-npm.yml
 5. After a successful publish, install/use it with:
 
 ```bash
-npx nexora-agent init
+npx nexora-agent-vineetbhardwaj init
 # or install globally:
-npm install --global nexora-agent
+npm install --global nexora-agent-vineetbhardwaj
 nexora doctor
 ```
 
 **Publishing status:** the CLI source and release workflow are committed to GitHub, but this repository integration does not itself publish packages to npm. The first npm publish requires an authorized npm account/token and an available package name. Do not advertise the install command as live until the npm package page and install are verified.
+
+## Package name and identity
+
+The original npm package name `nexora-agent` is already associated with a different published project. Nexora's intended package name in this repository is `nexora-agent-vineetbhardwaj`. The new package name must be published by its maintainer before the `npx` command is available. The terminal banner identifies this project as developed by Vineet Bhardwaj.
 
 ## Interactive terminal UI
 
 Run Nexora without arguments to open its interactive terminal menu:
 
 ```bash
-npx nexora-agent
+npx nexora-agent-vineetbhardwaj
 ```
 
 The terminal UI includes a branded Nexora header and quick actions to:
@@ -198,9 +202,9 @@ The terminal UI includes a branded Nexora header and quick actions to:
 You can also run a command directly:
 
 ```bash
-npx nexora-agent init
-npx nexora-agent doctor
-npx nexora-agent list
+npx nexora-agent-vineetbhardwaj init
+npx nexora-agent-vineetbhardwaj doctor
+npx nexora-agent-vineetbhardwaj list
 ```
 
 The terminal uses ANSI colors when supported and respects `NO_COLOR`. Existing files are not overwritten by default; choose the explicit overwrite option or use `--force` to create backups.
@@ -214,7 +218,7 @@ Nexora currently ships a terminal CLI; this repository does not contain a verifi
 Run the interactive CLI:
 
 ```bash
-npx nexora-agent
+npx nexora-agent-vineetbhardwaj
 ```
 
 Choose **5 — Follow Nexora on GitHub** to open the maintainer profile in your default browser. Click **Follow** on GitHub yourself if you want to follow the account. The CLI does not and cannot silently follow accounts or change your GitHub account settings.
