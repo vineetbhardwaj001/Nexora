@@ -28,7 +28,8 @@
   },
   "bin": {
     "nexora": "bin/nexora.js",
-    "nexora-agent": "bin/nexora.js"
+    "nexora-agent": "bin/nexora.js",
+    "nexora-agent-vineetbhardwaj": "bin/nexora.js"
   },
   "files": [
     "bin/",
