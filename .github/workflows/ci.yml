@@ -23,28 +23,29 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Validate JSON configuration
-        run: python - <<'PY'
-        import json
-        from pathlib import Path
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
 
-        config = Path(".agent/config/skills.json")
-        if not config.exists():
-            raise SystemExit(f"Missing required file: {config}")
-        data = json.loads(config.read_text(encoding="utf-8"))
-        assert isinstance(data.get("skills"), dict), "'skills' must be an object"
-        assert data.get("autonomy") in {"ask-first", "guided", "autopilot-local"}, "Invalid autonomy mode"
-        for path in [
-            "AGENTS.md",
-            ".agent/CORE.md",
-            ".agents/skills/ux-ui-design/SKILL.md",
-            ".agents/skills/backend-preserving-frontend/SKILL.md",
-            ".agent/workflows/backend-preserving-frontend.md",
-            ".agent/workflows/frontend-structure.md",
-        ]:
-            if not Path(path).is_file():
-                raise SystemExit(f"Missing required file: {path}")
-        print(f"Validated {len(data['skills'])} skill entries and required instruction files.")
-        PY
+          config = Path(".agent/config/skills.json")
+          if not config.exists():
+              raise SystemExit(f"Missing required file: {config}")
+          data = json.loads(config.read_text(encoding="utf-8"))
+          assert isinstance(data.get("skills"), dict), "'skills' must be an object"
+          assert data.get("autonomy") in {"ask-first", "guided", "autopilot-local"}, "Invalid autonomy mode"
+          for path in [
+              "AGENTS.md",
+              ".agent/CORE.md",
+              ".agents/skills/ux-ui-design/SKILL.md",
+              ".agents/skills/backend-preserving-frontend/SKILL.md",
+              ".agent/workflows/backend-preserving-frontend.md",
+              ".agent/workflows/frontend-structure.md",
+          ]:
+              if not Path(path).is_file():
+                  raise SystemExit(f"Missing required file: {path}")
+          print(f"Validated {len(data['skills'])} skill entries and required instruction files.")
+          PY
 
       - name: Check whitespace errors
         run: git diff --check "${{ github.event.before }}" "${{ github.sha }}" || git diff --check
@@ -63,8 +64,7 @@ jobs:
 
       - name: Run markdownlint
         run: |
-          npx --yes markdownlint-cli2             "README.md" "AGENTS.md" ".agent/**/*.md" ".agents/**/*.md"             ".kilo/**/*.md" ".github/**/*.md"
-
+          npx --yes markdownlint-cli2 "README.md" "AGENTS.md" ".agent/**/*.md" ".agents/**/*.md" ".kilo/**/*.md" ".github/**/*.md"
 
   structural-tests:
     name: Run Nexora structural tests
@@ -91,7 +91,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Run CLI tests
         run: npm test
