@@ -43,3 +43,19 @@ class NexoraStructureTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+    def test_error_validation_and_message_skills_exist_and_are_enabled(self):
+        data = json.loads((ROOT / ".agent/config/skills.json").read_text(encoding="utf-8"))
+        required = [
+            "error-handling",
+            "validation",
+            "meaningful-product-messages",
+        ]
+        for skill in required:
+            with self.subTest(skill=skill):
+                self.assertEqual(data["skills"].get(skill), "enabled")
+                self.assertTrue(
+                    (ROOT / ".agents/skills" / skill / "SKILL.md").is_file(),
+                    f"Missing skill file for {skill}",
+                )
+
