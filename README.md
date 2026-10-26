@@ -164,22 +164,23 @@ The CLI requires Node.js 18 or newer. It does not install application dependenci
 
 ### Publish the CLI to public npm
 
-The repository includes a release workflow at `.github/workflows/publish-npm.yml`. To enable publishing:
+The release workflow at `.github/workflows/publish-npm.yml` is configured for npm Trusted Publishing (OIDC), so routine GitHub Actions releases do not need a long-lived `NPM_TOKEN`.
 
-1. Sign in to the npm account that will own the package and check whether **`nexora-agent-cli`** is available.
-2. Create an npm access token authorized to publish packages. Use the least-privileged token type supported by your npm account and workflow.
-3. In GitHub, open **Settings → Secrets and variables → Actions** and add a repository secret named `NPM_TOKEN`. Never commit or paste the token into source files.
-4. Ensure the CLI tests pass, update `package.json` to the intended release version, push the changes, and create a GitHub Release. The workflow runs tests, previews package contents, and then publishes to public npm.
-5. Verify the package page and install command after the workflow succeeds.
+1. Create the package's first published version using an authorized npm account and follow npm's current publishing flow. If using a stage-only token, use `npm stage publish` and approve the staged release through npm's supported maintainer flow.
+2. On npmjs.com, open the package's **Settings → Trusted Publisher** section and add a **GitHub Actions** trusted publisher with:
+   - **Organization or user:** `vineetbhardwaj001`
+   - **Repository:** `Nexora`
+   - **Workflow filename:** `publish-npm.yml`
+   - **Environment:** leave blank unless the workflow is configured to use a GitHub environment
+   - Allow direct `npm publish` only if you intend the workflow to publish directly; for stage-only publishing, configure the workflow and approval flow accordingly.
+3. Ensure the repository workflow has `id-token: write`, the package's `repository.url` matches this GitHub repository, and the workflow tests pass.
+4. Create a GitHub Release to trigger the workflow, then verify the package page and install command.
 
 ```bash
-npm view nexora-agent-cli
-npx nexora-agent-cli init
-npm install --global nexora-agent-cli
-nexora doctor
+npx nexora-agent-cli
 ```
 
-**Publishing status:** the CLI source and release workflow are committed to GitHub, but this repository integration does not publish packages to npm by itself. The first public publish requires an authorized npm account/token and an available package name. Do not advertise the install command as live until the npm package page and install are verified.
+**Publishing status:** the workflow configuration is committed, but publishing is not complete. Trusted Publishing requires the npm package to exist and the trusted publisher settings to match the repository and workflow exactly. Do not advertise the install command as live until the npm package page and install are verified.
 
 ## Package name and identity
 
