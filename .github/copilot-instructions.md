@@ -1,1 +1,4 @@
 Read `AGENTS.md` and `.agent/CORE.md` before substantial work. Inspect the repo and Git status before editing. For UI/UX, analyze every reference image separately before selecting a product-specific design direction. If the user already has a backend and requests frontend work, read the backend-preserving-frontend skill; do not modify backend routes, schemas, auth, server configuration or backend dependencies by default. Use actual API contracts, keep code modular, run relevant checks, and report actual results. Ask before destructive or production actions. Never expose secrets or invent test outcomes.
+
+For forms, API errors, validation rules, or product messages, read `.agents/skills/error-handling/SKILL.md`, `.agents/skills/validation/SKILL.md`, and `.agents/skills/meaningful-product-messages/SKILL.md`. Use actionable, accessible messages; follow actual constraints and API contracts; do not expose secrets or stack traces; test boundary and failure states.
+
