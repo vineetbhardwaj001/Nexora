@@ -209,3 +209,15 @@ The terminal uses ANSI colors when supported and respects `NO_COLOR`. Existing f
 
 Nexora currently ships a terminal CLI; this repository does not contain a verified public Render web-demo URL. If a web dashboard is deployed separately on Render, add its exact service URL here after verifying that it is live. Do not use a guessed URL.
 
+### Follow Nexora on GitHub
+
+Run the interactive CLI:
+
+```bash
+npx nexora-agent
+```
+
+Choose **5 — Follow Nexora on GitHub** to open the maintainer profile in your default browser. Click **Follow** on GitHub yourself if you want to follow the account. The CLI does not and cannot silently follow accounts or change your GitHub account settings.
+
+Maintainer profile: https://github.com/vineetbhardwaj001
+
