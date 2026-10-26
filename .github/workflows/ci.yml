@@ -1,0 +1,66 @@
+name: Nexora CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-agent-config:
+    name: Validate agent configuration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate JSON configuration
+        run: python - <<'PY'
+        import json
+        from pathlib import Path
+
+        config = Path(".agent/config/skills.json")
+        if not config.exists():
+            raise SystemExit(f"Missing required file: {config}")
+        data = json.loads(config.read_text(encoding="utf-8"))
+        assert isinstance(data.get("skills"), dict), "'skills' must be an object"
+        assert data.get("autonomy") in {"ask-first", "guided", "autopilot-local"}, "Invalid autonomy mode"
+        for path in [
+            "AGENTS.md",
+            ".agent/CORE.md",
+            ".agents/skills/ux-ui-design/SKILL.md",
+            ".agents/skills/backend-preserving-frontend/SKILL.md",
+            ".agent/workflows/backend-preserving-frontend.md",
+            ".agent/workflows/frontend-structure.md",
+        ]:
+            if not Path(path).is_file():
+                raise SystemExit(f"Missing required file: {path}")
+        print(f"Validated {len(data['skills'])} skill entries and required instruction files.")
+        PY
+
+      - name: Check whitespace errors
+        run: git diff --check "${{ github.event.before }}" "${{ github.sha }}" || git diff --check
+
+  markdown-lint:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run markdownlint
+        run: |
+          npx --yes markdownlint-cli2             "README.md" "AGENTS.md" ".agent/**/*.md" ".agents/**/*.md"             ".kilo/**/*.md" ".github/**/*.md"
