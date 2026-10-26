@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   publish:
-    name: Test and publish package
+    name: Test and stage package for npm review
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -19,8 +19,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
+          package-manager-cache: false
+
+      - name: Use current npm CLI
+        run: npm install --global npm@latest
 
       - name: Run CLI tests
         run: npm test
@@ -28,7 +32,7 @@ jobs:
       - name: Verify package contents
         run: npm pack --dry-run
 
-      - name: Publish to public npm
-        run: npm publish --access public
+      - name: Stage package for maintainer review
+        run: npm stage publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
