@@ -64,3 +64,19 @@ jobs:
       - name: Run markdownlint
         run: |
           npx --yes markdownlint-cli2             "README.md" "AGENTS.md" ".agent/**/*.md" ".agents/**/*.md"             ".kilo/**/*.md" ".github/**/*.md"
+
+
+  structural-tests:
+    name: Run Nexora structural tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run structural tests
+        run: python -m unittest discover -s tests -v
