@@ -162,3 +162,22 @@ npx nexora-agent init --path ../my-app
 
 The CLI requires Node.js 18 or newer. It does not install application dependencies, modify application source code, or guarantee automatic skill discovery in every IDE. Existing files are not overwritten by default; `--force` creates timestamped backups.
 
+### Publish the CLI to npm
+
+The repository includes a release workflow at `.github/workflows/publish-npm.yml`. To enable publishing:
+
+1. Confirm the package name `nexora-agent` is available on npm, then sign in to the npm account that will own the package.
+2. Create an npm automation/access token with permission to publish this package.
+3. In GitHub, open **Settings → Secrets and variables → Actions** and add a repository secret named `NPM_TOKEN`. Never commit or paste the token into source files.
+4. Update `package.json` version before each release. Push the changes and create a GitHub Release; the workflow runs tests, previews the package contents, and then publishes to npm.
+5. After a successful publish, install/use it with:
+
+```bash
+npx nexora-agent init
+# or install globally:
+npm install --global nexora-agent
+nexora doctor
+```
+
+**Publishing status:** the CLI source and release workflow are committed to GitHub, but this repository integration does not itself publish packages to npm. The first npm publish requires an authorized npm account/token and an available package name. Do not advertise the install command as live until the npm package page and install are verified.
+
