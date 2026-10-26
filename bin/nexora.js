@@ -62,11 +62,11 @@ function help() {
   banner();
   console.log(`
 ${color(C.bold, 'USAGE')}
-  npx nexora                   Open interactive terminal menu
-  npx nexora init               Install Nexora in the current project
-  npx nexora doctor             Check an existing installation
-  npx nexora list               List included files
-  npx nexora --version          Print version
+  npx nexora-agent-cli         Open interactive terminal menu
+  npx nexora-agent-cli init    Install Nexora in the current project
+  npx nexora-agent-cli doctor  Check an existing installation
+  npx nexora-agent-cli list    List included files
+  npx nexora-agent-cli --version Print version
 
 ${color(C.bold, 'INSTALL OPTIONS')}
   --yes                            Install missing files; skip conflicts
