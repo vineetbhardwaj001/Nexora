@@ -43,14 +43,17 @@ const FILES = [
 
 function banner() {
   const lines = [
-    '╭──────────────────────────────────────────────────────────────╮',
-    '│  N E X O R A                                        v' + VERSION.padEnd(22) + '│',
-    '│  From Idea to Production                                     │',
-    '├──────────────────────────────────────────────────────────────┤',
-    '│  Skill-driven workflows for your AI coding environment       │',
-    '│  UI/UX  ·  Frontend  ·  Validation  ·  Error handling         │',
-    '│  GitHub: github.com/vineetbhardwaj001                         │',
-    '╰──────────────────────────────────────────────────────────────╯'
+    '╭──────────────────────────────────────────────────────────────────────╮',
+    '│                                                                      │',
+    '│   ██╗   ██╗     N E X O R A                         v' + VERSION.padEnd(18) + '│',
+    '│   ╚██╗ ██╔╝     From Idea to Production                              │',
+    '│    ╚████╔╝                                                           │',
+    '│     ╚██╔╝       AI ENGINEERING TOOLKIT                               │',
+    '│      ╚═╝        UI/UX  ·  CODE  ·  TEST  ·  SHIP                     │',
+    '│                                                                      │',
+    '│   Developed by Vineet Bhardwaj                                       │',
+    '│   GitHub  github.com/vineetbhardwaj001                               │',
+    '╰──────────────────────────────────────────────────────────────────────╯'
   ];
   console.log(color(C.cyan, lines.join('\n')));
 }
@@ -59,10 +62,10 @@ function help() {
   banner();
   console.log(`
 ${color(C.bold, 'USAGE')}
-  npx nexora-agent                 Open interactive terminal menu
-  npx nexora-agent init            Install Nexora in the current project
-  npx nexora-agent doctor          Check an existing installation
-  npx nexora-agent list            List files included in the installer
+  npx nexora-agent-vineetbhardwaj  Open interactive terminal menu
+  npx nexora-agent-vineetbhardwaj init  Install Nexora in the current project
+  npx nexora-agent-vineetbhardwaj doctor Check an existing installation
+  npx nexora-agent-vineetbhardwaj list   List included files
   npx nexora-agent --version       Print version
 
 ${color(C.bold, 'INSTALL OPTIONS')}
