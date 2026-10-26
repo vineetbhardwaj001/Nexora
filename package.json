@@ -1,0 +1,45 @@
+{
+  "name": "nexora-agent",
+  "version": "0.1.0",
+  "description": "Install Nexora's portable AI engineering skills and workflows into your project.",
+  "keywords": [
+    "ai-agent",
+    "coding-agent",
+    "agent-skills",
+    "developer-tools",
+    "ui-ux",
+    "github-copilot",
+    "kilo-code",
+    "antigravity"
+  ],
+  "homepage": "https://github.com/vineetbhardwaj001/Nexora",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vineetbhardwaj001/Nexora.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vineetbhardwaj001/Nexora/issues"
+  },
+  "license": "MIT",
+  "author": "Nexora contributors",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "nexora": "bin/nexora.js"
+  },
+  "files": [
+    "bin/",
+    "AGENTS.md",
+    ".agent/",
+    ".agents/",
+    ".kilo/",
+    "kilo.jsonc",
+    ".github/copilot-instructions.md",
+    ".github/prompts/"
+  ],
+  "scripts": {
+    "test": "node --test"
+  }
+}
