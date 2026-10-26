@@ -124,6 +124,7 @@ Nexora is released under the [MIT License](LICENSE). This license applies to the
 - [ ] Add installer with backups, safe merge, validation, and rollback.
 - [ ] Add tested skill discovery/routing.
 - [ ] Add optional, license-reviewed third-party integrations.
+- [ ] Design a **Free-Only Model Setup** for Kilo Code/OpenRouter: user-owned keys, a verified zero-cost model allowlist, automatic failover only to eligible free endpoints, and fail-closed behavior when none are available. This is a future plan, not implemented yet.
 - [ ] Add release/versioning process after compatibility tests stabilize.
 
 **Maintainer:** [@vineetbhardwaj001](https://github.com/vineetbhardwaj001)
