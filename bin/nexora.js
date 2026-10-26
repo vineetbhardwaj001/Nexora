@@ -62,11 +62,11 @@ function help() {
   banner();
   console.log(`
 ${color(C.bold, 'USAGE')}
-  npx nexora-agent-vineetbhardwaj  Open interactive terminal menu
-  npx nexora-agent-vineetbhardwaj init  Install Nexora in the current project
-  npx nexora-agent-vineetbhardwaj doctor Check an existing installation
-  npx nexora-agent-vineetbhardwaj list   List included files
-  npx nexora-agent --version       Print version
+  npx nexora                   Open interactive terminal menu
+  npx nexora init               Install Nexora in the current project
+  npx nexora doctor             Check an existing installation
+  npx nexora list               List included files
+  npx nexora --version          Print version
 
 ${color(C.bold, 'INSTALL OPTIONS')}
   --yes                            Install missing files; skip conflicts
@@ -78,8 +78,16 @@ ${color(C.gray, 'Safety: existing files are not overwritten by default.')}
 }
 
 function parseArgs(args) {
-  const result = { command: args[0] || (stdin.isTTY && stdout.isTTY ? 'menu' : 'help'), yes: false, force: false, target: process.cwd() };
-  for (let i = 1; i < args.length; i++) {
+  const firstArgIsOption = Boolean(args[0] && args[0].startsWith('-'));
+  const result = {
+    command: !args[0] || firstArgIsOption
+      ? (stdin.isTTY && stdout.isTTY ? 'menu' : 'help')
+      : args[0],
+    yes: false,
+    force: false,
+    target: process.cwd()
+  };
+  for (let i = firstArgIsOption ? 0 : 1; i < args.length; i++) {
     const arg = args[i];
     if (arg === '--yes' || arg === '-y') result.yes = true;
     else if (arg === '--force') result.force = true;
@@ -202,7 +210,7 @@ async function menu() {
       console.log('  ' + color(C.cyan, '[6]') + ' Exit');
       console.log('\\n  ' + color(C.purple, '★') + ' ' + color(C.gray, 'Open-source project · Feedback and contributions welcome'));
       console.log('\n  Project: ' + color(C.gray, process.cwd()));
-      const choice = (await rl.question('\n  Choose an option [1-5]: ')).trim();
+      const choice = (await rl.question('\n  Choose an option [1-6]: ')).trim();
       if (choice === '1') {
         rl.close();
         await init({ target: process.cwd(), yes: false, force: false });
@@ -223,11 +231,11 @@ async function menu() {
         await rl.question('\nPress Enter to return to menu…');
         continue;
       }
-      if (choice === '5' || choice.toLowerCase() === 'q') {
+      if (choice === '6' || choice.toLowerCase() === 'q') {
         console.log('\n  See you soon. Build something meaningful.\n');
         return;
       }
-      console.log(color(C.yellow, '\n  Please choose 1, 2, 3, 4, or 5.'));
+      console.log(color(C.yellow, '\n  Please choose 1, 2, 3, 4, 5, or 6.'));
       await rl.question('  Press Enter to continue…');
     }
   } finally {
