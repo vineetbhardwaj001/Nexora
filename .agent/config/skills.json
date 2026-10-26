@@ -22,7 +22,10 @@
     "knowledge-base-rag": "ask-first",
     "recent-research": "ask-first",
     "web-data-extraction": "ask-first",
-    "technical-diagrams": "ask-first"
+    "technical-diagrams": "ask-first",
+    "error-handling": "enabled",
+    "validation": "enabled",
+    "meaningful-product-messages": "enabled"
   },
   "policies": {
     "analyze_each_ui_reference_separately": true,
