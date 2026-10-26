@@ -164,23 +164,50 @@ The CLI requires Node.js 18 or newer. It does not install application dependenci
 
 ### Publish the CLI to public npm
 
-The release workflow at `.github/workflows/publish-npm.yml` is configured for npm Trusted Publishing (OIDC), so routine GitHub Actions releases do not need a long-lived `NPM_TOKEN`.
+**First publish (one time):** npm's staged-publishing flow cannot create a
+brand-new package. Publish the initial version from an authenticated local
+terminal, where npm can complete account and 2FA checks interactively.
 
-1. Create the package's first published version using an authorized npm account and follow npm's current publishing flow. If using a stage-only token, use `npm stage publish` and approve the staged release through npm's supported maintainer flow.
-2. On npmjs.com, open the package's **Settings → Trusted Publisher** section and add a **GitHub Actions** trusted publisher with:
+1. Confirm the package name `nexora-agent-cli` is available on npm.
+2. In this repository folder, sign in with the npm account that will own the
+   package and verify the account:
+
+   ```bash
+   npm login
+   npm whoami
+   npm test
+   npm pack --dry-run
+   npm publish --access public
+   ```
+
+3. After the package page exists, open npmjs.com → package settings → **Trusted
+   Publisher**. Add a **GitHub Actions** publisher:
    - **Organization or user:** `vineetbhardwaj001`
    - **Repository:** `Nexora`
    - **Workflow filename:** `publish-npm.yml`
-   - **Environment:** leave blank unless the workflow is configured to use a GitHub environment
-   - Allow direct `npm publish` only if you intend the workflow to publish directly; for stage-only publishing, configure the workflow and approval flow accordingly.
-3. Ensure the repository workflow has `id-token: write`, the package's `repository.url` matches this GitHub repository, and the workflow tests pass.
-4. Create a GitHub Release to trigger the workflow, then verify the package page and install command.
+   - **Environment:** leave blank unless the workflow is configured to use a
+     GitHub environment
+   - **Allowed action:** `npm stage publish`
+
+4. For the next release, increment `version` in `package.json`, commit and push
+   the change, then create a GitHub Release for that version. The workflow tests
+   the package and stages it through OIDC; it does not need the `NPM_TOKEN`
+   secret.
+5. Review the staged package in npm's **Staged Packages** section and approve it
+   with 2FA. A staged package is not live until you approve it.
+
+**Publishing status:** the latest repository CI and security checks pass, but the
+first npm publish and trusted-publisher setup still require maintainer action.
+After OIDC is verified, remove the unused `NPM_TOKEN` secret from GitHub Actions.
+Revoke any token that was pasted into chat or otherwise exposed, and never share
+the replacement token.
+
+The workflow also stops early if the initial package does not exist yet or the
+current version is already published. Use a new version for each release.
 
 ```bash
 npx nexora-agent-cli
 ```
-
-**Publishing status:** the workflow configuration is committed, but publishing is not complete. Trusted Publishing requires the npm package to exist and the trusted publisher settings to match the repository and workflow exactly. Do not advertise the install command as live until the npm package page and install are verified.
 
 ## Package name and identity
 
