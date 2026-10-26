@@ -194,7 +194,7 @@ Run Nexora without arguments to open its interactive terminal menu:
 npx nexora-agent-cli
 ```
 
-The terminal UI includes a branded Nexora header and quick actions to:
+The interactive terminal UI uses a warm cream, yellow, and orange dashboard inspired by the Nexora visual reference. It includes a navigation rail, quick actions, a selected-action panel, workspace status, and safety notes. Available actions include:
 - Install skills and workflows into the current project
 - Check which Nexora files are present
 - Browse files included in the installer
