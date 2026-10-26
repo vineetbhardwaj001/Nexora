@@ -19,7 +19,7 @@ Nexora is a **cross-platform agent instruction and skill starter** for [Kilo Cod
 ## Why Nexora?
 
 - **Idea to plan:** define target users, MVP scope, user journeys, acceptance criteria, and delivery steps.
-- **Reference-led UI/UX:** analyze every supplied screenshot independently, then recommend a coherent product-specific design system.
+- **Reference-led UI/UX:** analyze each supplied screenshot independently before comparing styles.
 - **Backend-safe frontend:** treat an existing backend as read-only by default; use real API contracts and report missing capabilities instead of silently changing server code.
 - **Maintainable structure:** organize pages, components, API services, hooks, styles, and types around actual product domains.
 - **Quality and safety:** encourage tests, security reviews, accessibility, documentation, and evidence-based production readiness.
@@ -36,14 +36,14 @@ cd Nexora
 
 ### 2. Add it to a project
 
-Back up any existing agent instructions first. Merge these paths into the **root of your target project** rather than overwriting project-specific rules blindly:
+Back up existing agent instructions first. Merge these paths into the **root of your target project** rather than blindly overwriting project-specific rules:
 
 - `AGENTS.md`
 - `.agent/`
 - `.agents/`
 - `.kilo/`
 - `kilo.jsonc`
-- `.github/`
+- relevant files under `.github/`
 
 ### 3. Start with a read-only audit
 
@@ -101,13 +101,13 @@ Workflow names are portable labels, not guaranteed slash commands. Invoke them t
 
 ## GitHub Actions
 
-On pushes and pull requests to `main`, the workflows validate key configuration files, lint Markdown, check whitespace, scan for common secret patterns, and look for tracked environment files. A weekly security scan is also scheduled.
+On pushes and pull requests to `main`, workflows validate key configuration files, lint Markdown, check whitespace, scan for common secret patterns, and look for tracked environment files. A weekly security scan is also scheduled.
 
 These are baseline checks, not a substitute for a dedicated secret scanner, dependency audit, application security test, or runtime validation. Inspect the [Actions tab](https://github.com/vineetbhardwaj001/Nexora/actions) for the latest results.
 
 ## Optional integrations
 
-Potential third-party skill sources are listed in `.agent/repo-catalog.md`. They are **not vendored or automatically installed**. Before integrating any source, inspect its current license, dependencies, setup instructions, security posture, and compatibility. Do not assume a repository's current existence or license without verifying it.
+Potential third-party skill sources are listed in `.agent/repo-catalog.md`. They are **not vendored or automatically installed**. Before integrating any source, inspect its current license, dependencies, setup instructions, security posture, and compatibility.
 
 ## Contributing
 
@@ -130,7 +130,7 @@ Nexora is released under the [MIT License](LICENSE). This license applies to the
 
 ## Install with npm (CLI)
 
-Nexora provides an npm CLI installer. Once the package is published to npm:
+The CLI package is **not published yet**. After the first successful public npm publish, use:
 
 ```bash
 npx nexora-agent-vineetbhardwaj init
@@ -162,28 +162,28 @@ npx nexora-agent-vineetbhardwaj init --path ../my-app
 
 The CLI requires Node.js 18 or newer. It does not install application dependencies, modify application source code, or guarantee automatic skill discovery in every IDE. Existing files are not overwritten by default; `--force` creates timestamped backups.
 
-### Publish the CLI to npm
+### Publish the CLI to public npm
 
 The repository includes a release workflow at `.github/workflows/publish-npm.yml`. To enable publishing:
 
-1. Confirm the package name `nexora-agent` is available on npm, then sign in to the npm account that will own the package.
-2. Create an npm automation/access token with permission to publish this package.
+1. Sign in to the npm account that will own the package and check whether **`nexora-agent-vineetbhardwaj`** is available.
+2. Create an npm access token authorized to publish packages. Use the least-privileged token type supported by your npm account and workflow.
 3. In GitHub, open **Settings → Secrets and variables → Actions** and add a repository secret named `NPM_TOKEN`. Never commit or paste the token into source files.
-4. Update `package.json` version before each release. Push the changes and create a GitHub Release; the workflow runs tests, previews the package contents, and then publishes to npm.
-5. After a successful publish, install/use it with:
+4. Ensure the CLI tests pass, update `package.json` to the intended release version, push the changes, and create a GitHub Release. The workflow runs tests, previews package contents, and then publishes to public npm.
+5. Verify the package page and install command after the workflow succeeds.
 
 ```bash
+npm view nexora-agent-vineetbhardwaj
 npx nexora-agent-vineetbhardwaj init
-# or install globally:
 npm install --global nexora-agent-vineetbhardwaj
 nexora doctor
 ```
 
-**Publishing status:** the CLI source and release workflow are committed to GitHub, but this repository integration does not itself publish packages to npm. The first npm publish requires an authorized npm account/token and an available package name. Do not advertise the install command as live until the npm package page and install are verified.
+**Publishing status:** the CLI source and release workflow are committed to GitHub, but this repository integration does not publish packages to npm by itself. The first public publish requires an authorized npm account/token and an available package name. Do not advertise the install command as live until the npm package page and install are verified.
 
 ## Package name and identity
 
-The original npm package name `nexora-agent` is already associated with a different published project. Nexora's intended package name in this repository is `nexora-agent-vineetbhardwaj`. The new package name must be published by its maintainer before the `npx` command is available. The terminal banner identifies this project as developed by Vineet Bhardwaj.
+The original name `nexora-agent` was found to be associated with a different published project, so this project uses the distinct intended name `nexora-agent-vineetbhardwaj`. The package must be published by its maintainer before `npx` can install it. The terminal banner identifies this project as developed by Vineet Bhardwaj.
 
 ## Interactive terminal UI
 
@@ -196,8 +196,9 @@ npx nexora-agent-vineetbhardwaj
 The terminal UI includes a branded Nexora header and quick actions to:
 - Install skills and workflows into the current project
 - Check which Nexora files are present
-- Browse the files included in the installer
+- Browse files included in the installer
 - Open CLI help
+- Open the maintainer's GitHub profile
 
 You can also run a command directly:
 
@@ -211,17 +212,10 @@ The terminal uses ANSI colors when supported and respects `NO_COLOR`. Existing f
 
 ## Render deployment
 
-Nexora currently ships a terminal CLI; this repository does not contain a verified public Render web-demo URL. If a web dashboard is deployed separately on Render, add its exact service URL here after verifying that it is live. Do not use a guessed URL.
+Nexora currently ships a terminal CLI; this repository does not contain a verified public Render web-demo URL. If a web dashboard is deployed separately on Render, add its exact service URL here only after verifying that it is live.
 
 ### Follow Nexora on GitHub
 
-Run the interactive CLI:
-
-```bash
-npx nexora-agent-vineetbhardwaj
-```
-
-Choose **5 — Follow Nexora on GitHub** to open the maintainer profile in your default browser. Click **Follow** on GitHub yourself if you want to follow the account. The CLI does not and cannot silently follow accounts or change your GitHub account settings.
+Choose **5 — Follow Nexora on GitHub** in the interactive CLI to open the maintainer profile in your default browser. Click **Follow** on GitHub yourself if you want to follow the account; the CLI does not silently follow accounts or change account settings.
 
 Maintainer profile: https://github.com/vineetbhardwaj001
-
