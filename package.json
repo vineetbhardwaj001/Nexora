@@ -27,7 +27,8 @@
     "node": ">=18"
   },
   "bin": {
-    "nexora": "bin/nexora.js"
+    "nexora": "bin/nexora.js",
+    "nexora-agent": "bin/nexora.js"
   },
   "files": [
     "bin/",
