@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   publish:
@@ -25,23 +26,23 @@ jobs:
       - name: Use current npm CLI
         run: npm install --global npm@latest
 
-      - name: Verify npm token authentication
-        run: |
-          if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "::error::NPM_TOKEN repository secret is missing or empty."
-            exit 1
-          fi
-          npm whoami
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Run CLI tests
         run: npm test
 
       - name: Verify package contents
         run: npm pack --dry-run
 
-      - name: Stage package for maintainer review
+      - name: Check first-publish and version prerequisites
+        run: |
+          PACKAGE_VERSION="$(node -p "require('./package.json').version")"
+          if ! npm view nexora-agent-cli version >/dev/null 2>&1; then
+            echo "::error::The initial npm package does not exist yet. Publish the first version from an authenticated local npm session before using staged publishing. npm stage publish cannot create a brand-new package."
+            exit 1
+          fi
+          if npm view "nexora-agent-cli@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
+            echo "::error::Version ${PACKAGE_VERSION} is already published. Bump package.json to a new version before staging."
+            exit 1
+          fi
+
+      - name: Stage package through npm Trusted Publishing
         run: npm stage publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
