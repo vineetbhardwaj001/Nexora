@@ -127,3 +127,38 @@ Nexora is released under the [MIT License](LICENSE). This license applies to the
 - [ ] Add release/versioning process after compatibility tests stabilize.
 
 **Maintainer:** [@vineetbhardwaj001](https://github.com/vineetbhardwaj001)
+
+## Install with npm (CLI)
+
+Nexora provides an npm CLI installer. Once the package is published to npm:
+
+```bash
+npx nexora-agent init
+```
+
+Install only missing files and leave existing files untouched:
+
+```bash
+npx nexora-agent init --yes
+```
+
+Back up and replace conflicting Nexora files explicitly:
+
+```bash
+npx nexora-agent init --force
+```
+
+Check an existing installation:
+
+```bash
+npx nexora-agent doctor
+```
+
+Install into a different project folder:
+
+```bash
+npx nexora-agent init --path ../my-app
+```
+
+The CLI requires Node.js 18 or newer. It does not install application dependencies, modify application source code, or guarantee automatic skill discovery in every IDE. Existing files are not overwritten by default; `--force` creates timestamped backups.
+
