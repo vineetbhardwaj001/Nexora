@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "setup_complete": false,
+  "autonomy": "guided",
+  "skills": {
+    "idea-product-strategy": "ask-first",
+    "reverse-engineering": "ask-first",
+    "clean-code-architecture": "ask-first",
+    "ux-ui-design": "enabled",
+    "creative-ui-review": "ask-first",
+    "human-readable-copy": "ask-first",
+    "frontend-engineering": "ask-first",
+    "backend-preserving-frontend": "enabled",
+    "backend-api-engineering": "ask-first",
+    "database-data-modeling": "ask-first",
+    "auth-security-audit": "ask-first",
+    "qa-test-automation": "ask-first",
+    "performance-capacity": "ask-first",
+    "accessibility": "ask-first",
+    "devops-production": "ask-first",
+    "documentation": "ask-first",
+    "knowledge-base-rag": "ask-first",
+    "recent-research": "ask-first",
+    "web-data-extraction": "ask-first",
+    "technical-diagrams": "ask-first"
+  },
+  "policies": {
+    "analyze_each_ui_reference_separately": true,
+    "backend_read_only_by_default": true,
+    "frontend_only_changes_when_requested": true,
+    "verify_backend_diff_after_frontend_work": true,
+    "ask_before_destructive_or_production_actions": true,
+    "mark_unverified_values_as_estimates": true
+  }
+}
