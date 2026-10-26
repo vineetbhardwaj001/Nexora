@@ -181,3 +181,31 @@ nexora doctor
 
 **Publishing status:** the CLI source and release workflow are committed to GitHub, but this repository integration does not itself publish packages to npm. The first npm publish requires an authorized npm account/token and an available package name. Do not advertise the install command as live until the npm package page and install are verified.
 
+## Interactive terminal UI
+
+Run Nexora without arguments to open its interactive terminal menu:
+
+```bash
+npx nexora-agent
+```
+
+The terminal UI includes a branded Nexora header and quick actions to:
+- Install skills and workflows into the current project
+- Check which Nexora files are present
+- Browse the files included in the installer
+- Open CLI help
+
+You can also run a command directly:
+
+```bash
+npx nexora-agent init
+npx nexora-agent doctor
+npx nexora-agent list
+```
+
+The terminal uses ANSI colors when supported and respects `NO_COLOR`. Existing files are not overwritten by default; choose the explicit overwrite option or use `--force` to create backups.
+
+## Render deployment
+
+Nexora currently ships a terminal CLI; this repository does not contain a verified public Render web-demo URL. If a web dashboard is deployed separately on Render, add its exact service URL here after verifying that it is live. Do not use a guessed URL.
+
