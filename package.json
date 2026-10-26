@@ -1,5 +1,5 @@
 {
-  "name": "nexora-agent-vineetbhardwaj",
+  "name": "nexora-agent-cli",
   "version": "0.1.1",
   "description": "Install Nexora's portable AI engineering skills and workflows into your project.",
   "keywords": [
@@ -28,8 +28,7 @@
   },
   "bin": {
     "nexora": "bin/nexora.js",
-    "nexora-agent": "bin/nexora.js",
-    "nexora-agent-vineetbhardwaj": "bin/nexora.js"
+    "nexora-agent-cli": "bin/nexora.js"
   },
   "files": [
     "bin/",
