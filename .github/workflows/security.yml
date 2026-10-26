@@ -1,0 +1,45 @@
+name: Nexora Security Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "23 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  secret-pattern-scan:
+    name: Basic secret-pattern scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Scan tracked files for common secret patterns
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -n -I -E '(AKIA[0-9A-Z]{16}|-----BEGIN (RSA|OPENSSH|EC) PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9_]{30,}|sk-[A-Za-z0-9]{24,})' -- . ':!.github/workflows/security.yml'; then
+            echo "::error::Possible secret pattern found. Review the matching lines and rotate any exposed credential."
+            exit 1
+          else
+            echo "No matching common secret patterns found in tracked files."
+          fi
+
+      - name: Check for tracked environment files
+        shell: bash
+        run: |
+          set -euo pipefail
+          matches="$(git ls-files | grep -E '(^|/)\.env($|\.)' | grep -vE '(^|/)\.env\.example$' || true)"
+          if [ -n "$matches" ]; then
+            echo "::error::Potential environment files are tracked:"
+            echo "$matches"
+            exit 1
+          fi
+          echo "No tracked .env files found (excluding .env.example)."
