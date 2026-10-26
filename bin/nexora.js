@@ -41,21 +41,41 @@ const FILES = [
   '.gitignore'
 ];
 
+const THEME = {
+  ink: [35, 31, 25],
+  cream: [255, 244, 222],
+  panel: [255, 249, 236],
+  yellow: [255, 221, 58],
+  orange: [255, 105, 38],
+  peach: [255, 216, 181],
+  muted: [112, 104, 92],
+  green: [44, 122, 83],
+  white: [255, 255, 255]
+};
+
+function paint(text, fg = THEME.ink, bg, bold = false) {
+  if (!stdout.isTTY || process.env.NO_COLOR) return String(text);
+  const codes = [];
+  if (bold) codes.push('1');
+  if (fg) codes.push('38;2;' + fg.join(';'));
+  if (bg) codes.push('48;2;' + bg.join(';'));
+  return '\\x1b[' + codes.join(';') + 'm' + String(text) + '\\x1b[0m';
+}
+
+function fit(text, width) {
+  const value = String(text ?? '');
+  if (value.length > width) return value.slice(0, Math.max(0, width - 1)) + '…';
+  return value.padEnd(width, ' ');
+}
+
 function banner() {
-  const lines = [
-    '╭──────────────────────────────────────────────────────────────────────╮',
-    '│                                                                      │',
-    '│   ██╗   ██╗     N E X O R A                         v' + VERSION.padEnd(18) + '│',
-    '│   ╚██╗ ██╔╝     From Idea to Production                              │',
-    '│    ╚████╔╝                                                           │',
-    '│     ╚██╔╝       AI ENGINEERING TOOLKIT                               │',
-    '│      ╚═╝        UI/UX  ·  CODE  ·  TEST  ·  SHIP                     │',
-    '│                                                                      │',
-    '│   Developed by Vineet Bhardwaj                                       │',
-    '│   GitHub  github.com/vineetbhardwaj001                               │',
-    '╰──────────────────────────────────────────────────────────────────────╯'
-  ];
-  console.log(color(C.cyan, lines.join('\n')));
+  const width = 76;
+  const line = '─'.repeat(width - 2);
+  console.log(paint('╭' + line + '╮', THEME.ink, THEME.cream));
+  console.log(paint('│' + fit('  N E X O R A     /     AI ENGINEERING TOOLKIT', width - 2) + '│', THEME.ink, THEME.yellow, true));
+  console.log(paint('│' + fit('  From Idea to Production  ·  UI/UX  ·  CODE  ·  TEST  ·  SHIP', width - 2) + '│', THEME.ink, THEME.cream));
+  console.log(paint('│' + fit('  Developed by Vineet Bhardwaj  ·  github.com/vineetbhardwaj001', width - 2) + '│', THEME.ink, THEME.panel));
+  console.log(paint('╰' + line + '╯', THEME.ink, THEME.cream));
 }
 
 function help() {
@@ -75,6 +95,110 @@ ${color(C.bold, 'INSTALL OPTIONS')}
 
 ${color(C.gray, 'Safety: existing files are not overwritten by default.')}
 `);
+}
+
+function renderDashboard(selected) {
+  const width = Math.max(50, Math.min(116, stdout.columns || 100));
+  const leftW = Math.max(14, Math.min(20, Math.floor(width * 0.21)));
+  const rightW = Math.max(18, Math.min(28, Math.floor(width * 0.27)));
+  const centerW = width - leftW - rightW - 4;
+  const innerW = width - 2;
+  const cwd = process.cwd();
+  const existing = FILES.filter(file => {
+    try { return fs.existsSync(path.join(cwd, file)) && fs.statSync(path.join(cwd, file)).isFile(); }
+    catch { return false; }
+  }).length;
+  const actionDetails = {
+    1: ['INSTALL KIT', 'Merge Nexora instructions', 'and skills into this project.'],
+    2: ['SYSTEM CHECK', 'Find missing managed files', 'and review install health.'],
+    3: ['BROWSE FILES', 'Review the files included', 'in the Nexora installer.'],
+    4: ['HELP & COMMANDS', 'See command examples and', 'safe install options.'],
+    5: ['GITHUB PROFILE', 'Open the maintainer page', 'in your default browser.'],
+    6: ['EXIT', 'Close the interactive', 'terminal menu.']
+  };
+  const leftRows = [
+    '  NAVIGATION',
+    '',
+    '  [1] Install kit',
+    '  [2] System check',
+    '  [3] Browse files',
+    '  [4] Help & commands',
+    '  [5] GitHub profile',
+    '  [6] Exit',
+    '',
+    '  WORKSPACE',
+    '  Safe defaults',
+    '  Node.js >= 18',
+    '  ' + FILES.length + ' managed files'
+  ];
+  const centerRows = [
+    '  WORKSPACE OVERVIEW',
+    '  Build with guardrails. Ship with confidence.',
+    '',
+    '  QUICK ACTIONS',
+    '  [1] INSTALL KIT  - Add agent instructions safely',
+    '  [2] SYSTEM CHECK - Audit files in this project',
+    '  [3] BROWSE FILES - Review the installer manifest',
+    '  [4] HELP         - Commands and install options',
+    '  [5] GITHUB       - Open the maintainer profile',
+    '  [6] EXIT         - Close the interactive menu',
+    '',
+    '  CURRENT PROJECT',
+    '  ' + cwd
+  ];
+  const rightRows = [
+    '  SELECTED ACTION',
+    '  ' + actionDetails[selected][0],
+    '  ' + actionDetails[selected][1],
+    actionDetails[selected][2],
+    '',
+    '  PACKAGE',
+    '  nexora-agent-cli',
+    '  Version ' + VERSION,
+    '  Node.js >= 18',
+    '',
+    '  INSTALL SAFETY',
+    '  Existing files are preserved',
+    '  --force creates backups',
+    '',
+    '  PROJECT CHECK',
+    '  ' + existing + '/' + FILES.length + ' managed files found',
+    '  Maintainer: Vineet Bhardwaj',
+    '  github.com/vineetbhardwaj001'
+  ];
+  const bodyHeight = Math.max(leftRows.length, centerRows.length, rightRows.length);
+  const border = '├' + '─'.repeat(leftW) + '┼' + '─'.repeat(centerW) + '┼' + '─'.repeat(rightW) + '┤';
+  const outerTop = '╭' + '─'.repeat(width - 2) + '╮';
+  const outerBottom = '╰' + '─'.repeat(width - 2) + '╯';
+  const cell = (value, w, fg, bg, bold = false) => paint(fit(value, w), fg, bg, bold);
+  const borderChar = value => paint(value, THEME.ink, THEME.cream);
+  console.clear();
+  console.log(borderChar(outerTop));
+  console.log(borderChar('│') + cell('  N E X O R A   /   AI ENGINEERING TOOLKIT', innerW, THEME.ink, THEME.yellow, true) + borderChar('│'));
+  console.log(borderChar('│') + cell('  From Idea to Production   ·   UI/UX   ·   CODE   ·   TEST   ·   SHIP', innerW, THEME.ink, THEME.cream) + borderChar('│'));
+  console.log(borderChar(border));
+  for (let row = 0; row < bodyHeight; row++) {
+    const isSidebarSelection = row === selected + 1;
+    const isCenterSelection = row === selected + 3;
+    const leftBg = isSidebarSelection ? THEME.orange : THEME.cream;
+    const centerBg = isCenterSelection ? THEME.peach : THEME.panel;
+    const leftText = leftRows[row] || '';
+    const centerText = centerRows[row] || '';
+    const rightText = rightRows[row] || '';
+    console.log(
+      borderChar('│') +
+      cell(leftText, leftW, isSidebarSelection ? THEME.white : THEME.ink, leftBg, isSidebarSelection) +
+      borderChar('│') +
+      cell(centerText, centerW, THEME.ink, centerBg, isCenterSelection) +
+      borderChar('│') +
+      cell(rightText, rightW, row === 1 ? THEME.orange : THEME.ink, row < 4 ? THEME.peach : THEME.cream, row === 1) +
+      borderChar('│')
+    );
+  }
+  console.log(borderChar(border));
+  const footer = '  1-6 Select action   ·   q Exit   ·   Existing files stay safe by default';
+  console.log(borderChar('│') + cell(footer, innerW, THEME.ink, THEME.yellow, true) + borderChar('│'));
+  console.log(borderChar(outerBottom));
 }
 
 function parseArgs(args) {
