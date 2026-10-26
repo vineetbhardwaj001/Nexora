@@ -319,48 +319,75 @@ function list() {
   console.log(`\n${FILES.length} files in the installer manifest.`);
 }
 
+function openUrl(url) {
+  const platform = process.platform;
+  let command;
+  let args;
+  if (platform === 'win32') {
+    command = 'cmd.exe';
+    args = ['/c', 'start', '', url];
+  } else if (platform === 'darwin') {
+    command = 'open';
+    args = [url];
+  } else {
+    command = 'xdg-open';
+    args = [url];
+  }
+  execFile(command, args, error => {
+    if (error) {
+      console.log(color(C.yellow, 'Could not open the browser automatically.'));
+      console.log('Open this URL manually: ' + url);
+    }
+  });
+}
+
 async function menu() {
   const rl = readline.createInterface({ input: stdin, output: stdout });
+  let selected = 1;
   try {
     while (true) {
-      console.clear();
-      banner();
-      console.log('\n' + color(C.bold, '  QUICK ACTIONS'));
-      console.log('  ' + color(C.cyan, '[1]') + ' Install Nexora into current folder');
-      console.log('  ' + color(C.cyan, '[2]') + ' Check Nexora installation');
-      console.log('  ' + color(C.cyan, '[3]') + ' Browse included files');
-      console.log('  ' + color(C.cyan, '[4]') + ' Show CLI help');
-      console.log('  ' + color(C.cyan, '[5]') + ' Follow Nexora on GitHub');
-      console.log('  ' + color(C.cyan, '[6]') + ' Exit');
-      console.log('\\n  ' + color(C.purple, '★') + ' ' + color(C.gray, 'Open-source project · Feedback and contributions welcome'));
-      console.log('\n  Project: ' + color(C.gray, process.cwd()));
-      const choice = (await rl.question('\n  Choose an option [1-6]: ')).trim();
+      renderDashboard(selected);
+      const choice = (await rl.question(
+        '\n  Select 1-6, or q to quit: '
+      )).trim().toLowerCase();
+      if (choice === 'q' || choice === '6') {
+        console.log('\n  See you soon. Build something meaningful.\n');
+        return;
+      }
+      if (!['1', '2', '3', '4', '5'].includes(choice)) {
+        console.log(color(C.yellow, '  Please enter a number from 1 to 6.'));
+        await rl.question('  Press Enter to continue…');
+        continue;
+      }
+      selected = Number(choice);
       if (choice === '1') {
         rl.close();
         await init({ target: process.cwd(), yes: false, force: false });
         return;
       }
       if (choice === '2') {
+        console.clear();
         doctor({ target: process.cwd() });
-        await readline.createInterface({ input: stdin, output: stdout }).question('\nPress Enter to return to menu…').catch(() => {});
+        await rl.question('\n  Press Enter to return to dashboard…');
         continue;
       }
       if (choice === '3') {
+        console.clear();
         list();
-        await rl.question('\nPress Enter to return to menu…');
+        await rl.question('\n  Press Enter to return to dashboard…');
         continue;
       }
       if (choice === '4') {
+        console.clear();
         help();
-        await rl.question('\nPress Enter to return to menu…');
+        await rl.question('\n  Press Enter to return to dashboard…');
         continue;
       }
-      if (choice === '6' || choice.toLowerCase() === 'q') {
-        console.log('\n  See you soon. Build something meaningful.\n');
-        return;
+      if (choice === '5') {
+        openUrl(GITHUB_PROFILE);
+        console.log('\n  Opening maintainer profile: ' + GITHUB_PROFILE);
+        await rl.question('\n  Press Enter to return to dashboard…');
       }
-      console.log(color(C.yellow, '\n  Please choose 1, 2, 3, 4, 5, or 6.'));
-      await rl.question('  Press Enter to continue…');
     }
   } finally {
     try { rl.close(); } catch {}
