@@ -1,78 +1,94 @@
-# Nexora — AI Engineering Agent
+# Nexora
 
 <p align="center">
-  <strong>From Idea to Production.</strong><br/>
-  A skill-driven engineering companion for product planning, reference-led UI/UX, backend-safe frontend work, quality checks, and release readiness.
+  <img src="https://img.shields.io/badge/Nexora-Universal%20Agent%20Kits-f3b84b?style=for-the-badge&labelColor=17251f" alt="Nexora">
 </p>
 
 <p align="center">
-  <a href="https://github.com/vineetbhardwaj001/Nexora/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/vineetbhardwaj001/Nexora/actions/workflows/ci.yml/badge.svg"></a>
-  <a href="https://github.com/vineetbhardwaj001/Nexora/actions/workflows/security.yml"><img alt="Security checks" src="https://github.com/vineetbhardwaj001/Nexora/actions/workflows/security.yml/badge.svg"></a>
-  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
-  <img alt="Cross-platform" src="https://img.shields.io/badge/IDE-Kilo%20Code%20%7C%20Antigravity%20%7C%20Copilot-7057ff">
+  <strong>One thoughtful toolkit. Your coding environment.</strong><br>
+  Reusable agent instructions and skills for building real software with the AI coding tool you already love.
 </p>
 
-Nexora is a **cross-platform agent instruction and skill starter** for [Kilo Code](https://kilocode.ai/), [Google Antigravity](https://antigravity.google/), and [GitHub Copilot](https://github.com/features/copilot). It provides workflows and reusable instructions for turning an idea into a scoped product plan, designing UI from references, building a frontend against an existing backend, and checking software quality.
+<p align="center">
+  <a href="https://vineetbhardwaj001.github.io/Nexora/"><strong>Explore the Docs →</strong></a> ·
+  <a href="https://github.com/vineetbhardwaj001/Nexora/actions/workflows/ci.yml">CI</a> ·
+  <a href="https://github.com/vineetbhardwaj001/Nexora/actions/workflows/security.yml">Security</a> ·
+  <a href="LICENSE">MIT License</a>
+</p>
 
-> **Project status:** early-stage starter kit. It is not yet a fully autonomous multi-agent runtime, and compatibility must be verified in each IDE/version. CI validates repository configuration and Markdown; passing CI does not prove that every IDE loads every skill correctly.
+<p align="center">
+  <img alt="Kilo Code" src="https://img.shields.io/badge/Kilo%20Code-adapter%20planned-f0c15a">
+  <img alt="OpenCode" src="https://img.shields.io/badge/OpenCode-adapter%20planned-7b8e7a">
+  <img alt="Antigravity" src="https://img.shields.io/badge/Antigravity-skills%20and%20rules-8c83d6">
+</p>
 
-## Why Nexora?
+Nexora is an early-stage, tool-aware **agent-pack and skills project**. The goal is to help developers reuse thoughtful workflows—planning, UI/UX, frontend integration, testing, and security—across compatible AI coding environments, instead of locking their work to a single editor.
 
-- **Idea to plan:** define target users, MVP scope, user journeys, acceptance criteria, and delivery steps.
-- **Reference-led UI/UX:** analyze each supplied screenshot independently before comparing styles.
-- **Backend-safe frontend:** treat an existing backend as read-only by default; use real API contracts and report missing capabilities instead of silently changing server code.
-- **Maintainable structure:** organize pages, components, API services, hooks, styles, and types around actual product domains.
-- **Quality and safety:** encourage tests, security reviews, accessibility, documentation, and evidence-based production readiness.
-- **User control:** use guided autonomy by default and ask before destructive, costly, or production actions.
+> **Honest status:** Nexora is currently a starter kit and CLI, not a universal autonomous agent runtime. The documentation site and cross-tool architecture describe the intended direction; each adapter and feature must be implemented and tested against the target tool before being advertised as supported.
 
-## Quick start
+## Start here
 
-### 1. Clone Nexora
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/vineetbhardwaj001/Nexora.git
 cd Nexora
 ```
 
-### 2. Add it to a project
+### 2. Run the current CLI locally
 
-Back up existing agent instructions first. Merge these paths into the **root of your target project** rather than blindly overwriting project-specific rules:
+Requires Node.js 18 or newer.
 
-- `AGENTS.md`
-- `.agent/`
-- `.agents/`
-- `.kilo/`
-- `kilo.jsonc`
-- relevant files under `.github/`
+```bash
+npm install
+npm test
+node bin/nexora.js
+```
 
-### 3. Start with a read-only audit
+Nexora is being tested from a Git clone first. **npm publishing is not part of the current workflow.**
 
-Ask your coding agent:
+### 3. Understand the project before installing it elsewhere
 
-> Read `AGENTS.md`, `.agent/CORE.md`, and `.agent/config/skills.json`. Inspect the repository and report which Nexora instructions and skills this IDE actually supports. Do not edit files yet.
+Read [AGENTS.md](AGENTS.md), [the core instructions](.agent/CORE.md), and [the skill configuration](.agent/config/skills.json). Back up project-specific agent files before merging instructions into another repository.
 
-### 4. Choose a workflow
+## The idea
 
-| Goal | Workflow / prompt |
-|---|---|
-| Turn an idea into an MVP plan | `.github/prompts/idea-to-plan.prompt.md` |
-| Analyze UI references | `.github/prompts/design-ui.prompt.md` |
-| Build frontend without backend edits | `.github/prompts/frontend-only.prompt.md` |
-| Map backend APIs and auth | `.agent/workflows/backend-preserving-frontend.md` |
-| Choose a maintainable folder structure | `.agent/workflows/frontend-structure.md` |
-| Configure skills | `.agent/workflows/setup.md` |
+- **Portable knowledge:** keep reusable skills and workflow instructions in a canonical source.
+- **Tool-aware setup:** translate or install supported pieces into each coding tool's native format.
+- **Human-led development:** explain what will change, preserve user work, and ask before destructive or costly actions.
+- **Backend respect:** treat existing backend contracts as read-only by default when the task is frontend-only.
+- **Evidence over hype:** distinguish implemented features from roadmap ideas and report tests that actually ran.
 
-Workflow names are portable labels, not guaranteed slash commands. Invoke them through the native prompt/skill interface supported by your selected IDE.
+## Coding-tool compatibility
 
-## Core principles
+| Tool | Intended integration | Important note |
+|---|---|---|
+| Kilo Code | Shared skills plus native configuration where supported | Native agent/subagent behavior depends on Kilo Code's current format and version. |
+| OpenCode | Shared skills plus native agent configuration where supported | A skill is not automatically the same as a native agent. |
+| Google Antigravity | Supported skills and workspace rules | Do not claim native subagent delegation where the tool does not provide it. |
+| Other tools | Evaluate adapter and format support first | No compatibility is implied just because a tool can read Markdown. |
 
-1. Inspect the repository and Git status before editing.
-2. Analyze each UI reference image separately before comparing styles.
-3. Protect existing backend routes, schemas, auth logic, migrations, server configuration, and backend dependencies by default.
-4. Use actual API contracts; never invent endpoints or present mock data as live production data.
-5. Prefer small, focused components and meaningful product-domain folders.
-6. Preserve user changes and never claim unrun tests passed.
-7. Ask before destructive changes, production deployment, migrations, paid services, secrets changes, or out-of-scope security/load tests.
+Compatibility must be verified against official documentation and a real local test. Generated configuration should never overwrite unrelated user files silently.
+
+## What Nexora helps with
+
+- **Idea → plan:** turn a rough idea into users, scope, acceptance criteria, and milestones.
+- **Reference-led UI/UX:** analyze design references before proposing a consistent interface.
+- **Frontend + existing backend:** map real routes, auth, and API contracts before connecting UI.
+- **Maintainable code:** choose meaningful component boundaries and project-domain folders.
+- **Quality checks:** plan tests, accessibility checks, security review, and release readiness.
+
+## Example: Clinic ERP agent pack
+
+A future example pack could contain skills for:
+1. Product architect — requirements, scope, and workflows.
+2. Frontend developer — React screens and accessible forms.
+3. Backend developer — API contracts and business rules.
+4. Database specialist — schemas, relationships, and indexes.
+5. QA engineer — integration and regression tests.
+6. Security reviewer — authorization and sensitive-data handling.
+
+Use synthetic patient data in demos and tests. This is an example of the intended pack design, not a claim that these six native agents are already implemented across every tool.
 
 ## Repository map
 
@@ -81,170 +97,72 @@ Workflow names are portable labels, not guaranteed slash commands. Invoke them t
 ├── AGENTS.md
 ├── .agent/
 │   ├── CORE.md
-│   ├── config/skills.json
-│   ├── repo-catalog.md
+│   ├── config/
 │   └── workflows/
 ├── .agents/
 │   ├── rules/
 │   └── skills/
+├── .kilo/
 ├── .github/
 │   ├── prompts/
 │   └── workflows/
-├── .kilo/rules/
-└── kilo.jsonc
+├── bin/
+├── tests/
+├── docs/
+│   └── index.html
+├── kilo.jsonc
+└── package.json
 ```
 
-- `.agent/config/skills.json` — skill status and safety policies.
-- `.agents/skills/` — reusable skill instructions.
-- `.agent/workflows/` — repeatable workflows and checklists.
-- `.github/workflows/` — automated CI and baseline security checks.
+## Safety by default
 
-## GitHub Actions
+- Inspect repository state before editing.
+- Do not invent APIs or pretend sample data is production data.
+- Preserve user modifications and back up conflicts before replacing files.
+- Never commit API keys or print secrets in logs.
+- Ask before destructive changes, production deployment, database migrations, paid services, or scope-expanding tests.
+- Never claim a test passed unless it actually ran.
+- A model described as “free” must be verified against the provider's current pricing and limits. Do not silently fall back to paid models.
 
-On pushes and pull requests to `main`, workflows validate key configuration files, lint Markdown, check whitespace, scan for common secret patterns, and look for tracked environment files. A weekly security scan is also scheduled.
+## Documentation
 
-These are baseline checks, not a substitute for a dedicated secret scanner, dependency audit, application security test, or runtime validation. Inspect the [Actions tab](https://github.com/vineetbhardwaj001/Nexora/actions) for the latest results.
+The documentation site is designed for quick onboarding, plain-language explanations, and copyable commands.
 
-## Optional integrations
+- **Docs homepage:** [Nexora Docs](https://vineetbhardwaj001.github.io/Nexora/)
+- **Local preview:** open `docs/index.html` in a browser.
+- **Project files:** browse the [docs folder](docs/) in GitHub.
 
-Potential third-party skill sources are listed in `.agent/repo-catalog.md`. They are **not vendored or automatically installed**. Before integrating any source, inspect its current license, dependencies, setup instructions, security posture, and compatibility.
+GitHub Pages deploys from the `docs-site.yml` workflow. If Pages has not yet been enabled for this repository, open **Settings → Pages** and select **GitHub Actions** as the build and deployment source.
 
-## Contributing
+## Development and tests
 
-Bug reports, documentation improvements, workflow fixes, and new skills are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md), open an issue with a clear reproduction/use case, and submit focused pull requests. Do not include secrets, private data, or proprietary assets you do not have permission to share.
+```bash
+npm test
+node bin/nexora.js --help
+```
 
-## License
-
-Nexora is released under the [MIT License](LICENSE). This license applies to the original files in this repository. Third-party projects referenced in the catalog retain their own licenses and terms.
+GitHub Actions also validates key configuration, Markdown, structural tests, and baseline secret patterns. These checks are useful safeguards, not proof that every IDE integration works at runtime. See the [latest workflow runs](https://github.com/vineetbhardwaj001/Nexora/actions).
 
 ## Roadmap
 
-- [ ] Validate skill loading in each supported IDE/version.
-- [ ] Add automated schema and workflow tests.
-- [ ] Add installer with backups, safe merge, validation, and rollback.
-- [ ] Add tested skill discovery/routing.
-- [ ] Add optional, license-reviewed third-party integrations.
-- [ ] Design a **Free-Only Model Setup** for Kilo Code/OpenRouter: user-owned keys, a verified zero-cost model allowlist, automatic failover only to eligible free endpoints, and fail-closed behavior when none are available. This is a future plan, not implemented yet.
-- [ ] Add release/versioning process after compatibility tests stabilize.
+- [ ] Validate shared skill loading in each supported coding tool/version.
+- [ ] Build tool-specific adapters with safe merge, backup, dry-run, and rollback.
+- [ ] Add adapter compatibility tests and clearer diagnostics.
+- [ ] Add agent-pack discovery and installation UX.
+- [ ] Design free-only model configuration with a verified zero-cost allowlist and fail-closed behavior. This is future work, not implemented functionality.
+- [ ] Establish release/versioning after local and cross-tool tests stabilize.
 
-**Maintainer:** [@vineetbhardwaj001](https://github.com/vineetbhardwaj001)
+## Contributing
 
-## Install with npm (CLI)
+Bug reports, docs improvements, workflow fixes, and skills are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and submit focused changes with a clear use case. Do not include secrets, private data, or assets you do not have permission to share.
 
-The CLI package is **not published yet**. After the first successful public npm publish, use:
+## License
 
-```bash
-npx nexora-agent-cli init
-```
+Nexora is released under the [MIT License](LICENSE). Third-party projects retain their own licenses and terms.
 
-Install only missing files and leave existing files untouched:
+---
 
-```bash
-npx nexora-agent-cli init --yes
-```
-
-Back up and replace conflicting Nexora files explicitly:
-
-```bash
-npx nexora-agent-cli init --force
-```
-
-Check an existing installation:
-
-```bash
-npx nexora-agent-cli doctor
-```
-
-Install into a different project folder:
-
-```bash
-npx nexora-agent-cli init --path ../my-app
-```
-
-The CLI requires Node.js 18 or newer. It does not install application dependencies, modify application source code, or guarantee automatic skill discovery in every IDE. Existing files are not overwritten by default; `--force` creates timestamped backups.
-
-### Publish the CLI to public npm
-
-**First publish (one time):** npm's staged-publishing flow cannot create a
-brand-new package. Publish the initial version from an authenticated local
-terminal, where npm can complete account and 2FA checks interactively.
-
-1. Confirm the package name `nexora-agent-cli` is available on npm.
-2. In this repository folder, sign in with the npm account that will own the
-   package and verify the account:
-
-   ```bash
-   npm login
-   npm whoami
-   npm test
-   npm pack --dry-run
-   npm publish --access public
-   ```
-
-3. After the package page exists, open npmjs.com → package settings → **Trusted
-   Publisher**. Add a **GitHub Actions** publisher:
-   - **Organization or user:** `vineetbhardwaj001`
-   - **Repository:** `Nexora`
-   - **Workflow filename:** `publish-npm.yml`
-   - **Environment:** leave blank unless the workflow is configured to use a
-     GitHub environment
-   - **Allowed action:** `npm stage publish`
-
-4. For the next release, increment `version` in `package.json`, commit and push
-   the change, then create a GitHub Release for that version. The workflow tests
-   the package and stages it through OIDC; it does not need the `NPM_TOKEN`
-   secret.
-5. Review the staged package in npm's **Staged Packages** section and approve it
-   with 2FA. A staged package is not live until you approve it.
-
-**Publishing status:** the latest repository CI and security checks pass, but the
-first npm publish and trusted-publisher setup still require maintainer action.
-After OIDC is verified, remove the unused `NPM_TOKEN` secret from GitHub Actions.
-Revoke any token that was pasted into chat or otherwise exposed, and never share
-the replacement token.
-
-The workflow also stops early if the initial package does not exist yet or the
-current version is already published. Use a new version for each release.
-
-```bash
-npx nexora-agent-cli
-```
-
-## Package name and identity
-
-The original name `nexora-agent` was found to be associated with a different published project, so this project uses the distinct intended name `nexora-agent-cli`. The package must be published by its maintainer before `npx` can install it. The terminal banner identifies this project as developed by Vineet Bhardwaj.
-
-## Interactive terminal UI
-
-Run Nexora without arguments to open its interactive terminal menu:
-
-```bash
-npx nexora-agent-cli
-```
-
-The interactive terminal UI uses a warm cream, yellow, and orange dashboard inspired by the Nexora visual reference. It includes a navigation rail, quick actions, a selected-action panel, workspace status, and safety notes. Available actions include:
-- Install skills and workflows into the current project
-- Check which Nexora files are present
-- Browse files included in the installer
-- Open CLI help
-- Open the maintainer's GitHub profile
-
-You can also run a command directly:
-
-```bash
-npx nexora-agent-cli init
-npx nexora-agent-cli doctor
-npx nexora-agent-cli list
-```
-
-The terminal uses ANSI colors when supported and respects `NO_COLOR`. Existing files are not overwritten by default; choose the explicit overwrite option or use `--force` to create backups.
-
-## Render deployment
-
-Nexora currently ships a terminal CLI; this repository does not contain a verified public Render web-demo URL. If a web dashboard is deployed separately on Render, add its exact service URL here only after verifying that it is live.
-
-### Follow Nexora on GitHub
-
-Choose **5 — Follow Nexora on GitHub** in the interactive CLI to open the maintainer profile in your default browser. Click **Follow** on GitHub yourself if you want to follow the account; the CLI does not silently follow accounts or change account settings.
-
-Maintainer profile: https://github.com/vineetbhardwaj001
+<p align="center">
+  Made with care for developers building useful things.<br>
+  <strong>Developed by Vineet Bhardwaj</strong> · <a href="https://github.com/vineetbhardwaj001">GitHub</a>
+</p>
