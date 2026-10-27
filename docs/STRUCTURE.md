@@ -1,12 +1,13 @@
 # Documentation Site Structure
 
-This folder contains the static Nexora documentation website. The site intentionally uses plain HTML, CSS, and JavaScript so it can be previewed locally without installing a frontend framework or build tool.
+This folder contains the Nexora marketing landing page and detailed user guide. The site uses plain HTML, CSS, and JavaScript so it can be previewed locally without installing a frontend framework or build tool.
 
 ## File map
 
 ```text
 docs/
 ├── index.html
+├── guide.html
 ├── STRUCTURE.md
 └── assets/
     ├── css/
@@ -17,16 +18,18 @@ docs/
 
 | File | Responsibility |
 |---|---|
-| `index.html` | Page structure, sections, navigation labels, written content, and links to assets. |
+| `index.html` | Public marketing landing page, product positioning, feature sections, GitHub star calls to action, and links into the guide. |
+| `guide.html` | Detailed documentation, quick-start steps, compatibility notes, examples, safety principles, FAQ, and roadmap. |
 | `assets/css/styles.css` | Colors, typography, spacing, responsive layouts, light/dark themes, and component styling. |
 | `assets/js/docs.js` | Search/filter behavior, mobile navigation, theme toggle, copy buttons, active-section navigation, and back-to-top control. |
 | `STRUCTURE.md` | This maintenance guide. |
 
 ## Where to make a change
 
-- **Change headings, examples, links, or written explanations:** edit `index.html`.
-- **Change colors, layout, spacing, typography, or responsive breakpoints:** edit `assets/css/styles.css`.
-- **Change interactions:** edit `assets/js/docs.js`.
+- **Change the marketing hero, benefits, call to action, or landing-page copy:** edit `index.html`.
+- **Change the detailed setup guide, compatibility information, examples, or roadmap:** edit `guide.html`.
+- **Change colors, layout, spacing, typography, animations, or responsive breakpoints:** edit `assets/css/styles.css`. Landing-page styles use the `lp-` class prefix.
+- **Change theme, menu, copy-to-clipboard, scroll, or navigation interactions:** edit `assets/js/docs.js`. The script supports both the landing page and detailed guide.
 - **Add a new navigation section:** add a section with a unique `id` to the HTML and a corresponding link in the sidebar navigation.
 - **Add a new asset:** put it under the appropriate `assets/css/`, `assets/js/`, or a new clearly named folder such as `assets/images/`. Use paths relative to `docs/index.html`.
 
@@ -42,7 +45,7 @@ docs/
 
 ## Preview locally
 
-From the repository root, open `docs/index.html` in a browser. No npm package publish is required. If you prefer a local HTTP server and Python is installed, run:
+From the repository root, open `docs/index.html` in a browser for the marketing homepage, or `docs/guide.html` for the detailed guide. No npm package publish is required. If you prefer a local HTTP server and Python is installed, run:
 
 ```bash
 python -m http.server 8000 --directory docs
