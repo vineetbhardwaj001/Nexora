@@ -33,8 +33,9 @@ This guide explains the current repository layout and where each kind of change 
 │   ├── ISSUE_TEMPLATE/           # Issue forms/templates
 │   └── workflows/                # CI, security, docs deploy, npm staging
 ├── docs/
-│   ├── index.html                # Documentation page content and structure
-│   ├── STRUCTURE.md              # Documentation website maintenance guide
+│   ├── index.html                # Marketing landing page and star calls to action
+│   ├── guide.html                 # Detailed setup and product documentation
+│   ├── STRUCTURE.md              # Landing page and guide maintenance guide
 │   ├── REPOSITORY-STRUCTURE.md   # This repository layout guide
 │   └── assets/
 │       ├── css/styles.css        # Documentation styling and responsive layout
