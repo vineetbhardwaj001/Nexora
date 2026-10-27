@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
   publish:
@@ -32,19 +31,15 @@ jobs:
       - name: Verify package contents
         run: npm pack --dry-run
 
-      - name: Check first-publish and version prerequisites
+      - name: Check that this version is not already published
         run: |
           PACKAGE_VERSION="$(node -p "require('./package.json').version")"
-          if ! npm view nexora-agent-cli version >/dev/null 2>&1; then
-            echo "::error::The initial npm package does not exist yet. Publish the first version from an authenticated local npm session before using staged publishing. npm stage publish cannot create a brand-new package."
-            exit 1
-          fi
           if npm view "nexora-agent-cli@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
             echo "::error::Version ${PACKAGE_VERSION} is already published. Bump package.json to a new version before staging."
             exit 1
           fi
 
-      - name: Stage package through npm
+      - name: Stage package with npm
         run: npm stage publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_1 }}
