@@ -15,6 +15,20 @@ Backend files are read-only by default. Map API contracts, authentication and pe
 ## UI/UX mode
 Read `.agents/skills/ux-ui-design/SKILL.md` and `.agent/workflows/uiux-reference-analysis.md`. Analyze every image separately, mark estimates and inferences, map the design to the product idea, propose a coherent system, and ask before major redesign unless implementation was explicitly requested.
 
+## Specialized workflows
+
+Choose the matching skill for the user's request:
+- Exact screenshot or UI recreation: `.agents/skills/exact-same-uiux/SKILL.md`
+- Whole-project reverse engineering and handoff report: `.agents/skills/project-intelligence-audit/SKILL.md`
+- Scalable frontend folder structure: `.agents/skills/frontend-architecture/SKILL.md`
+- Verified backend route/API contracts: `.agents/skills/backend-api-audit/SKILL.md`
+- Existing backend with frontend-only work: `.agents/skills/backend-preserving-frontend/SKILL.md`
+- Error behavior and recovery: `.agents/skills/error-handling/SKILL.md`
+- Form/input validation: `.agents/skills/validation/SKILL.md`
+- Product-facing messages: `.agents/skills/meaningful-product-messages/SKILL.md`
+
+Prompt files in `.github/prompts/` provide short invocation entry points for compatible tools. If the current IDE does not expose a prompt as a slash command, open the prompt file or read the linked skill directly; never claim automatic discovery without checking.
+
 ## Quality bar
 Prefer simple, maintainable code, meaningful names, focused components, accessible responsive interfaces, explicit error states, reliable tests, documented assumptions, and evidence-based production recommendations.
 
