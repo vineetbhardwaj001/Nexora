@@ -319,7 +319,7 @@
 .lp-btn-star { color: var(--lp-lime); font-size: 17px; }
 .lp-social-proof { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 23px; color: rgba(239,245,230,.63); font-size: 11px; }
 .lp-star-badge, .lp-live-stars { display: inline-flex; align-items: center; min-height: 22px; }
-.lp-star-badge img, .lp-live-stars img { display: block; height: 21px; width: auto; max-width: 100%; }
+.lp-star-badge img, .lp-live-stars img { display: block; height: 29px; width: auto; max-width: 100%; }
 .lp-hero-art { position: relative; min-height: 440px; display: grid; place-items: center; perspective: 1000px; }
 .lp-orbit { position: absolute; border: 1px solid rgba(222,246,151,.16); border-radius: 50%; transform: rotate(-24deg); }
 .lp-orbit-a { width: 465px; height: 275px; }
