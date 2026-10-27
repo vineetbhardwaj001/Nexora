@@ -89,6 +89,7 @@ The repository includes reusable skill instructions in `.agents/skills/` and pro
 These names are prompt identifiers, not a promise that every coding tool exposes identical slash-command UX. Verify prompt discovery in the IDE/version you use. If a command is not listed, open its file in `.github/prompts/` or read the corresponding skill's `SKILL.md`.
 
 Example:
+
 ```text
 /exactsameuiux Recreate the attached dashboard screenshot as closely as possible. Preserve its text and layout, use the existing project stack, and do not change backend files.
 ```
