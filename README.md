@@ -136,6 +136,7 @@ Use synthetic patient data in demos and tests. This is an example of the intende
 │   ├── index.html
 │   ├── guide.html
 │   ├── STRUCTURE.md
+│   ├── REPOSITORY-STRUCTURE.md
 │   └── assets/
 │       ├── css/
 │       │   └── styles.css
