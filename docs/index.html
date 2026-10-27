@@ -36,7 +36,7 @@
       <button class="lp-theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Toggle theme">◐</button>
       <a class="lp-github-small" href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.76-.24.76-.54v-2.1c-3.1.68-3.76-1.32-3.76-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 .1.77 2.02 3.69 1.37.1-.73.39-1.22.7-1.5-2.47-.28-5.07-1.24-5.07-5.51 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.12-1.45 3.07-1.15 3.07-1.15.62 1.54.23 2.68.12 2.96.72.78 1.15 1.78 1.15 3 0 4.28-2.6 5.23-5.08 5.5.4.35.75 1.03.75 2.08v3.08c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>
-        <span>GitHub</span>
+        <span>Star on GitHub</span>
       </a>
     </div>
   </header>
@@ -54,11 +54,11 @@
       </div>
       <div class="lp-hero-inner">
         <div class="lp-hero-copy">
-          <a class="lp-release-pill" href="guide.html#quick-start"><span class="lp-pulse"></span> Explore the current starter kit <span aria-hidden="true">↗</span></a>
+          <a class="lp-release-pill" href="#quick-start"><span class="lp-pulse"></span> Explore the current starter kit <span aria-hidden="true">↗</span></a>
           <h1 id="lp-title">Build with intent.<br><span>Ship with clarity.</span></h1>
           <p class="lp-hero-lead">Turn scattered prompts into reusable engineering habits. Nexora brings skills, workflows, and practical checks into one place—so you can start each project with more clarity.</p>
           <div class="lp-hero-actions">
-            <a class="lp-btn lp-btn-lime" href="guide.html#quick-start">Explore the quick start <span aria-hidden="true">↗</span></a>
+            <a class="lp-btn lp-btn-lime" href="#quick-start">Explore the quick start <span aria-hidden="true">↗</span></a>
             <a class="lp-btn lp-btn-glass" href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer"><span class="lp-btn-star" aria-hidden="true">★</span> Star on GitHub</a>
           </div>
           <div class="lp-social-proof">
@@ -66,6 +66,11 @@
               <img src="https://img.shields.io/github/stars/vineetbhardwaj001/Nexora?style=social" alt="Current GitHub stars for Nexora">
             </a>
             <span>Open source. Built in public. Your star helps others find it.</span>
+          </div>
+          <div class="lp-proof-chips" aria-label="Nexora project principles">
+            <span><b aria-hidden="true">✓</b> Try it locally</span>
+            <span><b aria-hidden="true">✦</b> Open source</span>
+            <span><b aria-hidden="true">↗</b> Shape the roadmap</span>
           </div>
         </div>
 
@@ -147,7 +152,7 @@
           <span class="lp-eyebrow"><span>02</span> A BETTER BUILD LOOP</span>
           <h2>From first thought<br>to a <em>clear next step.</em></h2>
           <p>Use a repeatable process that helps you think before you code, respect what already exists, and verify what actually works.</p>
-          <a class="lp-text-link" href="guide.html#how-it-works">See the workflow principles <span aria-hidden="true">→</span></a>
+          <a class="lp-text-link" href="#how-it-works">See the workflow principles <span aria-hidden="true">→</span></a>
         </div>
         <div class="lp-process-list">
           <article class="lp-process-row">
@@ -199,7 +204,7 @@
         </article>
       </div>
       <p class="lp-compat-note"><span aria-hidden="true">ⓘ</span> Nexora is an early-stage starter kit and CLI—not yet a universal agent runtime. Check the compatibility notes before relying on an integration.</p>
-      <div class="lp-center-action"><a class="lp-btn lp-btn-dark" href="guide.html#compatibility">Read compatibility notes <span aria-hidden="true">→</span></a></div>
+      <div class="lp-center-action"><a class="lp-btn lp-btn-dark" href="#tool-compat">Read compatibility notes <span aria-hidden="true">→</span></a></div>
     </section>
 
     <section class="lp-quick-section" id="quick-start" data-search="quick start clone install npm test use locally no publishing">
@@ -208,7 +213,7 @@
         <span class="lp-eyebrow lp-eyebrow-light"><span>04</span> TRY IT YOURSELF</span>
         <h2>Less hype.<br><em>More hands-on.</em></h2>
         <p>Start from Git, explore the current CLI, and run the tests before adding Nexora to another project. No npm publishing required.</p>
-        <a class="lp-btn lp-btn-lime" href="guide.html#quick-start">Follow the quick start <span aria-hidden="true">↗</span></a>
+        <a class="lp-btn lp-btn-lime" href="#quick-start">Follow the quick start <span aria-hidden="true">↗</span></a>
       </div>
       <div class="lp-quick-terminal" aria-label="Commands to try Nexora locally">
         <div class="lp-terminal-top"><span><i></i><i></i><i></i></span><b>Terminal</b><button type="button" class="lp-copy-command" data-copy="git clone https://github.com/vineetbhardwaj001/Nexora.git&#10;cd Nexora&#10;npm install&#10;npm test">Copy commands</button></div>
@@ -261,7 +266,7 @@ node bin/nexora.js --help</code></pre>
         <details><summary>Does Nexora guarantee free AI models?</summary><p>No. Strict free-only routing is a roadmap item. Provider pricing, quotas, and fallback behavior must be verified before a zero-cost policy can be promised.</p></details>
         <details><summary>How can I help improve the project?</summary><p>Review the repository, run its checks, open an issue with a concrete use case, improve documentation, or propose a focused change.</p></details>
       </div>
-      <div class="lp-faq-cta"><div><strong>Want the full details?</strong><span>Explore setup steps, examples, safety principles, and roadmap.</span></div><a class="lp-text-link" href="guide.html">Open the full guide <span aria-hidden="true">↗</span></a></div>
+      <div class="lp-faq-cta"><div><strong>Want the full details?</strong><span>Explore setup steps, examples, safety principles, and roadmap.</span></div><a class="lp-text-link" href="#quick-start">Open the full guide <span aria-hidden="true">↗</span></a></div>
     </section>
   </main>
 
@@ -272,7 +277,7 @@ node bin/nexora.js --help</code></pre>
     </a>
     <p>Useful workflows. Clearer engineering. Built in public.</p>
     <div class="lp-footer-links">
-      <a href="guide.html">Documentation</a>
+      <a href="#quick-start">Documentation</a>
       <a href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer">GitHub ↗</a>
       <a href="https://github.com/vineetbhardwaj001/Nexora/issues" target="_blank" rel="noreferrer">Feedback</a>
     </div>
