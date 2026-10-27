@@ -366,9 +366,9 @@
           <div class="hero-visual" aria-label="Illustration of Nexora skill packs across coding tools">
             <div class="visual-window">
               <div class="window-top"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">your-workspace / agent-packs</span></div>
-              <div class="tool-row"><span class="tool-icon">K</span><div><div class="tool-name">Kilo Code</div><div class="tool-desc">Native config + shared skills</div></div><span class="tool-status">ADAPTER</span></div>
-              <div class="tool-row"><span class="tool-icon" style="background:#dcd8ff">O</span><div><div class="tool-name">OpenCode</div><div class="tool-desc">Agents + shared skills</div></div><span class="tool-status">ADAPTER</span></div>
-              <div class="tool-row"><span class="tool-icon" style="background:#f1c85b">A</span><div><div class="tool-name">Antigravity</div><div class="tool-desc">Skills + workspace rules</div></div><span class="tool-status">ADAPTER</span></div>
+              <div class="tool-row"><span class="tool-icon">K</span><div><div class="tool-name">Kilo Code</div><div class="tool-desc">Native config + shared skills</div></div><span class="tool-status">PLANNED</span></div>
+              <div class="tool-row"><span class="tool-icon" style="background:#dcd8ff">O</span><div><div class="tool-name">OpenCode</div><div class="tool-desc">Agents + shared skills</div></div><span class="tool-status">PLANNED</span></div>
+              <div class="tool-row"><span class="tool-icon" style="background:#f1c85b">A</span><div><div class="tool-name">Antigravity</div><div class="tool-desc">Skills + workspace rules</div></div><span class="tool-status">PLANNED</span></div>
               <div class="hero-foot">One source of knowledge · Tool-aware setup</div>
             </div>
           </div>
@@ -604,7 +604,7 @@ node bin/nexora.js --help</code></pre></div></article>
       search.addEventListener("input", function () { filterNav(search.value); });
       search.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
-          var first = nav.querySelector(".nav-link:not([hidden])");
+          var first = nav.querySelector("li:not([hidden]) .nav-link");
           if (first) { first.click(); document.querySelector(first.getAttribute("href")).scrollIntoView({ behavior: "smooth" }); }
         }
       });
