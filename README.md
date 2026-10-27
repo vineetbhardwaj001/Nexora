@@ -163,6 +163,7 @@ The documentation site is designed for quick onboarding, plain-language explanat
 - **Styles:** [`docs/assets/css/styles.css`](docs/assets/css/styles.css)
 - **Interactions:** [`docs/assets/js/docs.js`](docs/assets/js/docs.js)
 - **Maintenance guide:** [`docs/STRUCTURE.md`](docs/STRUCTURE.md)
+- **Repository folder map:** [`docs/REPOSITORY-STRUCTURE.md`](docs/REPOSITORY-STRUCTURE.md)
 - **Local preview:** open `docs/index.html` in a browser.
 - **Source files:** browse the [docs folder](docs/) in GitHub.
 
