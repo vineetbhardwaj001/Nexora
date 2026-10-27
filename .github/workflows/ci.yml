@@ -64,7 +64,7 @@ jobs:
 
       - name: Run markdownlint
         run: |
-          npx --yes markdownlint-cli2 "README.md" "AGENTS.md" ".agent/**/*.md" ".agents/**/*.md" ".kilo/**/*.md" ".github/**/*.md"
+          npx --yes markdownlint-cli2 "README.md" "AGENTS.md" ".agent/**/*.md" ".agents/**/*.md" ".kilo/**/*.md" ".github/**/*.md" "docs/**/*.md"
 
   structural-tests:
     name: Run Nexora structural tests
@@ -98,3 +98,38 @@ jobs:
 
       - name: Smoke-test CLI help
         run: node bin/nexora.js --help
+
+
+  documentation-site-tests:
+    name: Validate documentation site assets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check HTML asset references
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          root = Path("docs")
+          html_path = root / "index.html"
+          html = html_path.read_text(encoding="utf-8")
+          css_refs = re.findall(r'<link[^>]+href=["\']([^"\']+\.css)["\']', html)
+          js_refs = re.findall(r'<script[^>]+src=["\']([^"\']+\.js)["\']', html)
+          if len(css_refs) != 1 or len(js_refs) != 1:
+              raise SystemExit(f"Expected one CSS and one JS reference; found CSS={css_refs}, JS={js_refs}")
+          for ref in css_refs + js_refs:
+              if not (root / ref).is_file():
+                  raise SystemExit(f"Documentation asset is missing: docs/{ref}")
+          if "<style>" in html or "<script>" in html:
+              raise SystemExit("Keep CSS and JavaScript in dedicated asset files.")
+          print(f"Validated CSS: {css_refs[0]} and JavaScript: {js_refs[0]}")
+          PY
+
+      - name: Check documentation JavaScript syntax
+        run: node --check docs/assets/js/docs.js
+
+      - name: Check documentation structure guide
+        run: test -s docs/STRUCTURE.md
