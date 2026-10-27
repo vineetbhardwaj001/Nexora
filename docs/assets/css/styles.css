@@ -588,3 +588,33 @@
   .lp-pulse, .lp-console, .lp-star, .lp-float-star, .lp-star-art-big { animation: none !important; }
   .lp-pain-card:hover, .lp-tool-card:hover, .lp-btn:hover { transform: none; }
 }
+
+
+/* Conversion-focused trust chips under the live GitHub star badge. */
+.lp-proof-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 17px;
+}
+.lp-proof-chips span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 999px;
+  background: rgba(255,255,255,.055);
+  color: #e1eadf;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.lp-proof-chips b {
+  color: var(--lime);
+  font-size: 12px;
+}
+@media (max-width: 560px) {
+  .lp-proof-chips { gap: 6px; }
+  .lp-proof-chips span { font-size: 10px; padding: 6px 8px; }
+}
