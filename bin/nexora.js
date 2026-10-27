@@ -33,11 +33,22 @@ const FILES = [
   '.agents/skills/validation/SKILL.md',
   '.agents/skills/meaningful-product-messages/SKILL.md',
   '.agents/skills/idea-product-strategy/SKILL.md',
+  '.agents/skills/exact-same-uiux/SKILL.md',
+  '.agents/skills/project-intelligence-audit/SKILL.md',
+  '.agents/skills/frontend-architecture/SKILL.md',
+  '.agents/skills/backend-api-audit/SKILL.md',
   '.kilo/rules/nexora.md',
   'kilo.jsonc',
   '.github/copilot-instructions.md',
   '.github/prompts/frontend-only.prompt.md',
   '.github/prompts/design-ui.prompt.md',
+  '.github/prompts/exactsameuiux.prompt.md',
+  '.github/prompts/projectintelligence.prompt.md',
+  '.github/prompts/frontendarchitecture.prompt.md',
+  '.github/prompts/backendapi.prompt.md',
+  '.github/prompts/professionalerrors.prompt.md',
+  '.github/prompts/smartvalidation.prompt.md',
+  '.github/prompts/meaningfulmessages.prompt.md',
   '.gitignore'
 ];
 
