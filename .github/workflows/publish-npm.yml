@@ -44,5 +44,7 @@ jobs:
             exit 1
           fi
 
-      - name: Stage package through npm Trusted Publishing
+      - name: Stage package through npm
         run: npm stage publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_1 }}
