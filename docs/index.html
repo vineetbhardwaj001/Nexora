@@ -3,242 +3,286 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f6ef">
-  <meta name="description" content="Friendly, practical documentation for Nexora: reusable AI coding skills and tool-aware agent workflows.">
-  <meta property="og:title" content="Nexora Docs — Build with the tools you love">
-  <meta property="og:description" content="A calmer way to organize reusable AI coding workflows across your favorite tools.">
+  <meta name="theme-color" content="#183e2e">
+  <meta name="description" content="Make AI coding workflows clearer, reusable, and easier to trust. Explore Nexora's open-source skills, engineering playbooks, and local-first CLI.">
+  <meta property="og:title" content="Nexora Docs — Better AI Coding Workflows">
+  <meta property="og:description" content="Your best engineering habits, ready for the next project. Explore Nexora's reusable AI coding skills and workflows.">
   <meta property="og:type" content="website">
-  <title>Nexora Docs — Build with the tools you love</title>
+  <meta property="og:url" content="https://vineetbhardwaj001.github.io/Nexora/">
+  <title>Nexora Docs — Better AI Coding Workflows</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body class="landing-site">
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <header class="topbar">
-    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open documentation menu" aria-expanded="false" aria-controls="sidebar">☰</button>
-    <a class="brand" href="#top" aria-label="Nexora Docs home">
-      <span class="brand-mark">N</span>
-      <span class="brand-name">nexora<span class="brand-sub">documentation</span></span>
+  <header class="lp-topbar">
+    <a class="lp-brand" href="#top" aria-label="Nexora home">
+      <span class="lp-brand-mark">N<span class="lp-brand-spark">✦</span></span>
+      <span class="lp-brand-word">nexora<span>AI WORKFLOW KIT</span></span>
     </a>
-    <div class="breadcrumb">Docs <span aria-hidden="true">/</span> <b>Welcome</b></div>
-    <div class="top-spacer"></div>
-    <div class="top-actions">
-      <button class="icon-btn" id="themeToggle" aria-label="Switch to dark theme" title="Toggle theme">◐</button>
-      <a class="github-link" href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer" aria-label="Open Nexora on GitHub">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.76-.24.76-.54v-2.1c-3.1.68-3.76-1.32-3.76-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 .1.77 2.02 3.69 1.37.1-.73.39-1.22.7-1.5-2.47-.28-5.07-1.24-5.07-5.51 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.12-1.45 3.07-1.15 3.07-1.15.62 1.54.23 2.68.12 2.96.72.78 1.15 1.78 1.15 3 0 4.28-2.6 5.23-5.08 5.5.4.35.75 1.03.75 2.08v3.08c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>
-        <span class="gh-label">View on GitHub</span>
+
+    <button class="lp-menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="docNav">☰</button>
+
+    <nav class="lp-nav" id="docNav" aria-label="Main navigation">
+      <a class="nav-link active" href="#why">Why Nexora</a>
+      <a class="nav-link" href="#how-it-works">How it works</a>
+      <a class="nav-link" href="#tool-compat">Coding tools</a>
+      <a class="nav-link" href="#quick-start">Quick start</a>
+    </nav>
+
+    <div class="lp-top-actions">
+      <button class="lp-theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark theme" title="Toggle theme">◐</button>
+      <a class="lp-github-small" href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.76-.24.76-.54v-2.1c-3.1.68-3.76-1.32-3.76-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 .1.77 2.02 3.69 1.37.1-.73.39-1.22.7-1.5-2.47-.28-5.07-1.24-5.07-5.51 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.12-1.45 3.07-1.15 3.07-1.15.62 1.54.23 2.68.12 2.96.72.78 1.15 1.78 1.15 3 0 4.28-2.6 5.23-5.08 5.5.4.35.75 1.03.75 2.08v3.08c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>
+        <span>GitHub</span>
       </a>
     </div>
   </header>
 
-  <div class="layout" id="top">
-    <aside id="sidebar" aria-label="Documentation navigation">
-      <div class="search-wrap">
-        <span class="search-icon" aria-hidden="true">⌕</span>
-        <input class="search-input" type="search" id="docSearch" placeholder="Search the docs..." aria-label="Search documentation">
-        <span class="shortcut" aria-hidden="true">/</span>
-      </div>
-      <nav id="docNav">
-        <div class="nav-group">
-          <span class="nav-label">Get started</span>
-          <ul class="nav-list">
-            <li><a class="nav-link active" href="#welcome"><span class="nav-glyph">⌂</span>Welcome</a></li>
-            <li><a class="nav-link" href="#quick-start"><span class="nav-glyph">↗</span>Quick start</a></li>
-            <li><a class="nav-link" href="#how-it-works"><span class="nav-glyph">◈</span>How Nexora works</a></li>
-          </ul>
-        </div>
-        <div class="nav-group">
-          <span class="nav-label">Use Nexora</span>
-          <ul class="nav-list">
-            <li><a class="nav-link" href="#compatibility"><span class="nav-glyph">⌘</span>Coding tools <span class="nav-pill">3</span></a></li>
-            <li><a class="nav-link" href="#agent-packs"><span class="nav-glyph">◇</span>Agent packs</a></li>
-            <li><a class="nav-link" href="#example"><span class="nav-glyph">✳</span>Real-world example</a></li>
-            <li><a class="nav-link" href="#models"><span class="nav-glyph">⚡</span>Free model policy</a></li>
-          </ul>
-        </div>
-        <div class="nav-group">
-          <span class="nav-label">Keep it reliable</span>
-          <ul class="nav-list">
-            <li><a class="nav-link" href="#safety"><span class="nav-glyph">♡</span>Safety principles</a></li>
-            <li><a class="nav-link" href="#roadmap"><span class="nav-glyph">◷</span>Roadmap & status</a></li>
-            <li><a class="nav-link" href="#faq"><span class="nav-glyph">?</span>FAQ</a></li>
-          </ul>
-        </div>
-      </nav>
-      <div class="no-results" id="noResults">No matching sections. Try another word.</div>
-      <div class="sidebar-note">
-        <div class="note-spark" aria-hidden="true">✦</div>
-        <strong>A little more clarity.</strong>
-        <p>AI tools move quickly. Nexora aims to keep your workflows understandable, portable, and in your control.</p>
-        <a href="#safety">Our approach <span aria-hidden="true">→</span></a>
-      </div>
-    </aside>
+  <div class="lp-mobile-scrim" id="lpScrim" hidden></div>
 
-    <main id="main-content">
-      <div class="content">
-        <section class="hero" id="welcome" data-search="welcome overview nexora universal portable agent skills ai coding workflows">
-          <div>
-            <span class="eyebrow"><span class="eyebrow-dot"></span> A toolkit that meets you where you work</span>
-            <h1>Build better things.<br><span style="color:#d7f36a">Keep your flow.</span></h1>
-            <p class="hero-lead">Nexora helps you organize reusable AI coding skills and thoughtful workflows—so your best engineering habits can travel with you, not stay locked inside one tool.</p>
-            <div class="hero-ctas">
-              <a class="button button-primary" href="#quick-start">Get started <span aria-hidden="true">↗</span></a>
-              <a class="button button-secondary" href="#compatibility">Explore integrations <span aria-hidden="true">→</span></a>
+  <main id="main-content">
+    <section class="lp-hero" id="top" aria-labelledby="lp-title">
+      <div class="lp-hero-stars" aria-hidden="true">
+        <span class="lp-star lp-star-one">✦</span>
+        <span class="lp-star lp-star-two">✧</span>
+        <span class="lp-star lp-star-three">✦</span>
+        <span class="lp-star lp-star-four">✧</span>
+        <span class="lp-star lp-star-five">✦</span>
+      </div>
+      <div class="lp-hero-inner">
+        <div class="lp-hero-copy">
+          <a class="lp-release-pill" href="guide.html#quick-start"><span class="lp-pulse"></span> Explore the current starter kit <span aria-hidden="true">↗</span></a>
+          <h1 id="lp-title">Make your AI<br>workflow <span>work for you.</span></h1>
+          <p class="lp-hero-lead">Turn scattered prompts into reusable engineering habits. Nexora brings skills, workflows, and practical checks into one place—so you can start each project with more clarity.</p>
+          <div class="lp-hero-actions">
+            <a class="lp-btn lp-btn-lime" href="guide.html#quick-start">Explore the quick start <span aria-hidden="true">↗</span></a>
+            <a class="lp-btn lp-btn-glass" href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer"><span class="lp-btn-star" aria-hidden="true">★</span> Star on GitHub</a>
+          </div>
+          <div class="lp-social-proof">
+            <a class="lp-star-badge" href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer" aria-label="See Nexora's current GitHub stars">
+              <img src="https://img.shields.io/github/stars/vineetbhardwaj001/Nexora?style=social" alt="Current GitHub stars for Nexora">
+            </a>
+            <span>Open source. Built in public. Your star helps others find it.</span>
+          </div>
+        </div>
+
+        <div class="lp-hero-art" aria-label="Illustration of a reusable coding workflow">
+          <div class="lp-orbit lp-orbit-a"></div>
+          <div class="lp-orbit lp-orbit-b"></div>
+          <div class="lp-float-star lp-float-star-a">✦</div>
+          <div class="lp-float-star lp-float-star-b">✧</div>
+          <div class="lp-float-star lp-float-star-c">✦</div>
+          <div class="lp-console">
+            <div class="lp-console-head">
+              <div class="lp-console-dots"><i></i><i></i><i></i></div>
+              <span>nexora / workflow-kit</span>
+              <span class="lp-live-dot"><i></i> LOCAL</span>
+            </div>
+            <div class="lp-console-body">
+              <div class="lp-console-label">YOUR NEXT PROJECT</div>
+              <div class="lp-console-title">A clearer way from idea to done.</div>
+              <div class="lp-flow-step">
+                <span class="lp-flow-icon lp-flow-icon-one">01</span>
+                <div><strong>Plan with intent</strong><small>Goals · Scope · Acceptance criteria</small></div>
+                <span class="lp-check">✓</span>
+              </div>
+              <div class="lp-flow-connector"></div>
+              <div class="lp-flow-step">
+                <span class="lp-flow-icon lp-flow-icon-two">02</span>
+                <div><strong>Build with context</strong><small>Skills · UI/UX · Real API contracts</small></div>
+                <span class="lp-check">✓</span>
+              </div>
+              <div class="lp-flow-connector"></div>
+              <div class="lp-flow-step">
+                <span class="lp-flow-icon lp-flow-icon-three">03</span>
+                <div><strong>Verify the result</strong><small>Tests · Safety · Evidence</small></div>
+                <span class="lp-check">✓</span>
+              </div>
+              <div class="lp-console-footer"><span>Less guesswork, more repeatable work</span><span>✦</span></div>
             </div>
           </div>
-          <div class="hero-visual" aria-label="Illustration of Nexora skill packs across coding tools">
-            <div class="visual-window">
-              <div class="window-top"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="window-title">your-workspace / agent-packs</span></div>
-              <div class="tool-row"><span class="tool-icon">K</span><div><div class="tool-name">Kilo Code</div><div class="tool-desc">Native config + shared skills</div></div><span class="tool-status">PLANNED</span></div>
-              <div class="tool-row"><span class="tool-icon" style="background:#dcd8ff">O</span><div><div class="tool-name">OpenCode</div><div class="tool-desc">Agents + shared skills</div></div><span class="tool-status">PLANNED</span></div>
-              <div class="tool-row"><span class="tool-icon" style="background:#f1c85b">A</span><div><div class="tool-name">Antigravity</div><div class="tool-desc">Skills + workspace rules</div></div><span class="tool-status">PLANNED</span></div>
-              <div class="hero-foot">One source of knowledge · Tool-aware setup</div>
-            </div>
-          </div>
-        </section>
-
-        <div class="status-banner">
-          <span class="status-icon" aria-hidden="true">!</span>
-          <p><strong>Early-stage project, honest by design.</strong> Nexora currently includes a CLI and reusable instructions. The universal adapter experience is still a roadmap direction; a feature is only supported after its configuration and behavior have been tested in the target tool.</p>
+          <div class="lp-floating-note"><span class="lp-note-icon">↗</span><span><strong>Reuse what works</strong><small>Keep your best practices close.</small></span></div>
         </div>
-
-        <section class="section" id="how-it-works" data-search="how it works core source adapters skills prompts">
-          <div class="section-head">
-            <div><span class="section-kicker">The idea</span><h2>Good workflows should travel with you.</h2><p class="section-intro">Not everyone codes in the same environment. Nexora is being shaped around a shared source of useful instructions, with tool-specific setup kept separate.</p></div>
-          </div>
-          <div class="feature-grid">
-            <article class="feature-card"><div class="feature-icon">🧭</div><h3>Start with clarity</h3><p>Turn an early idea into a clear goal, realistic scope, acceptance criteria, and the next sensible step.</p></article>
-            <article class="feature-card"><div class="feature-icon">🎨</div><h3>Design with intention</h3><p>Study UI references, explain design decisions, and build interfaces that feel coherent and accessible.</p></article>
-            <article class="feature-card"><div class="feature-icon">🔌</div><h3>Respect the backend</h3><p>Understand existing routes and data contracts before wiring up a frontend. No made-up endpoints.</p></article>
-            <article class="feature-card"><div class="feature-icon">🧱</div><h3>Keep code maintainable</h3><p>Prefer clear boundaries, product-domain folders, small components, and predictable conventions.</p></article>
-            <article class="feature-card"><div class="feature-icon">🧪</div><h3>Test what matters</h3><p>Make room for validation, regression checks, accessibility, and security review as the project grows.</p></article>
-            <article class="feature-card"><div class="feature-icon">🤝</div><h3>You stay in control</h3><p>Understand what is about to change. Preserve existing work and confirm risky or destructive actions.</p></article>
-          </div>
-        </section>
-
-        <section class="section" id="quick-start" data-search="quick start install clone run tests node npm local setup">
-          <div class="section-head">
-            <div><span class="section-kicker">First five minutes</span><h2>Try it from a Git clone.</h2><p class="section-intro">No npm publishing needed. Clone the project, inspect it, and run the current local checks before integrating anything into another codebase.</p></div>
-          </div>
-          <div class="steps">
-            <article class="step"><span class="step-number">01</span><h3>Clone the repo</h3><p>Get a clean copy of Nexora onto your computer.</p><div class="code-block"><div class="code-head"><span>Terminal</span><button class="copy-btn" data-copy="git clone https://github.com/vineetbhardwaj001/Nexora.git&#10;cd Nexora">Copy</button></div><pre><code>git clone https://github.com/vineetbhardwaj001/Nexora.git
-cd Nexora</code></pre></div></article>
-            <article class="step"><span class="step-number">02</span><h3>Check the project</h3><p>Install dependencies and run the tests that exist today.</p><div class="code-block"><div class="code-head"><span>Terminal</span><button class="copy-btn" data-copy="npm install&#10;npm test">Copy</button></div><pre><code>npm install
-npm test</code></pre></div></article>
-            <article class="step"><span class="step-number">03</span><h3>Open the CLI</h3><p>Explore the local terminal interface and available commands.</p><div class="code-block"><div class="code-head"><span>Terminal</span><button class="copy-btn" data-copy="node bin/nexora.js&#10;node bin/nexora.js --help">Copy</button></div><pre><code>node bin/nexora.js
-node bin/nexora.js --help</code></pre></div></article>
-          </div>
-          <div class="callout"><span class="callout-symbol" aria-hidden="true">i</span><p><strong>Before using Nexora in a different project:</strong> make a backup of its existing agent instructions and review the changes before merging them. The CLI's current behavior and any limitations should be verified locally; don't assume it configures every tool automatically.</p></div>
-        </section>
-
-        <section class="section" id="compatibility" data-search="coding tools integrations kilo code opencode antigravity github copilot compatibility agents skills rules">
-          <div class="section-head">
-            <div><span class="section-kicker">Choose your environment</span><h2>Your tool. Your workflow.</h2><p class="section-intro">The shared-skill idea is portable, but agent formats and delegation features differ. Nexora should adapt to each tool instead of pretending every tool works the same way.</p></div>
-            <a class="tiny-link" href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer">View source ↗</a>
-          </div>
-          <div class="compat-table-wrap">
-            <table class="compat-table">
-              <thead><tr><th>Tool</th><th>Integration idea</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td>Kilo Code</td><td>Shared skills plus native agent configuration where supported.</td><td><span class="compat-tag planned">Needs adapter tests</span></td></tr>
-                <tr><td>OpenCode</td><td>Shared skills plus native agent definitions where supported.</td><td><span class="compat-tag planned">Needs adapter tests</span></td></tr>
-                <tr><td>Google Antigravity</td><td>Supported skills and workspace rules; document any limits in native delegation.</td><td><span class="compat-tag planned">Skills / rules path</span></td></tr>
-                <tr><td>Other tools</td><td>Evaluate the official format first, then add a tested adapter if it makes sense.</td><td><span class="compat-tag">Evaluate first</span></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="callout"><span class="callout-symbol" aria-hidden="true">!</span><p><strong>Compatibility is more than a file copy.</strong> A <code>SKILL.md</code> may provide reusable instructions, but it does not automatically become a native subagent. The final installer should validate supported formats, back up conflicts, offer dry-run mode, and explain any unsupported features.</p></div>
-        </section>
-
-        <section class="section" id="agent-packs" data-search="agent packs skills reusable prompts roles planner frontend backend qa security">
-          <div class="section-head">
-            <div><span class="section-kicker">Reusable building blocks</span><h2>Small specialists. Clear responsibilities.</h2><p class="section-intro">An agent pack groups related instructions for a type of work. It helps people organize the job—not promise that an agent exists or runs in every IDE.</p></div>
-          </div>
-          <div class="pack-grid">
-            <article class="pack-card"><div class="pack-top"><span class="pack-badge">🧭</span><div><h3>Architect & planner</h3><span class="compat-tag">Plan</span></div></div><p>Clarify the user, map the important journeys, define the MVP, and write down decisions before implementation starts.</p><div class="pack-meta"><span>Requirements</span><span>Acceptance criteria</span><span>Milestones</span></div></article>
-            <article class="pack-card"><div class="pack-top"><span class="pack-badge">🖥️</span><div><h3>Frontend craft</h3><span class="compat-tag">Build</span></div></div><p>Create accessible, responsive screens with a consistent design system and connections to actual API contracts.</p><div class="pack-meta"><span>UI/UX</span><span>Components</span><span>Integration</span></div></article>
-            <article class="pack-card"><div class="pack-top"><span class="pack-badge">🛠️</span><div><h3>Backend & data</h3><span class="compat-tag">Connect</span></div></div><p>Review current endpoints and data models, then identify the smallest safe backend changes needed for the feature.</p><div class="pack-meta"><span>APIs</span><span>Data models</span><span>Auth</span></div></article>
-            <article class="pack-card"><div class="pack-top"><span class="pack-badge">🛡️</span><div><h3>QA & security review</h3><span class="compat-tag">Verify</span></div></div><p>Check edge cases, authorization, validation, regression risk, and whether the reported test evidence supports the result.</p><div class="pack-meta"><span>Tests</span><span>Risk review</span><span>Evidence</span></div></article>
-          </div>
-        </section>
-
-        <section class="section" id="example" data-search="example clinic erp appointment patient billing healthcare medical record example agent pack">
-          <div class="section-head">
-            <div><span class="section-kicker">A practical example</span><h2>Imagine a clinic ERP team.</h2><p class="section-intro">Suppose you're building appointment scheduling, patient registration, billing, and doctor workflows. Nexora's approach is to make the work understandable before spreading it across tools.</p></div>
-          </div>
-          <div class="feature-grid">
-            <article class="feature-card"><div class="feature-icon">📋</div><h3>Architect</h3><p>Maps reception, doctor, admin, and patient journeys into a manageable first release.</p></article>
-            <article class="feature-card"><div class="feature-icon">🗓️</div><h3>Product UI</h3><p>Designs appointment calendars, patient forms, empty states, and validation messages.</p></article>
-            <article class="feature-card"><div class="feature-icon">🧾</div><h3>API & billing</h3><p>Uses the real service contract for scheduling and invoices rather than guessing endpoints.</p></article>
-          </div>
-          <div class="callout"><span class="callout-symbol" aria-hidden="true">♡</span><p><strong>Health data deserves extra care.</strong> Use synthetic patient records for demos and tests. Real clinic data requires appropriate access controls, auditability, secure handling, and compliance review before deployment.</p></div>
-        </section>
-
-        <section class="section" id="models" data-search="free model paid model free-only routing keys BYOK fallback pricing limits openrouter">
-          <div class="section-head">
-            <div><span class="section-kicker">Keep costs visible</span><h2>Free-model-only is a policy, not a promise.</h2><p class="section-intro">The plan is to help users avoid accidental paid fallbacks. It needs provider-aware configuration and testing; a sentence in an agent prompt cannot guarantee zero cost.</p></div>
-          </div>
-          <div class="model-box">
-            <div class="model-top"><span class="model-icon">⚡</span><div><h3>Planned: strict free-only mode</h3><p>A future model policy would allow only model IDs verified as free at setup time, explain limits, and stop when no eligible endpoint is available. Users would manage their own provider credentials.</p></div></div>
-            <div class="model-points">
-              <div class="model-point"><strong>1. Verify first</strong><span>Check current provider pricing, quotas, and the user's own plan.</span></div>
-              <div class="model-point"><strong>2. Allowlist only</strong><span>Only explicitly eligible zero-cost models can be selected for free-only mode.</span></div>
-              <div class="model-point"><strong>3. Fail closed</strong><span>If no eligible model is available, stop and explain. Never silently switch to paid.</span></div>
-            </div>
-          </div>
-          <div class="callout"><span class="callout-symbol" aria-hidden="true">!</span><p><strong>Current status:</strong> this is a roadmap item, not an implemented billing safeguard. Free tiers can change, and user-owned API keys (BYOK) do not automatically mean requests are free. Verify provider settings before sending important code or confidential data.</p></div>
-        </section>
-
-        <section class="section" id="safety" data-search="safety security privacy approvals destructive actions api keys backend tests policy">
-          <div class="section-head">
-            <div><span class="section-kicker">Trust is a feature</span><h2>Helpful automation. Human control.</h2><p class="section-intro">The goal is not to let an agent do everything without asking. It is to make the next safe action easy to understand.</p></div>
-          </div>
-          <div class="feature-grid">
-            <article class="feature-card"><div class="feature-icon">🧩</div><h3>Inspect before editing</h3><p>Read the existing project and Git state first. Preserve unrelated or user-created files.</p></article>
-            <article class="feature-card"><div class="feature-icon">🔐</div><h3>Keep secrets private</h3><p>Never hardcode API keys, commit credentials, or print secrets in logs or generated docs.</p></article>
-            <article class="feature-card"><div class="feature-icon">✅</div><h3>Show real evidence</h3><p>Separate mock data from real data, planned features from shipped ones, and passed tests from unrun tests.</p></article>
-          </div>
-        </section>
-
-        <section class="section" id="roadmap" data-search="roadmap current status planned implemented tests adapters installer release">
-          <div class="section-head">
-            <div><span class="section-kicker">What comes next</span><h2>Build the reliable path first.</h2><p class="section-intro">The order matters: get local behavior right, verify tool support, and only then make installation and distribution easier.</p></div>
-          </div>
-          <div class="roadmap">
-            <div class="roadmap-row"><span class="roadmap-status now">NOW</span><div><strong>Clone and test locally</strong><p>Use Git clone to inspect the current CLI, tests, and instructions. npm publishing is intentionally paused.</p></div></div>
-            <div class="roadmap-row"><span class="roadmap-status">NEXT</span><div><strong>Test the shared skill source</strong><p>Confirm the exact format each supported coding tool reads, using minimal reproducible examples.</p></div></div>
-            <div class="roadmap-row"><span class="roadmap-status">PLANNED</span><div><strong>Build safe tool adapters</strong><p>Add detection, dry-run, backups, conflict handling, validation, and rollback with adapter-specific tests.</p></div></div>
-            <div class="roadmap-row"><span class="roadmap-status">PLANNED</span><div><strong>Agent-pack discovery & free-model policy</strong><p>Make installation easier and implement free-only routing only where providers allow it to be enforced.</p></div></div>
-          </div>
-        </section>
-
-        <section class="section" id="faq" data-search="faq questions install npm publishing supported does it execute agents">
-          <div class="section-head"><div><span class="section-kicker">Good questions</span><h2>Before you dive in.</h2><p class="section-intro">A few plain answers to common questions.</p></div></div>
-          <details class="faq"><summary>Is Nexora already a universal multi-agent runtime?</summary><div class="faq-answer"><p>No. It is an early-stage CLI and instruction/skill starter. The universal adapter and pack-management experience is planned and needs implementation and real compatibility testing.</p></div></details>
-          <details class="faq"><summary>Can I use it with Kilo Code, OpenCode, or Antigravity?</summary><div class="faq-answer"><p>The project is designed to explore those integrations, but support must be tested for each tool and version. Shared Markdown instructions do not guarantee native agent delegation in every environment.</p></div></details>
-          <details class="faq"><summary>Do I need npm right now?</summary><div class="faq-answer"><p>No. For the current workflow, clone the GitHub repository and test locally. Publishing to npm is paused while the project is being tested and improved.</p></div></details>
-          <details class="faq"><summary>Will free-only mode guarantee that no money is charged?</summary><div class="faq-answer"><p>Not yet. It is a planned feature. It must use provider-aware allowlists and safe failure behavior, and users should verify pricing and billing settings themselves.</p></div></details>
-          <details class="faq"><summary>Can I help improve Nexora?</summary><div class="faq-answer"><p>Yes. Start with <a class="tiny-link" href="https://github.com/vineetbhardwaj001/Nexora/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer">CONTRIBUTING.md</a>, check the existing issue tracker, and submit focused changes with clear tests or reproduction steps.</p></div></details>
-        </section>
-
-        <div class="bottom-cta">
-          <div><h3>Have an idea for a better workflow?</h3><p>Nexora is being built iteratively. A clear issue or small reproducible example is a great way to help shape what comes next.</p></div>
-          <a class="button button-primary" href="https://github.com/vineetbhardwaj001/Nexora/issues/new/choose" target="_blank" rel="noreferrer">Share an idea <span aria-hidden="true">↗</span></a>
-        </div>
-
-        <footer>
-          <div><strong>Nexora</strong> · Thoughtful tools for everyday builders.</div>
-          <div>Made with care by <a href="https://github.com/vineetbhardwaj001" target="_blank" rel="noreferrer"><strong>Vineet Bhardwaj</strong></a> · <a href="https://github.com/vineetbhardwaj001/Nexora/blob/main/LICENSE">MIT License</a></div>
-        </footer>
       </div>
-    </main>
-  </div>
+      <div class="lp-hero-bottom">
+        <span>MADE FOR THE WAY YOU BUILD</span>
+        <div class="lp-tool-chips"><span>AI coding workflows</span><b>·</b><span>Reusable skills</span><b>·</b><span>Human-led changes</span><b>·</b><span>Local-first testing</span></div>
+      </div>
+    </section>
 
-  <button class="back-top" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <section class="lp-section lp-section-intro" id="why" data-search="why nexora prompts chaos reusable skills quality workflows context">
+      <div class="lp-section-heading">
+        <span class="lp-eyebrow"><span>01</span> WHY NEXORA</span>
+        <h2>Your best prompts shouldn't<br><em>disappear in chat history.</em></h2>
+        <p>Every new project deserves more than a blank chat. Nexora is a place to organize the steps, standards, and specialist instructions you want to reuse.</p>
+      </div>
+      <div class="lp-pain-grid">
+        <article class="lp-pain-card">
+          <span class="lp-card-symbol lp-symbol-yellow">✦</span>
+          <h3>Less repeat explaining</h3>
+          <p>Keep reusable instructions in files you can review, improve, and bring into future work.</p>
+          <span class="lp-card-foot">REUSE YOUR KNOW-HOW</span>
+        </article>
+        <article class="lp-pain-card">
+          <span class="lp-card-symbol lp-symbol-lime">⌘</span>
+          <h3>Fewer blind guesses</h3>
+          <p>Encourage agents to inspect the project, verify existing APIs, and explain assumptions before changing code.</p>
+          <span class="lp-card-foot">BUILD WITH CONTEXT</span>
+        </article>
+        <article class="lp-pain-card">
+          <span class="lp-card-symbol lp-symbol-lavender">✓</span>
+          <h3>More useful checks</h3>
+          <p>Keep testing, accessibility, security, and honest reporting part of the workflow—not last-minute afterthoughts.</p>
+          <span class="lp-card-foot">SHIP WITH EVIDENCE</span>
+        </article>
+      </div>
+    </section>
 
-    <script src="assets/js/docs.js" defer></script>
+    <section class="lp-section lp-process-section" id="how-it-works" data-search="how it works skills workflows source instructions plan build verify">
+      <div class="lp-process-layout">
+        <div class="lp-section-heading">
+          <span class="lp-eyebrow"><span>02</span> A BETTER BUILD LOOP</span>
+          <h2>From first thought<br>to a <em>clear next step.</em></h2>
+          <p>Use a repeatable process that helps you think before you code, respect what already exists, and verify what actually works.</p>
+          <a class="lp-text-link" href="guide.html#how-it-works">See the workflow principles <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="lp-process-list">
+          <article class="lp-process-row">
+            <div class="lp-process-number">01</div>
+            <div class="lp-process-icon">⌕</div>
+            <div><h3>Understand the project</h3><p>Read the structure, identify dependencies, map journeys, and uncover the real constraints.</p></div>
+            <span class="lp-process-arrow">↗</span>
+          </article>
+          <article class="lp-process-row">
+            <div class="lp-process-number">02</div>
+            <div class="lp-process-icon">◈</div>
+            <div><h3>Apply the right skill</h3><p>Bring focused instructions to planning, UI/UX, frontend work, backend integration, or review.</p></div>
+            <span class="lp-process-arrow">↗</span>
+          </article>
+          <article class="lp-process-row">
+            <div class="lp-process-number">03</div>
+            <div class="lp-process-icon">✓</div>
+            <div><h3>Review changes and evidence</h3><p>Run relevant checks, preserve user work, and report what passed, failed, or still needs testing.</p></div>
+            <span class="lp-process-arrow">↗</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section" id="tool-compat" data-search="coding tools compatibility Kilo Code OpenCode Antigravity planned adapters">
+      <div class="lp-section-heading lp-section-heading-center">
+        <span class="lp-eyebrow"><span>03</span> BUILT AROUND YOUR WORKFLOW</span>
+        <h2>Keep your workflow portable.<br><em>Respect each tool's reality.</em></h2>
+        <p>Shared instructions are a starting point, not a promise that every coding tool supports the same agent features. Nexora labels intended integrations honestly.</p>
+      </div>
+      <div class="lp-tools-grid">
+        <article class="lp-tool-card">
+          <div class="lp-tool-logo lp-logo-k">K</div>
+          <div class="lp-tool-name">Kilo Code</div>
+          <p>Shared skills and native config where supported.</p>
+          <span class="lp-status-planned"><i></i> Adapter validation needed</span>
+        </article>
+        <article class="lp-tool-card">
+          <div class="lp-tool-logo lp-logo-o">O</div>
+          <div class="lp-tool-name">OpenCode</div>
+          <p>Tool-aware skills and agent configuration.</p>
+          <span class="lp-status-planned"><i></i> Adapter validation needed</span>
+        </article>
+        <article class="lp-tool-card">
+          <div class="lp-tool-logo lp-logo-a">A</div>
+          <div class="lp-tool-name">Google Antigravity</div>
+          <p>Skills and workspace rules, with limits documented.</p>
+          <span class="lp-status-present"><i></i> Rules and skills included</span>
+        </article>
+      </div>
+      <p class="lp-compat-note"><span aria-hidden="true">ⓘ</span> Nexora is an early-stage starter kit and CLI—not yet a universal agent runtime. Check the compatibility notes before relying on an integration.</p>
+      <div class="lp-center-action"><a class="lp-btn lp-btn-dark" href="guide.html#compatibility">Read compatibility notes <span aria-hidden="true">→</span></a></div>
+    </section>
+
+    <section class="lp-quick-section" id="quick-start" data-search="quick start clone install npm test use locally no publishing">
+      <div class="lp-quick-stars" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span></div>
+      <div class="lp-quick-copy">
+        <span class="lp-eyebrow lp-eyebrow-light"><span>04</span> TRY IT YOURSELF</span>
+        <h2>Less hype.<br><em>More hands-on.</em></h2>
+        <p>Start from Git, explore the current CLI, and run the tests before adding Nexora to another project. No npm publishing required.</p>
+        <a class="lp-btn lp-btn-lime" href="guide.html#quick-start">Follow the quick start <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="lp-quick-terminal" aria-label="Commands to try Nexora locally">
+        <div class="lp-terminal-top"><span><i></i><i></i><i></i></span><b>Terminal</b><button type="button" class="lp-copy-command" data-copy="git clone https://github.com/vineetbhardwaj001/Nexora.git&#10;cd Nexora&#10;npm install&#10;npm test">Copy commands</button></div>
+        <pre><code><span># Get the project</span>
+git clone https://github.com/vineetbhardwaj001/Nexora.git
+cd Nexora
+
+<span># Install and test locally</span>
+npm install
+npm test
+
+<span># Explore the CLI</span>
+node bin/nexora.js --help</code></pre>
+        <div class="lp-terminal-bottom"><span class="lp-terminal-check">✓</span> Start local. Verify first.</div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-star-section" id="star-nexora" data-search="star github open source contribute feedback community">
+      <div class="lp-star-panel">
+        <div class="lp-star-art" aria-hidden="true">
+          <span class="lp-star-art-big">★</span>
+          <span class="lp-star-art-small lp-star-art-small-one">✦</span>
+          <span class="lp-star-art-small lp-star-art-small-two">✧</span>
+          <span class="lp-star-art-small lp-star-art-small-three">✦</span>
+        </div>
+        <div class="lp-star-copy">
+          <span class="lp-eyebrow"><span>OPEN SOURCE, OPEN INVITATION</span></span>
+          <h2>If this direction helps,<br><em>leave a little star.</em></h2>
+          <p>A GitHub star helps more developers discover Nexora. Explore the code, try the current starter kit, share feedback, or contribute an improvement. No inflated numbers—just progress in public.</p>
+          <div class="lp-star-actions">
+            <a class="lp-btn lp-btn-dark" href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer"><span aria-hidden="true">★</span> Star Nexora on GitHub <span aria-hidden="true">↗</span></a>
+            <a class="lp-text-link" href="https://github.com/vineetbhardwaj001/Nexora/issues" target="_blank" rel="noreferrer">Suggest an improvement <span aria-hidden="true">→</span></a>
+          </div>
+          <a class="lp-live-stars" href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer">
+            <img src="https://img.shields.io/github/stars/vineetbhardwaj001/Nexora?style=social" alt="Live GitHub star count for Nexora">
+            <span>Live count from GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="lp-section lp-faq-section" id="faq" data-search="FAQ frequently asked questions free npm publish supported status agent runtime">
+      <div class="lp-section-heading lp-section-heading-center">
+        <span class="lp-eyebrow"><span>05</span> GOOD TO KNOW</span>
+        <h2>Curious before you try it?</h2>
+      </div>
+      <div class="lp-faq-list">
+        <details><summary>Is Nexora ready to work with every coding tool?</summary><p>Not yet. Nexora currently provides a starter kit, CLI, reusable instructions, and tool-specific configuration files. Adapters must be tested with each target tool and version before being treated as supported.</p></details>
+        <details><summary>Do I need to publish or install it from npm?</summary><p>No. The current recommended path is to clone the repository and test it locally. npm publishing is not part of the current workflow.</p></details>
+        <details><summary>Does Nexora guarantee free AI models?</summary><p>No. Strict free-only routing is a roadmap item. Provider pricing, quotas, and fallback behavior must be verified before a zero-cost policy can be promised.</p></details>
+        <details><summary>How can I help improve the project?</summary><p>Review the repository, run its checks, open an issue with a concrete use case, improve documentation, or propose a focused change.</p></details>
+      </div>
+      <div class="lp-faq-cta"><div><strong>Want the full details?</strong><span>Explore setup steps, examples, safety principles, and roadmap.</span></div><a class="lp-text-link" href="guide.html">Open the full guide <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="lp-footer">
+    <a class="lp-brand" href="#top" aria-label="Back to Nexora home">
+      <span class="lp-brand-mark">N<span class="lp-brand-spark">✦</span></span>
+      <span class="lp-brand-word">nexora<span>AI WORKFLOW KIT</span></span>
+    </a>
+    <p>Useful workflows. Clearer engineering. Built in public.</p>
+    <div class="lp-footer-links">
+      <a href="guide.html">Documentation</a>
+      <a href="https://github.com/vineetbhardwaj001/Nexora" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a href="https://github.com/vineetbhardwaj001/Nexora/issues" target="_blank" rel="noreferrer">Feedback</a>
+    </div>
+    <span class="lp-footer-copy">© Nexora · Open source starter kit</span>
+  </footer>
+
+  <input type="search" id="docSearch" class="lp-hidden-search" tabindex="-1" aria-hidden="true">
+  <div id="noResults" hidden></div>
+  <button type="button" id="backTop" class="lp-back-top" aria-label="Back to top">↑</button>
+  <div id="toast" class="lp-toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/docs.js" defer></script>
 </body>
 </html>
