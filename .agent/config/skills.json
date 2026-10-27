@@ -25,7 +25,11 @@
     "technical-diagrams": "ask-first",
     "error-handling": "enabled",
     "validation": "enabled",
-    "meaningful-product-messages": "enabled"
+    "meaningful-product-messages": "enabled",
+    "exact-same-uiux": "enabled",
+    "project-intelligence-audit": "ask-first",
+    "frontend-architecture": "ask-first",
+    "backend-api-audit": "ask-first"
   },
   "policies": {
     "analyze_each_ui_reference_separately": true,
