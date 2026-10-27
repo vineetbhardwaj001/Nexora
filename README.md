@@ -70,6 +70,29 @@ Read [AGENTS.md](AGENTS.md), [the core instructions](.agent/CORE.md), and [the s
 
 Compatibility must be verified against official documentation and a real local test. Generated configuration should never overwrite unrelated user files silently.
 
+## Prompt commands and reusable skills
+
+The repository includes reusable skill instructions in `.agents/skills/` and prompt files in `.github/prompts/`. In compatible VS Code/GitHub Copilot versions, these prompt files can be invoked by their prompt names in Chat; other IDEs may require selecting the workflow or reading the skill file directly.
+
+| Prompt command / name | What it does |
+|---|---|
+| `/exactsameuiux` | Recreate a supplied screenshot with high visual fidelity; compare layout, spacing, typography, colors, components, assets and responsive states. |
+| `/projectintelligence` | Audit the complete repository and prepare project, API, database, integration and AI context reports without implementing features. |
+| `/frontendarchitecture` | Plan a scalable, domain-oriented frontend folder structure and safe migration sequence. |
+| `/backendapi` | Trace backend routes and produce verified API contracts, permissions and frontend integration gaps. |
+| `/professionalerrors` | Improve error handling and user-facing failure/recovery messages using actual API behavior. |
+| `/smartvalidation` | Build accessible, contract-aware form validation without inventing field constraints. |
+| `/meaningfulmessages` | Improve success, error, empty, warning and confirmation copy with honest, actionable messaging. |
+| `/design-ui` | Analyze design references separately and propose a coherent product-specific design system. |
+| `/frontend-only` | Build frontend functionality against the existing backend while keeping backend files read-only by default. |
+
+These names are prompt identifiers, not a promise that every coding tool exposes identical slash-command UX. Verify prompt discovery in the IDE/version you use. If a command is not listed, open its file in `.github/prompts/` or read the corresponding skill's `SKILL.md`.
+
+Example:
+```text
+/exactsameuiux Recreate the attached dashboard screenshot as closely as possible. Preserve its text and layout, use the existing project stack, and do not change backend files.
+```
+
 ## What Nexora helps with
 
 - **Idea → plan:** turn a rough idea into users, scope, acceptance criteria, and milestones.
