@@ -133,7 +133,13 @@ Use synthetic patient data in demos and tests. This is an example of the intende
 ├── bin/
 ├── tests/
 ├── docs/
-│   └── index.html
+│   ├── index.html
+│   ├── STRUCTURE.md
+│   └── assets/
+│       ├── css/
+│       │   └── styles.css
+│       └── js/
+│           └── docs.js
 ├── kilo.jsonc
 └── package.json
 ```
@@ -150,13 +156,17 @@ Use synthetic patient data in demos and tests. This is an example of the intende
 
 ## Documentation
 
-The documentation site is designed for quick onboarding, plain-language explanations, and copyable commands.
+The documentation site is designed for quick onboarding, plain-language explanations, and copyable commands. Its HTML, CSS, and JavaScript are kept in separate files to make UI maintenance easier.
 
 - **Docs homepage:** [Nexora Docs](https://vineetbhardwaj001.github.io/Nexora/)
+- **Entry page:** [`docs/index.html`](docs/index.html)
+- **Styles:** [`docs/assets/css/styles.css`](docs/assets/css/styles.css)
+- **Interactions:** [`docs/assets/js/docs.js`](docs/assets/js/docs.js)
+- **Maintenance guide:** [`docs/STRUCTURE.md`](docs/STRUCTURE.md)
 - **Local preview:** open `docs/index.html` in a browser.
-- **Project files:** browse the [docs folder](docs/) in GitHub.
+- **Source files:** browse the [docs folder](docs/) in GitHub.
 
-GitHub Pages deploys from the `docs-site.yml` workflow. If Pages has not yet been enabled for this repository, open **Settings → Pages** and select **GitHub Actions** as the build and deployment source.
+GitHub Pages deploys from the `docs-site.yml` workflow. If Pages has not been enabled for this repository, open **Settings → Pages** and select **GitHub Actions** as the build and deployment source.
 
 ## Development and tests
 
