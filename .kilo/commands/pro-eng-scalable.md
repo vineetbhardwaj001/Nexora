@@ -10,7 +10,7 @@ Arguments: $ARGUMENTS
 1. Read `AGENTS.md`, `.agent/CORE.md`, `.agent/config/skills.json`, and applicable nested instructions.
 2. Read `.agents/skills/pro-eng-scalable/SKILL.md` completely. Treat it as the orchestration contract.
 3. Inspect the workspace root, Git status, existing changes, project structure, services, stack, package/build/test configuration and documentation. Preserve all pre-existing user changes.
-4. Discover available skills by inspecting `.agents/skills/*/SKILL.md` and the registry. Verify each file exists before using it. Read complete relevant specialist skills. Reuse existing skills; do not duplicate their procedures. Respect disabled and ask-first registry states.
+4. Discover available skills by inspecting `.agents/skills/*/SKILL.md` and the registry. Verify each file exists before using it. Read complete relevant specialist skills. Reuse existing skills; do not duplicate their procedures. Respect disabled registry states. This explicit master-command invocation authorizes relevant ask-first skills for this run only; do not change registry status. Never invoke disabled skills.
 5. Interpret arguments:
    - `audit-only`: read-only audit and roadmap.
    - `architecture-only`: recommend structure and migration plan; no moves until approved.
