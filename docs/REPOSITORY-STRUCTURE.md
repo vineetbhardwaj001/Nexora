@@ -24,8 +24,11 @@ This guide explains the current repository layout and where each kind of change 
 ├── .agents/                      # Shared agent rules and portable skills
 │   ├── rules/nexora.md
 │   └── skills/<skill-name>/SKILL.md
+│       ├── clean-code-architecture/SKILL.md
+│       └── pro-eng-scalable/SKILL.md
 ├── .kilo/                        # Kilo Code-specific rules
-│   └── rules/nexora.md
+│   ├── rules/nexora.md
+│   └── commands/pro-eng-scalable.md
 ├── kilo.jsonc                    # Kilo Code project configuration
 ├── .github/
 │   ├── copilot-instructions.md   # GitHub Copilot repository instructions
@@ -51,6 +54,9 @@ This guide explains the current repository layout and where each kind of change 
 | Change Node.js CLI tests | `tests/cli.test.js` |
 | Change Python structural tests | `tests/test_agent_config.py` |
 | Add or edit a reusable skill | `.agents/skills/<skill-name>/SKILL.md` |
+| Run the coordinated project engineering workflow | `/pro-eng-scalable` from `.kilo/commands/pro-eng-scalable.md` |
+| Maintain the universal engineering orchestrator | `.agents/skills/pro-eng-scalable/SKILL.md` |
+| Maintain Kilo Code slash workflows | `.kilo/commands/*.md` |
 | Change shared repository instructions | `AGENTS.md` and, if relevant, `.agent/CORE.md` |
 | Update a workflow or planning procedure | `.agent/workflows/` |
 | Change Kilo Code-specific behavior | `.kilo/` and `kilo.jsonc` |
