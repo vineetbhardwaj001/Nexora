@@ -72,7 +72,7 @@ function paint(text, fg = THEME.ink, bg, bold = false) {
   if (bold) codes.push('1');
   if (fg) codes.push('38;2;' + fg.join(';'));
   if (bg) codes.push('48;2;' + bg.join(';'));
-  return '\\x1b[' + codes.join(';') + 'm' + String(text) + '\\x1b[0m';
+  return '\x1b[' + codes.join(';') + 'm' + String(text) + '\x1b[0m';
 }
 
 function fit(text, width) {
