@@ -80,6 +80,7 @@ The repository includes reusable skill instructions in `.agents/skills/` and pro
 | `/projectintelligence` | Audit the complete repository and prepare project, API, database, integration and AI context reports without implementing features. |
 | `/frontendarchitecture` | Plan a scalable, domain-oriented frontend folder structure and safe migration sequence. |
 | `/backendapi` | Trace backend routes and produce verified API contracts, permissions and frontend integration gaps. |
+| `/engineeringcouncil` | Run a whole-project specialist review, evidence-based debate, up to 100 risk-based scenarios, and founder/CEO/CTO recommendations. |
 | `/professionalerrors` | Improve error handling and user-facing failure/recovery messages using actual API behavior. |
 | `/smartvalidation` | Build accessible, contract-aware form validation without inventing field constraints. |
 | `/meaningfulmessages` | Improve success, error, empty, warning and confirmation copy with honest, actionable messaging. |
