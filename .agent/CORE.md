@@ -16,6 +16,8 @@ Backend files are read-only by default. Map API contracts, authentication and pe
 Read `.agents/skills/ux-ui-design/SKILL.md` and `.agent/workflows/uiux-reference-analysis.md`. Analyze every image separately, mark estimates and inferences, map the design to the product idea, propose a coherent system, and ask before major redesign unless implementation was explicitly requested.
 
 ## Specialized workflows
+For a full cross-functional engineering review and founder-level synthesis, read `.agents/skills/engineering-council/SKILL.md` when the user invokes `/engineeringcouncil`.
+
 
 Choose the matching skill for the user's request:
 - Exact screenshot or UI recreation: `.agents/skills/exact-same-uiux/SKILL.md`
