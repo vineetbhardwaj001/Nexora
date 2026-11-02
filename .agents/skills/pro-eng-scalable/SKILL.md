@@ -41,7 +41,7 @@ Initial routing:
 - Quality: `error-handling`, `validation`, `meaningful-product-messages`
 - Whole-system review: `engineering-council` for cross-functional or high-risk reviews
 
-Also discover other installed skills dynamically. Respect each skill's enabled/ask-first/disabled status. Ask before running ask-first skills when required by the registry. Never silently enable disabled skills.
+Also discover other installed skills dynamically. Respect each skill's enabled/ask-first/disabled status. The user's explicit invocation of this master command authorizes relevant ask-first skills for this single run only; do not change their registry status. Never invoke disabled skills or silently enable them.
 
 Create a concise skill execution ledger: skill name, file path, why relevant, loaded status, and output used. Avoid duplicate analysis. Run dependent phases sequentially; parallelize only independent read-only investigations.
 
