@@ -9,6 +9,7 @@ Before substantial work, read `.agent/CORE.md`, `.agent/config/skills.json`, and
 - For UI/UX, analyze every supplied reference image separately before comparing styles. Select a coherent direction for the actual product, not a mash-up of unrelated styles.
 - If the user already has a backend and requests frontend work, load `.agents/skills/backend-preserving-frontend/SKILL.md`. Treat backend files as read-only by default and verify the final diff.
 - For `/engineeringcouncil` or a whole-project expert review, load `.agents/skills/engineering-council/SKILL.md`; conduct an evidence-based simulated review, distinguish planned scenarios from executed tests, and stop after producing reports unless implementation is separately requested.
+- For `/pro-eng-scalable`, load `.agents/skills/pro-eng-scalable/SKILL.md` and the relevant existing specialist skills. Treat the explicit master-command invocation as permission to use relevant ask-first skills for that run only; never invoke disabled skills or change registry status. Follow the selected mode and keep changes incremental and scoped.
 - Keep components focused, APIs out of presentation components, design tokens centralized, and folders named after real product domains.
 - Preserve existing user changes. Never reset or overwrite work without approval.
 - Never expose secrets or commit credentials.
