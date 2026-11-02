@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <img alt="Kilo Code" src="https://img.shields.io/badge/Kilo%20Code-adapter%20planned-f0c15a">
+  <img alt="Kilo Code" src="https://img.shields.io/badge/Kilo%20Code-skills%20%2B%20commands-2f8f62">
   <img alt="OpenCode" src="https://img.shields.io/badge/OpenCode-adapter%20planned-7b8e7a">
   <img alt="Antigravity" src="https://img.shields.io/badge/Antigravity-skills%20and%20rules-8c83d6">
 </p>
@@ -81,13 +81,14 @@ The repository includes reusable skill instructions in `.agents/skills/` and pro
 | `/frontendarchitecture` | Plan a scalable, domain-oriented frontend folder structure and safe migration sequence. |
 | `/backendapi` | Trace backend routes and produce verified API contracts, permissions and frontend integration gaps. |
 | `/engineeringcouncil` | Run a whole-project specialist review, evidence-based debate, up to 100 risk-based scenarios, and founder/CEO/CTO recommendations. |
+| `/pro-eng-scalable` | Orchestrate existing Nexora skills for project discovery, scalable architecture, safe refactoring, bug fixes, security, performance and tests. Kilo Code workflow supports audit-only, architecture-only, fix-bugs, frontend-only, backend-only and full-improvement modes. |
 | `/professionalerrors` | Improve error handling and user-facing failure/recovery messages using actual API behavior. |
 | `/smartvalidation` | Build accessible, contract-aware form validation without inventing field constraints. |
 | `/meaningfulmessages` | Improve success, error, empty, warning and confirmation copy with honest, actionable messaging. |
 | `/design-ui` | Analyze design references separately and propose a coherent product-specific design system. |
 | `/frontend-only` | Build frontend functionality against the existing backend while keeping backend files read-only by default. |
 
-These names are prompt identifiers, not a promise that every coding tool exposes identical slash-command UX. Verify prompt discovery in the IDE/version you use. If a command is not listed, open its file in `.github/prompts/` or read the corresponding skill's `SKILL.md`.
+These names are prompt identifiers, not a promise that every coding tool exposes identical slash-command UX. The Kilo Code `/pro-eng-scalable` workflow is defined in `.kilo/commands/pro-eng-scalable.md`; invoke it as `/pro-eng-scalable` and optionally pass a mode such as `audit-only` or `fix-bugs`. Other Kilo workflows and skills are documented in their native locations. Verify discovery in the IDE/version you use. If a prompt is not listed, open its file in `.github/prompts/` or read the corresponding skill's `SKILL.md`.
 
 Example:
 
@@ -127,7 +128,12 @@ Use synthetic patient data in demos and tests. This is an example of the intende
 ├── .agents/
 │   ├── rules/
 │   └── skills/
+│       ├── clean-code-architecture/
+│       └── pro-eng-scalable/
 ├── .kilo/
+│   ├── rules/
+│   └── commands/
+│       └── pro-eng-scalable.md
 ├── .github/
 │   ├── prompts/
 │   └── workflows/
