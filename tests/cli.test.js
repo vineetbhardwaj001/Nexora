@@ -30,3 +30,17 @@ test('all installer source files exist', () => {
     assert.ok(fs.existsSync(path.join(root, file)), 'Missing installer file: ' + file);
   }
 });
+
+
+test('engineering council skill and prompt are registered in the installer', () => {
+  const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
+  const config = JSON.parse(fs.readFileSync(path.join(root, '.agent/config/skills.json'), 'utf8'));
+  assert.equal(config.skills['engineering-council'], 'ask-first');
+  assert.ok(cli.includes('.agents/skills/engineering-council/SKILL.md'));
+  assert.ok(cli.includes('.github/prompts/engineeringcouncil.prompt.md'));
+});
+
+test('CLI paint function emits ANSI escape sequences', () => {
+  const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
+  assert.ok(cli.includes(String.raw`return '\x1b['`), 'paint() should use ANSI escape sequences');
+});
