@@ -37,6 +37,7 @@ const FILES = [
   '.agents/skills/project-intelligence-audit/SKILL.md',
   '.agents/skills/frontend-architecture/SKILL.md',
   '.agents/skills/backend-api-audit/SKILL.md',
+  '.agents/skills/engineering-council/SKILL.md',
   '.kilo/rules/nexora.md',
   'kilo.jsonc',
   '.github/copilot-instructions.md',
@@ -49,6 +50,7 @@ const FILES = [
   '.github/prompts/professionalerrors.prompt.md',
   '.github/prompts/smartvalidation.prompt.md',
   '.github/prompts/meaningfulmessages.prompt.md',
+  '.github/prompts/engineeringcouncil.prompt.md',
   '.gitignore'
 ];
 
