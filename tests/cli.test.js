@@ -44,3 +44,23 @@ test('CLI paint function emits ANSI escape sequences', () => {
   const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
   assert.ok(cli.includes(String.raw`return '\x1b['`), 'paint() should use ANSI escape sequences');
 });
+
+test('pro engineering master skill and Kilo workflow are registered and installable', () => {
+  const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
+  const config = JSON.parse(fs.readFileSync(path.join(root, '.agent/config/skills.json'), 'utf8'));
+  const masterSkill = '.agents/skills/pro-eng-scalable/SKILL.md';
+  const cleanCodeSkill = '.agents/skills/clean-code-architecture/SKILL.md';
+  const kiloCommand = '.kilo/commands/pro-eng-scalable.md';
+
+  assert.equal(config.skills['pro-eng-scalable'], 'ask-first');
+  assert.equal(config.skills['clean-code-architecture'], 'ask-first');
+  for (const file of [masterSkill, cleanCodeSkill, kiloCommand]) {
+    assert.ok(cli.includes(file), 'Installer manifest should include ' + file);
+    assert.ok(fs.existsSync(path.join(root, file)), 'Missing workflow file: ' + file);
+  }
+  const command = fs.readFileSync(path.join(root, kiloCommand), 'utf8');
+  assert.match(command, /description:/);
+  assert.match(command, /\$ARGUMENTS/);
+  assert.match(command, /audit-only/);
+  assert.match(command, /full-improvement/);
+});
