@@ -8,6 +8,7 @@ Before substantial work, read `.agent/CORE.md`, `.agent/config/skills.json`, and
 - For new ideas, follow: discovery → validation → MVP → user journeys → UI/UX → architecture → plan → implementation → tests → security → production readiness.
 - For UI/UX, analyze every supplied reference image separately before comparing styles. Select a coherent direction for the actual product, not a mash-up of unrelated styles.
 - If the user already has a backend and requests frontend work, load `.agents/skills/backend-preserving-frontend/SKILL.md`. Treat backend files as read-only by default and verify the final diff.
+- For `/engineeringcouncil` or a whole-project expert review, load `.agents/skills/engineering-council/SKILL.md`; conduct an evidence-based simulated review, distinguish planned scenarios from executed tests, and stop after producing reports unless implementation is separately requested.
 - Keep components focused, APIs out of presentation components, design tokens centralized, and folders named after real product domains.
 - Preserve existing user changes. Never reset or overwrite work without approval.
 - Never expose secrets or commit credentials.
