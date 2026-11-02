@@ -30,7 +30,8 @@
     "project-intelligence-audit": "ask-first",
     "frontend-architecture": "ask-first",
     "backend-api-audit": "ask-first",
-    "engineering-council": "ask-first"
+    "engineering-council": "ask-first",
+    "pro-eng-scalable": "ask-first"
   },
   "policies": {
     "analyze_each_ui_reference_separately": true,
