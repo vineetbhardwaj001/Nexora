@@ -40,7 +40,9 @@ const FILES = [
   '.agents/skills/engineering-council/SKILL.md',
   '.agents/skills/clean-code-architecture/SKILL.md',
   '.agents/skills/pro-eng-scalable/SKILL.md',
+  '.agents/skills/product-qa-swarm/SKILL.md',
   '.kilo/commands/pro-eng-scalable.md',
+  '.kilo/commands/product-qa-swarm.md',
   '.kilo/rules/nexora.md',
   'kilo.jsonc',
   '.github/copilot-instructions.md',
@@ -54,6 +56,7 @@ const FILES = [
   '.github/prompts/smartvalidation.prompt.md',
   '.github/prompts/meaningfulmessages.prompt.md',
   '.github/prompts/engineeringcouncil.prompt.md',
+  'docs/PRODUCT-QA-REPORT-TEMPLATE.md',
   '.gitignore'
 ];
 
