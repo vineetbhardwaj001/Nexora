@@ -81,6 +81,7 @@ The repository includes reusable skill instructions in `.agents/skills/` and pro
 | `/frontendarchitecture` | Plan a scalable, domain-oriented frontend folder structure and safe migration sequence. |
 | `/backendapi` | Trace backend routes and produce verified API contracts, permissions and frontend integration gaps. |
 | `/engineeringcouncil` | Run a whole-project specialist review, evidence-based debate, up to 100 risk-based scenarios, and founder/CEO/CTO recommendations. |
+| `/product-qa-swarm` | Open the actual supplied product URL in a real browser; run distinct persona journeys, functional/UX/accessibility/safe security reviews, and optional explicitly authorized 100+ virtual-user load tests. Produces an evidence-based report; does not pretend scripted personas are human testers. |
 | `/pro-eng-scalable` | Orchestrate existing Nexora skills for project discovery, scalable architecture, safe refactoring, bug fixes, security, performance and tests. Kilo Code workflow supports audit-only, architecture-only, fix-bugs, frontend-only, backend-only and full-improvement modes. |
 | `/professionalerrors` | Improve error handling and user-facing failure/recovery messages using actual API behavior. |
 | `/smartvalidation` | Build accessible, contract-aware form validation without inventing field constraints. |
@@ -95,6 +96,10 @@ Example:
 ```text
 /exactsameuiux Recreate the attached dashboard screenshot as closely as possible. Preserve its text and layout, use the existing project stack, and do not change backend files.
 ```
+
+### Real product QA workflow
+
+Use `/product-qa-swarm` in Kilo Code. It requires the exact target URL and environment, opens the rendered product in a real browser, performs isolated persona journeys, captures evidence, and writes a timestamped QA report. Load testing is a separate opt-in stage; it must target an authorized staging environment and records virtual users separately from browser personas. See [the QA report template](docs/PRODUCT-QA-REPORT-TEMPLATE.md) and [the skill instructions](.agents/skills/product-qa-swarm/SKILL.md).
 
 ## What Nexora helps with
 
