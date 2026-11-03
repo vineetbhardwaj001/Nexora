@@ -31,7 +31,8 @@
     "frontend-architecture": "ask-first",
     "backend-api-audit": "ask-first",
     "engineering-council": "ask-first",
-    "pro-eng-scalable": "ask-first"
+    "pro-eng-scalable": "ask-first",
+    "product-qa-swarm": "ask-first"
   },
   "policies": {
     "analyze_each_ui_reference_separately": true,

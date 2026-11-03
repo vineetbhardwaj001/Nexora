@@ -64,3 +64,24 @@ test('pro engineering master skill and Kilo workflow are registered and installa
   assert.match(command, /audit-only/);
   assert.match(command, /full-improvement/);
 });
+
+
+test('product QA swarm skill, Kilo command and report template are installable', () => {
+  const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
+  const config = JSON.parse(fs.readFileSync(path.join(root, '.agent/config/skills.json'), 'utf8'));
+  const skill = '.agents/skills/product-qa-swarm/SKILL.md';
+  const command = '.kilo/commands/product-qa-swarm.md';
+  const report = 'docs/PRODUCT-QA-REPORT-TEMPLATE.md';
+  assert.equal(config.skills['product-qa-swarm'], 'ask-first');
+  for (const file of [skill, command, report]) {
+    assert.ok(cli.includes(file), 'Installer manifest should include ' + file);
+    assert.ok(fs.existsSync(path.join(root, file)), 'Missing QA file: ' + file);
+  }
+  const instructions = fs.readFileSync(path.join(root, skill), 'utf8');
+  assert.match(instructions, /real browser/i);
+  assert.match(instructions, /virtual-user load test/i);
+  assert.match(instructions, /Never claim/);
+  const kilo = fs.readFileSync(path.join(root, command), 'utf8');
+  assert.match(kilo, /agent: code/);
+  assert.match(kilo, /exact target URL/);
+});

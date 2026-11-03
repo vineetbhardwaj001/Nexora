@@ -54,6 +54,9 @@ This guide explains the current repository layout and where each kind of change 
 | Change Node.js CLI tests | `tests/cli.test.js` |
 | Change Python structural tests | `tests/test_agent_config.py` |
 | Add or edit a reusable skill | `.agents/skills/<skill-name>/SKILL.md` |
+| Run real-browser multi-persona product QA | `/product-qa-swarm` from `.kilo/commands/product-qa-swarm.md` |
+| Maintain the product QA skill and evidence requirements | `.agents/skills/product-qa-swarm/SKILL.md` |
+| Use the QA report template | `docs/PRODUCT-QA-REPORT-TEMPLATE.md` |
 | Run the coordinated project engineering workflow | `/pro-eng-scalable` from `.kilo/commands/pro-eng-scalable.md` |
 | Maintain the universal engineering orchestrator | `.agents/skills/pro-eng-scalable/SKILL.md` |
 | Maintain Kilo Code slash workflows | `.kilo/commands/*.md` |
