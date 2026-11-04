@@ -85,3 +85,29 @@ test('product QA swarm skill, Kilo command and report template are installable',
   assert.match(kilo, /agent: code/);
   assert.match(kilo, /exact target URL/);
 });
+
+
+test('single-command MiroFish product QA workflow is installed and registered', () => {
+  const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
+  const config = JSON.parse(fs.readFileSync(path.join(root, '.agent/config/skills.json'), 'utf8'));
+  const command = '.kilo/commands/test-my-product.md';
+  const adapter = '.agents/skills/mirofish-product-simulation/SKILL.md';
+  assert.equal(config.skills['mirofish-product-simulation'], 'ask-first');
+  for (const file of [command, adapter]) {
+    assert.ok(cli.includes(file), 'Installer manifest should include ' + file);
+    assert.ok(fs.existsSync(path.join(root, file)), 'Missing MiroFish workflow file: ' + file);
+  }
+  const instructions = fs.readFileSync(path.join(root, command), 'utf8');
+  assert.match(instructions, /MiroFish/i);
+  assert.match(instructions, /real browser/i);
+  assert.match(instructions, /virtual users/i);
+  assert.match(instructions, /simulated personas/i);
+});
+
+
+test('MiroFish operator guide is included in the installer manifest', () => {
+  const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
+  const guide = 'docs/MIROFISH-INTEGRATION.md';
+  assert.ok(cli.includes(guide));
+  assert.ok(fs.existsSync(path.join(root, guide)));
+});

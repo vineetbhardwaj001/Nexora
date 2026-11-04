@@ -81,6 +81,7 @@ The repository includes reusable skill instructions in `.agents/skills/` and pro
 | `/frontendarchitecture` | Plan a scalable, domain-oriented frontend folder structure and safe migration sequence. |
 | `/backendapi` | Trace backend routes and produce verified API contracts, permissions and frontend integration gaps. |
 | `/engineeringcouncil` | Run a whole-project specialist review, evidence-based debate, up to 100 risk-based scenarios, and founder/CEO/CTO recommendations. |
+| `/test-my-product` | Single end-to-end entry point: optional MiroFish swarm simulation for user/persona hypotheses, then real-browser persona testing, UX/accessibility/security review, evidence report and separately authorized load testing. |
 | `/product-qa-swarm` | Open the actual supplied product URL in a real browser; run distinct persona journeys, functional/UX/accessibility/safe security reviews, and optional explicitly authorized 100+ virtual-user load tests. Produces an evidence-based report; does not pretend scripted personas are human testers. |
 | `/pro-eng-scalable` | Orchestrate existing Nexora skills for project discovery, scalable architecture, safe refactoring, bug fixes, security, performance and tests. Kilo Code workflow supports audit-only, architecture-only, fix-bugs, frontend-only, backend-only and full-improvement modes. |
 | `/professionalerrors` | Improve error handling and user-facing failure/recovery messages using actual API behavior. |
@@ -96,6 +97,10 @@ Example:
 ```text
 /exactsameuiux Recreate the attached dashboard screenshot as closely as possible. Preserve its text and layout, use the existing project stack, and do not change backend files.
 ```
+
+### Single-command MiroFish-assisted product testing
+
+Use `/test-my-product` in Kilo Code. It optionally uses a separately running MiroFish service to generate diverse synthetic persona hypotheses, then validates journeys by opening the real product in a browser. MiroFish simulation is not browser automation or HTTP load testing. The integration is optional and requires separately configured LLM/Zep credentials. See [the MiroFish simulation adapter skill](.agents/skills/mirofish-product-simulation/SKILL.md).
 
 ### Real product QA workflow
 
@@ -179,6 +184,7 @@ The documentation site is designed for quick onboarding, plain-language explanat
 - **Interactions:** [`docs/assets/js/docs.js`](docs/assets/js/docs.js)
 - **Maintenance guide:** [`docs/STRUCTURE.md`](docs/STRUCTURE.md)
 - **Repository folder map:** [`docs/REPOSITORY-STRUCTURE.md`](docs/REPOSITORY-STRUCTURE.md)
+- **MiroFish integration:** [`docs/MIROFISH-INTEGRATION.md`](docs/MIROFISH-INTEGRATION.md)
 - **Local preview:** open `docs/index.html` for the landing page or `docs/guide.html` for the detailed guide.
 - **Source files:** browse the [docs folder](docs/) in GitHub.
 
