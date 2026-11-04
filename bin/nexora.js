@@ -59,6 +59,7 @@ const FILES = [
   '.github/prompts/meaningfulmessages.prompt.md',
   '.github/prompts/engineeringcouncil.prompt.md',
   'docs/PRODUCT-QA-REPORT-TEMPLATE.md',
+  'docs/MIROFISH-INTEGRATION.md',
   '.gitignore'
 ];
 
