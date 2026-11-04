@@ -40,6 +40,7 @@ This guide explains the current repository layout and where each kind of change 
 │   ├── guide.html                 # Detailed setup and product documentation
 │   ├── STRUCTURE.md              # Landing page and guide maintenance guide
 │   ├── REPOSITORY-STRUCTURE.md   # This repository layout guide
+│   ├── MIROFISH-INTEGRATION.md   # MiroFish setup, boundaries and operator guide
 │   └── assets/
 │       ├── css/styles.css        # Documentation styling and responsive layout
 │       └── js/docs.js            # Documentation interactions
@@ -58,6 +59,7 @@ This guide explains the current repository layout and where each kind of change 
 | Maintain the optional MiroFish integration guidance | `.agents/skills/mirofish-product-simulation/SKILL.md` |
 | Run real-browser multi-persona product QA | `/product-qa-swarm` from `.kilo/commands/product-qa-swarm.md` |
 | Maintain the product QA skill and evidence requirements | `.agents/skills/product-qa-swarm/SKILL.md` |
+| Set up/use MiroFish for optional simulations | `docs/MIROFISH-INTEGRATION.md` |
 | Use the QA report template | `docs/PRODUCT-QA-REPORT-TEMPLATE.md` |
 | Run the coordinated project engineering workflow | `/pro-eng-scalable` from `.kilo/commands/pro-eng-scalable.md` |
 | Maintain the universal engineering orchestrator | `.agents/skills/pro-eng-scalable/SKILL.md` |
