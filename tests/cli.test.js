@@ -103,3 +103,11 @@ test('single-command MiroFish product QA workflow is installed and registered', 
   assert.match(instructions, /virtual users/i);
   assert.match(instructions, /simulated personas/i);
 });
+
+
+test('MiroFish operator guide is included in the installer manifest', () => {
+  const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
+  const guide = 'docs/MIROFISH-INTEGRATION.md';
+  assert.ok(cli.includes(guide));
+  assert.ok(fs.existsSync(path.join(root, guide)));
+});
