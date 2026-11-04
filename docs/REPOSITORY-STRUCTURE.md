@@ -54,6 +54,8 @@ This guide explains the current repository layout and where each kind of change 
 | Change Node.js CLI tests | `tests/cli.test.js` |
 | Change Python structural tests | `tests/test_agent_config.py` |
 | Add or edit a reusable skill | `.agents/skills/<skill-name>/SKILL.md` |
+| Run complete MiroFish-assisted product testing | `/test-my-product` from `.kilo/commands/test-my-product.md` |
+| Maintain the optional MiroFish integration guidance | `.agents/skills/mirofish-product-simulation/SKILL.md` |
 | Run real-browser multi-persona product QA | `/product-qa-swarm` from `.kilo/commands/product-qa-swarm.md` |
 | Maintain the product QA skill and evidence requirements | `.agents/skills/product-qa-swarm/SKILL.md` |
 | Use the QA report template | `docs/PRODUCT-QA-REPORT-TEMPLATE.md` |
