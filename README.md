@@ -184,6 +184,7 @@ The documentation site is designed for quick onboarding, plain-language explanat
 - **Interactions:** [`docs/assets/js/docs.js`](docs/assets/js/docs.js)
 - **Maintenance guide:** [`docs/STRUCTURE.md`](docs/STRUCTURE.md)
 - **Repository folder map:** [`docs/REPOSITORY-STRUCTURE.md`](docs/REPOSITORY-STRUCTURE.md)
+- **MiroFish integration:** [`docs/MIROFISH-INTEGRATION.md`](docs/MIROFISH-INTEGRATION.md)
 - **Local preview:** open `docs/index.html` for the landing page or `docs/guide.html` for the detailed guide.
 - **Source files:** browse the [docs folder](docs/) in GitHub.
 
