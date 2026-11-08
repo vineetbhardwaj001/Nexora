@@ -28,7 +28,7 @@ This guide explains the current repository layout and where each kind of change 
 │       └── pro-eng-scalable/SKILL.md
 ├── .kilo/                        # Kilo Code-specific rules
 │   ├── rules/nexora.md
-│   └── commands/pro-eng-scalable.md
+│   └── commands/\n│       ├── nexora.md                # Unified /nexora command\n│       └── pro-eng-scalable.md
 ├── kilo.jsonc                    # Kilo Code project configuration
 ├── .github/
 │   ├── copilot-instructions.md   # GitHub Copilot repository instructions
@@ -55,13 +55,13 @@ This guide explains the current repository layout and where each kind of change 
 | Change Node.js CLI tests | `tests/cli.test.js` |
 | Change Python structural tests | `tests/test_agent_config.py` |
 | Add or edit a reusable skill | `.agents/skills/<skill-name>/SKILL.md` |
-| Run complete MiroFish-assisted product testing | `/test-my-product` from `.kilo/commands/test-my-product.md` |
+| Run the unified Nexora workflow | `/nexora` from `.kilo/commands/nexora.md` (routes test, untangle or improve) |\n| Run complete MiroFish-assisted product testing | `/test-my-product` from `.kilo/commands/test-my-product.md` (legacy focused entry point) |
 | Maintain the optional MiroFish integration guidance | `.agents/skills/mirofish-product-simulation/SKILL.md` |
 | Run real-browser multi-persona product QA | `/product-qa-swarm` from `.kilo/commands/product-qa-swarm.md` |
 | Maintain the product QA skill and evidence requirements | `.agents/skills/product-qa-swarm/SKILL.md` |
 | Set up/use MiroFish for optional simulations | `docs/MIROFISH-INTEGRATION.md` |
 | Use the QA report template | `docs/PRODUCT-QA-REPORT-TEMPLATE.md` |
-| Run the coordinated project engineering workflow | `/pro-eng-scalable` from `.kilo/commands/pro-eng-scalable.md` |
+| Run the coordinated project engineering workflow | `/pro-eng-scalable` from `.kilo/commands/pro-eng-scalable.md` (legacy focused entry point) |\n| Untangle code structure using Caldo's workflow | `/nexora untangle` and `.agents/skills/untangle-codebase/SKILL.md` |
 | Maintain the universal engineering orchestrator | `.agents/skills/pro-eng-scalable/SKILL.md` |
 | Maintain Kilo Code slash workflows | `.kilo/commands/*.md` |
 | Change shared repository instructions | `AGENTS.md` and, if relevant, `.agent/CORE.md` |
