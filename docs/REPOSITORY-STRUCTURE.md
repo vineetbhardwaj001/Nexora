@@ -28,7 +28,9 @@ This guide explains the current repository layout and where each kind of change 
 │       └── pro-eng-scalable/SKILL.md
 ├── .kilo/                        # Kilo Code-specific rules
 │   ├── rules/nexora.md
-│   └── commands/\n│       ├── nexora.md                # Unified /nexora command\n│       └── pro-eng-scalable.md
+│   └── commands/
+│       ├── nexora.md                # Unified /nexora command
+│       └── pro-eng-scalable.md
 ├── kilo.jsonc                    # Kilo Code project configuration
 ├── .github/
 │   ├── copilot-instructions.md   # GitHub Copilot repository instructions
@@ -40,7 +42,8 @@ This guide explains the current repository layout and where each kind of change 
 │   ├── guide.html                 # Detailed setup and product documentation
 │   ├── STRUCTURE.md              # Landing page and guide maintenance guide
 │   ├── REPOSITORY-STRUCTURE.md   # This repository layout guide
-│   ├── UNTANGLE-CODEBASE.md       # Caldo codebase untangling workflow\n│   ├── MIROFISH-INTEGRATION.md   # MiroFish setup, boundaries and operator guide
+│   ├── UNTANGLE-CODEBASE.md       # Caldo codebase untangling workflow
+│   ├── MIROFISH-INTEGRATION.md   # MiroFish setup, boundaries and operator guide
 │   └── assets/
 │       ├── css/styles.css        # Documentation styling and responsive layout
 │       └── js/docs.js            # Documentation interactions
