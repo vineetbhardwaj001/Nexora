@@ -70,54 +70,41 @@ Read [AGENTS.md](AGENTS.md), [the core instructions](.agent/CORE.md), and [the s
 
 Compatibility must be verified against official documentation and a real local test. Generated configuration should never overwrite unrelated user files silently.
 
-## Prompt commands and reusable skills
+## Use the Nexora prompt
 
-The repository includes reusable skill instructions in `.agents/skills/` and prompt files in `.github/prompts/`. In compatible VS Code/GitHub Copilot versions, these prompt files can be invoked by their prompt names in Chat; other IDEs may require selecting the workflow or reading the skill file directly.
+Nexora has one task-aware prompt for the three main workflows. The prompt file is stored at `.github/prompts/nexora.prompt.md` and delegates to the shared router at `.agents/skills/nexora-orchestrator/SKILL.md`.
 
-| Prompt command / name | What it does |
-|---|---|
-| `/exactsameuiux` | Recreate a supplied screenshot with high visual fidelity; compare layout, spacing, typography, colors, components, assets and responsive states. |
-| `/projectintelligence` | Audit the complete repository and prepare project, API, database, integration and AI context reports without implementing features. |
-| `/frontendarchitecture` | Plan a scalable, domain-oriented frontend folder structure and safe migration sequence. |
-| `/backendapi` | Trace backend routes and produce verified API contracts, permissions and frontend integration gaps. |
-| `/engineeringcouncil` | Run a whole-project specialist review, evidence-based debate, up to 100 risk-based scenarios, and founder/CEO/CTO recommendations. |
-| `/nexora` | **Recommended single entry point**: routes a request to real-browser product QA (MiroFish optional), Caldo codebase untangling, or scalable engineering improvement. Examples: `/nexora test https://staging.example.com`, `/nexora untangle src/`, `/nexora improve audit-only`. |
-| `/test-my-product` | Single end-to-end entry point: optional MiroFish swarm simulation for user/persona hypotheses, then real-browser persona testing, UX/accessibility/security review, evidence report and separately authorized load testing. |
-| `/product-qa-swarm` | Open the actual supplied product URL in a real browser; run distinct persona journeys, functional/UX/accessibility/safe security reviews, and optional explicitly authorized 100+ virtual-user load tests. Produces an evidence-based report; does not pretend scripted personas are human testers. |
-| `/pro-eng-scalable` | Orchestrate existing Nexora skills for project discovery, scalable architecture, safe refactoring, bug fixes, security, performance and tests. Kilo Code workflow supports audit-only, architecture-only, fix-bugs, frontend-only, backend-only and full-improvement modes. |
-| `/professionalerrors` | Improve error handling and user-facing failure/recovery messages using actual API behavior. |
-| `/smartvalidation` | Build accessible, contract-aware form validation without inventing field constraints. |
-| `/meaningfulmessages` | Improve success, error, empty, warning and confirmation copy with honest, actionable messaging. |
-| `/design-ui` | Analyze design references separately and propose a coherent product-specific design system. |
-| `/frontend-only` | Build frontend functionality against the existing backend while keeping backend files read-only by default. |
+### VS Code + GitHub Copilot
 
-These names are prompt identifiers, not a promise that every coding tool exposes identical slash-command UX. `/nexora` is the recommended unified Kilo Code command; focused legacy commands remain available. The Kilo Code `/pro-eng-scalable` workflow is defined in `.kilo/commands/pro-eng-scalable.md`; invoke it as `/pro-eng-scalable` and optionally pass a mode such as `audit-only` or `fix-bugs`. Other Kilo workflows and skills are documented in their native locations. Verify discovery in the IDE/version you use. If a prompt is not listed, open its file in `.github/prompts/` or read the corresponding skill's `SKILL.md`.
+1. Open the Nexora repository folder in VS Code.
+2. Open **GitHub Copilot Chat** and switch to **Agent** mode.
+3. Open the prompt picker and select **nexora** (from `.github/prompts/nexora.prompt.md`).
+4. Enter your task and provide the product URL when you choose product testing.
+5. Let the prompt inspect the repository and follow its safety rules. Review the proposed changes and evidence.
 
-Example:
+If the prompt does not appear, confirm that the file is present in `.github/prompts/`, reload the VS Code window, and check that your installed Copilot version supports repository prompt files.
+
+### Kilo Code
+
+Open the Nexora repository in Kilo Code and invoke the unified `/nexora` command. Add the route and details after the command.
+
+### Three command examples
 
 ```text
-/exactsameuiux Recreate the attached dashboard screenshot as closely as possible. Preserve its text and layout, use the existing project stack, and do not change backend files.
+/nexora test https://staging.example.com
+/nexora untangle src/
+/nexora improve audit-only
 ```
 
-### One command for Nexora: `/nexora`
+- **test** — runs the product QA workflow. Supply the exact URL and environment; actual UI findings require real-browser execution and evidence. MiroFish persona simulation is optional and is not a substitute for browser testing.
+- **untangle** — explicitly invokes Caldo AI's `untangle-codebase` skill to map dependencies, coupling, surplus and special cases before refactoring. Optional Comments and Tests additions require your choice.
+- **improve** — starts Nexora's scalable engineering workflow. Use `audit-only` for a read-only review; request a narrower implementation scope when needed.
 
-Use `/nexora` in Kilo Code, or the `nexora` prompt in compatible VS Code/GitHub Copilot versions. Both use the same task-aware router.
+### Other available prompt files
 
-Use `/nexora` as the unified Kilo Code entry point. It routes each request to exactly one workflow instead of running every specialist on every task:
+The repository also includes focused prompt/command entry points: `/exactsameuiux`, `/projectintelligence`, `/frontendarchitecture`, `/backendapi`, `/engineeringcouncil`, `/test-my-product`, `/product-qa-swarm`, `/pro-eng-scalable`, `/professionalerrors`, `/smartvalidation`, `/meaningfulmessages`, `/design-ui`, and `/frontend-only`. Their definitions live in `.github/prompts/`, `.kilo/commands/`, or `.agents/skills/`; open the corresponding file for its full instructions. Availability and invocation syntax depend on the coding tool and version. The unified `/nexora` prompt is the recommended starting point.
 
-- `/nexora test <URL>` — MiroFish may generate synthetic persona hypotheses when configured; the QA workflow must still open the actual product in a real browser and capture evidence.
-- `/nexora untangle [area]` — explicitly invokes Caldo AI's `untangle-codebase` skill to map hidden dependencies, needless coupling, surplus and special cases before refactoring. It asks whether to include the optional Comments and Tests additions; neither is assumed.
-- `/nexora improve [mode]` — invokes Nexora's scalable engineering workflow.
-
-The Caldo skill keeps its upstream `disable-model-invocation: true` opt-in guard and MIT attribution. See [third-party notices](THIRD-PARTY-NOTICES.md), [Caldo skill source](.agents/skills/untangle-codebase/SKILL.md), and [repository structure](docs/REPOSITORY-STRUCTURE.md). The existing `/test-my-product` and `/pro-eng-scalable` commands remain available as focused compatibility entry points.
-
-### Single-command MiroFish-assisted product testing
-
-Use `/nexora test <URL>` (recommended) or the focused compatibility command `/test-my-product` in Kilo Code. It optionally uses a separately running MiroFish service to generate diverse synthetic persona hypotheses, then validates journeys by opening the real product in a browser. MiroFish simulation is not browser automation or HTTP load testing. The integration is optional and requires separately configured LLM/Zep credentials. See [the MiroFish simulation adapter skill](.agents/skills/mirofish-product-simulation/SKILL.md).
-
-### Real product QA workflow
-
-Use `/product-qa-swarm` in Kilo Code. It requires the exact target URL and environment, opens the rendered product in a real browser, performs isolated persona journeys, captures evidence, and writes a timestamped QA report. Load testing is a separate opt-in stage; it must target an authorized staging environment and records virtual users separately from browser personas. See [the QA report template](docs/PRODUCT-QA-REPORT-TEMPLATE.md) and [the skill instructions](.agents/skills/product-qa-swarm/SKILL.md).
+See [the Caldo untangling guide](docs/UNTANGLE-CODEBASE.md), [MiroFish integration guide](docs/MIROFISH-INTEGRATION.md), and [repository structure](docs/REPOSITORY-STRUCTURE.md).
 
 ## What Nexora helps with
 
