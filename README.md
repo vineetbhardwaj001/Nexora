@@ -84,6 +84,7 @@ The repository includes reusable skill instructions in `.agents/skills/` and pro
 | `/test-my-product` | Single end-to-end entry point: optional MiroFish swarm simulation for user/persona hypotheses, then real-browser persona testing, UX/accessibility/security review, evidence report and separately authorized load testing. |
 | `/product-qa-swarm` | Open the actual supplied product URL in a real browser; run distinct persona journeys, functional/UX/accessibility/safe security reviews, and optional explicitly authorized 100+ virtual-user load tests. Produces an evidence-based report; does not pretend scripted personas are human testers. |
 | `/pro-eng-scalable` | Orchestrate existing Nexora skills for project discovery, scalable architecture, safe refactoring, bug fixes, security, performance and tests. Kilo Code workflow supports audit-only, architecture-only, fix-bugs, frontend-only, backend-only and full-improvement modes. |
+| `/untangle-codebase` | Run Caldo's whole-codebase structural refactoring workflow: inventory hidden/needless links, surplus and special cases; create a decision log; redesign and refactor with regression checks. Ask before optional comment/test cleanup. |
 | `/professionalerrors` | Improve error handling and user-facing failure/recovery messages using actual API behavior. |
 | `/smartvalidation` | Build accessible, contract-aware form validation without inventing field constraints. |
 | `/meaningfulmessages` | Improve success, error, empty, warning and confirmation copy with honest, actionable messaging. |
@@ -101,6 +102,17 @@ Example:
 ### Single-command MiroFish-assisted product testing
 
 Use `/test-my-product` in Kilo Code. It optionally uses a separately running MiroFish service to generate diverse synthetic persona hypotheses, then validates journeys by opening the real product in a browser. MiroFish simulation is not browser automation or HTTP load testing. The integration is optional and requires separately configured LLM/Zep credentials. See [the MiroFish simulation adapter skill](.agents/skills/mirofish-product-simulation/SKILL.md).
+
+### Whole-codebase structural refactoring with Caldo
+
+Use `/untangle-codebase` in Kilo Code, optionally followed by a focus area. Nexora vendors the upstream [Caldo `untangle-codebase` skill](https://github.com/caldoai/skills) at `.agents/skills/untangle-codebase/SKILL.md` and exposes it as a single explicit Kilo workflow in `.kilo/commands/untangle-codebase.md`.
+
+The workflow inventories structural problems before editing, groups findings into a decision log, redesigns from first principles, refactors incrementally, and verifies behavior. It asks whether optional comment cleanup and/or test cleanup should be included. Subagent reviews are used only when the selected coding tool actually supports them. See [third-party notices](THIRD-PARTY-NOTICES.md) for the upstream MIT attribution.
+
+```text
+/untangle-codebase
+/untangle-codebase src/billing
+```
 
 ### Real product QA workflow
 
@@ -222,3 +234,6 @@ Nexora is released under the [MIT License](LICENSE). Third-party projects retain
   Made with care for developers building useful things.<br>
   <strong>Developed by Vineet Bhardwaj</strong> · <a href="https://github.com/vineetbhardwaj001">GitHub</a>
 </p>
+
+
+Third-party skill attribution: see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
