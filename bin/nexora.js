@@ -44,6 +44,7 @@ const FILES = [
   '.agents/skills/mirofish-product-simulation/SKILL.md',
   '.agents/skills/untangle-codebase/SKILL.md',
   '.kilo/commands/untangle-codebase.md',
+  '.github/prompts/untangle-codebase.prompt.md',
   'THIRD-PARTY-NOTICES.md',
   '.kilo/commands/pro-eng-scalable.md',
   '.kilo/commands/product-qa-swarm.md',
