@@ -53,6 +53,7 @@
           <span class="nav-label">Use Nexora</span>
           <ul class="nav-list">
             <li><a class="nav-link" href="#compatibility"><span class="nav-glyph">⌘</span>Coding tools <span class="nav-pill">3</span></a></li>
+            <li><a class="nav-link" href="#using-prompts"><span class="nav-glyph">✎</span>Use prompts</a></li>
             <li><a class="nav-link" href="#agent-packs"><span class="nav-glyph">◇</span>Agent packs</a></li>
             <li><a class="nav-link" href="#example"><span class="nav-glyph">✳</span>Real-world example</a></li>
             <li><a class="nav-link" href="#models"><span class="nav-glyph">⚡</span>Free model policy</a></li>
@@ -131,6 +132,27 @@ npm test</code></pre></div></article>
 node bin/nexora.js --help</code></pre></div></article>
           </div>
           <div class="callout"><span class="callout-symbol" aria-hidden="true">i</span><p><strong>Before using Nexora in a different project:</strong> make a backup of its existing agent instructions and review the changes before merging them. The CLI's current behavior and any limitations should be verified locally; don't assume it configures every tool automatically.</p></div>
+        </section>
+
+        <section class="section" id="using-prompts" data-search="use prompt vscode github copilot agent mode prompt picker kilo code nexora command product testing untangle improve">
+          <div class="section-head">
+            <div><span class="section-kicker">Use Nexora</span><h2>Run one prompt. Choose the workflow.</h2><p class="section-intro">The same Nexora router is available as a repository prompt for VS Code / GitHub Copilot and as a slash command in Kilo Code. It selects one workflow based on your request.</p></div>
+          </div>
+          <div class="steps">
+            <article class="step"><span class="step-number">01</span><h3>VS Code + GitHub Copilot</h3><p>Open the Nexora repository in VS Code, open Copilot Chat, switch to Agent mode, and select <strong>nexora</strong> from the prompt picker. The prompt source is <code>.github/prompts/nexora.prompt.md</code>. Describe your task in the input field. If it is missing from the picker, verify the file exists and reload VS Code; prompt-file support depends on your Copilot version.</p></article>
+            <article class="step"><span class="step-number">02</span><h3>Kilo Code</h3><p>Open the repository in Kilo Code and run <code>/nexora</code>. Add the route and task details. Both entry points read the shared router at <code>.agents/skills/nexora-orchestrator/SKILL.md</code>.</p></article>
+            <article class="step"><span class="step-number">03</span><h3>Give the task enough context</h3><p>For product QA, provide the exact product URL and environment, plus a dedicated test account if login is required. Use sandbox payment credentials only. Never share personal passwords or production secrets in chat.</p></article>
+          </div>
+          <div class="code-block"><div class="code-head"><span>Three route examples</span><button class="copy-btn" data-copy="/nexora test https://staging.example.com&#10;/nexora untangle src/&#10;/nexora improve audit-only">Copy</button></div><pre><code>/nexora test https://staging.example.com
+/nexora untangle src/
+/nexora improve audit-only</code></pre></div>
+          <div class="feature-grid">
+            <article class="feature-card"><div class="feature-icon">🧪</div><h3>test</h3><p>Routes to product QA. Real-browser journeys and observable evidence are required before reporting actual UI behavior. Synthetic personas and browser sessions must be counted separately.</p></article>
+            <article class="feature-card"><div class="feature-icon">🧩</div><h3>untangle</h3><p>Explicitly loads Caldo's <code>untangle-codebase</code> skill. It inventories hidden dependencies, needless coupling, surplus and special cases. Optional Comments and Tests work is opt-in.</p></article>
+            <article class="feature-card"><div class="feature-icon">🏗️</div><h3>improve</h3><p>Routes to Nexora's scalable engineering workflow. Start with a read-only audit when implementation scope is not explicit; approve risky changes before they happen.</p></article>
+          </div>
+          <div class="callout"><span class="callout-symbol" aria-hidden="true">!</span><p><strong>Evidence matters.</strong> The prompt does not make a browser, simulation, subagent or test run by itself. Report only work that the connected tool actually executed. Load testing is separate and requires explicit authorization and bounded staging limits.</p></div>
+          <p class="section-intro">For the complete prompt catalog, open <a class="tiny-link" href="https://github.com/vineetbhardwaj001/Nexora/tree/feature/caldo-untangle-unified-command/.github/prompts" target="_blank" rel="noreferrer">the prompt files on GitHub</a>. For Caldo details, see <a class="tiny-link" href="UNTANGLE-CODEBASE.md">the untangling guide</a>.</p>
         </section>
 
         <section class="section" id="compatibility" data-search="coding tools integrations kilo code opencode antigravity github copilot compatibility agents skills rules">
