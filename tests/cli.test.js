@@ -111,3 +111,37 @@ test('MiroFish operator guide is included in the installer manifest', () => {
   assert.ok(cli.includes(guide));
   assert.ok(fs.existsSync(path.join(root, guide)));
 });
+
+
+test('Caldo untangle skill and unified Nexora command are registered and installable', () => {
+  const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
+  const config = JSON.parse(fs.readFileSync(path.join(root, '.agent/config/skills.json'), 'utf8'));
+  const skill = '.agents/skills/untangle-codebase/SKILL.md';
+  const license = '.agents/skills/untangle-codebase/LICENSE';
+  const orchestrator = '.agents/skills/nexora-orchestrator/SKILL.md';
+  const command = '.kilo/commands/nexora.md';
+  const prompt = '.github/prompts/nexora.prompt.md';
+  const notices = 'THIRD-PARTY-NOTICES.md';
+  const guide = 'docs/UNTANGLE-CODEBASE.md';
+
+  assert.equal(config.skills['untangle-codebase'], 'ask-first');
+  assert.equal(config.skills['nexora-orchestrator'], 'enabled');
+  for (const file of [skill, license, orchestrator, command, prompt, notices, guide]) {
+    assert.ok(cli.includes(file), 'Installer manifest should include ' + file);
+    assert.ok(fs.existsSync(path.join(root, file)), 'Missing Nexora workflow file: ' + file);
+  }
+  const upstream = fs.readFileSync(path.join(root, skill), 'utf8');
+  assert.match(upstream, /disable-model-invocation: true/);
+  assert.match(upstream, /Hidden links/);
+  assert.match(upstream, /Needless links/);
+  assert.match(upstream, /special case/i);
+  const kilo = fs.readFileSync(path.join(root, command), 'utf8');
+  assert.match(kilo, /agent: code/);
+  assert.match(kilo, /\/nexora test/);
+  assert.match(kilo, /\/nexora untangle/);
+  assert.match(kilo, /\/nexora improve/);
+  assert.match(kilo, /real-browser/i);
+  const copilotPrompt = fs.readFileSync(path.join(root, prompt), 'utf8');
+  assert.match(copilotPrompt, /mode: agent/);
+  assert.match(copilotPrompt, /nexora-orchestrator/);
+});
