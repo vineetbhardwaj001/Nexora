@@ -34,7 +34,7 @@ This guide explains the current repository layout and where each kind of change 
 ├── kilo.jsonc                    # Kilo Code project configuration
 ├── .github/
 │   ├── copilot-instructions.md   # GitHub Copilot repository instructions
-│   ├── prompts/                  # Reusable prompt files
+│   ├── prompts/                  # Reusable prompt files (including nexora.prompt.md)
 │   ├── ISSUE_TEMPLATE/           # Issue forms/templates
 │   └── workflows/                # CI, security, docs deploy, npm staging
 ├── docs/
@@ -58,7 +58,7 @@ This guide explains the current repository layout and where each kind of change 
 | Change Node.js CLI tests | `tests/cli.test.js` |
 | Change Python structural tests | `tests/test_agent_config.py` |
 | Add or edit a reusable skill | `.agents/skills/<skill-name>/SKILL.md` |
-| Run the unified Nexora workflow | `/nexora` from `.kilo/commands/nexora.md` (routes test, untangle or improve) |
+| Run the unified Nexora workflow | `/nexora` from `.kilo/commands/nexora.md`, or select the `nexora` prompt in VS Code Copilot Chat Agent mode |
 | Run complete MiroFish-assisted product testing | `/test-my-product` from `.kilo/commands/test-my-product.md` (legacy focused entry point) |
 | Maintain the optional MiroFish integration guidance | `.agents/skills/mirofish-product-simulation/SKILL.md` |
 | Understand the Caldo codebase untangling workflow | `UNTANGLE-CODEBASE.md` |
@@ -73,7 +73,7 @@ This guide explains the current repository layout and where each kind of change 
 | Change shared repository instructions | `AGENTS.md` and, if relevant, `.agent/CORE.md` |
 | Update a workflow or planning procedure | `.agent/workflows/` |
 | Change Kilo Code-specific behavior | `.kilo/` and `kilo.jsonc` |
-| Change GitHub Copilot instructions/prompts | `.github/copilot-instructions.md` or `.github/prompts/` |
+| Use the unified prompt in VS Code | Select `nexora` from the Copilot Chat prompt picker; source: `.github/prompts/nexora.prompt.md` |\n| Change GitHub Copilot instructions/prompts | `.github/copilot-instructions.md` or `.github/prompts/` |
 | Change docs copy, sections, or navigation | `docs/index.html` |
 | Change docs colors, spacing, or responsive layout | `docs/assets/css/styles.css` |
 | Change docs search, theme, menu, or copy buttons | `docs/assets/js/docs.js` |
