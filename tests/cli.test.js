@@ -111,3 +111,27 @@ test('MiroFish operator guide is included in the installer manifest', () => {
   assert.ok(cli.includes(guide));
   assert.ok(fs.existsSync(path.join(root, guide)));
 });
+
+test('Caldo untangle-codebase skill and Kilo command are registered and installable', () => {
+  const cli = fs.readFileSync(path.join(root, 'bin/nexora.js'), 'utf8');
+  const config = JSON.parse(fs.readFileSync(path.join(root, '.agent/config/skills.json'), 'utf8'));
+  const skill = '.agents/skills/untangle-codebase/SKILL.md';
+  const command = '.kilo/commands/untangle-codebase.md';
+  const notice = 'THIRD-PARTY-NOTICES.md';
+
+  assert.equal(config.skills['untangle-codebase'], 'ask-first');
+  for (const file of [skill, command, notice]) {
+    assert.ok(cli.includes(file), 'Installer manifest should include ' + file);
+    assert.ok(fs.existsSync(path.join(root, file)), 'Missing Caldo integration file: ' + file);
+  }
+  const upstream = fs.readFileSync(path.join(root, skill), 'utf8');
+  assert.match(upstream, /name: untangle-codebase/);
+  assert.match(upstream, /List every problem/);
+  assert.match(upstream, /Redesign from first principles/);
+  const kilo = fs.readFileSync(path.join(root, command), 'utf8');
+  assert.match(kilo, /agent: code/);
+  assert.match(kilo, /\$ARGUMENTS/);
+  assert.match(kilo, /subagents/i);
+  assert.match(kilo, /Comments/);
+  assert.match(kilo, /Tests/);
+});
