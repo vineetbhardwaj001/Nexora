@@ -121,10 +121,11 @@ test('Caldo untangle skill and unified Nexora command are registered and install
   const orchestrator = '.agents/skills/nexora-orchestrator/SKILL.md';
   const command = '.kilo/commands/nexora.md';
   const notices = 'THIRD-PARTY-NOTICES.md';
+  const guide = 'docs/UNTANGLE-CODEBASE.md';
 
   assert.equal(config.skills['untangle-codebase'], 'ask-first');
   assert.equal(config.skills['nexora-orchestrator'], 'enabled');
-  for (const file of [skill, license, orchestrator, command, notices]) {
+  for (const file of [skill, license, orchestrator, command, notices, guide]) {
     assert.ok(cli.includes(file), 'Installer manifest should include ' + file);
     assert.ok(fs.existsSync(path.join(root, file)), 'Missing Nexora workflow file: ' + file);
   }
