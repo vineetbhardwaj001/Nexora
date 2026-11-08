@@ -11,6 +11,7 @@
 - Critical blockers:
 
 ## Execution counts
+
 | Metric | Count |
 |---|---:|
 | Personas defined | |
@@ -23,6 +24,7 @@
 | Confirmed findings | |
 | Virtual users (load test only) | |
 | Load-test duration | |
+
 ## Environment and evidence
 - Exact target and final URL:
 - Authorization/scope:
@@ -32,6 +34,7 @@
 - Limitations:
 
 ## Test matrix
+
 | Persona ID | Role/goal | Journey | Browser/context | Result | Evidence |
 |---|---|---|---|---|---|
 
