@@ -118,9 +118,10 @@ test('Caldo untangle-codebase skill and Kilo command are registered and installa
   const skill = '.agents/skills/untangle-codebase/SKILL.md';
   const command = '.kilo/commands/untangle-codebase.md';
   const notice = 'THIRD-PARTY-NOTICES.md';
+  const prompt = '.github/prompts/untangle-codebase.prompt.md';
 
   assert.equal(config.skills['untangle-codebase'], 'ask-first');
-  for (const file of [skill, command, notice]) {
+  for (const file of [skill, command, prompt, notice]) {
     assert.ok(cli.includes(file), 'Installer manifest should include ' + file);
     assert.ok(fs.existsSync(path.join(root, file)), 'Missing Caldo integration file: ' + file);
   }
@@ -134,4 +135,7 @@ test('Caldo untangle-codebase skill and Kilo command are registered and installa
   assert.match(kilo, /subagents/i);
   assert.match(kilo, /Comments/);
   assert.match(kilo, /Tests/);
+  const copilotPrompt = fs.readFileSync(path.join(root, prompt), 'utf8');
+  assert.match(copilotPrompt, /mode: agent/);
+  assert.match(copilotPrompt, /untangle-codebase/);
 });
