@@ -5,6 +5,8 @@ disable-model-invocation: true
 argument-hint: "[optional area or concern to focus on]"
 ---
 
+<!-- markdownlint-disable MD036 -->
+
 Start a thorough refactor of this codebase and complete it to the end.
 
 Treat this as a goal.
