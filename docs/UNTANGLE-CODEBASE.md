@@ -13,6 +13,17 @@ In Kilo Code:
 
 The command routes to the Caldo skill. It does not run during ordinary product QA or general engineering tasks.
 
+### Use through VS Code / GitHub Copilot
+
+The unified prompt is also available to Copilot in compatible VS Code versions:
+
+1. Open the Nexora repository in VS Code.
+2. Open GitHub Copilot Chat and select **Agent** mode.
+3. Choose **nexora** from the prompt picker. Its source is `.github/prompts/nexora.prompt.md`.
+4. Ask for a codebase untangling task. The shared router selects the Caldo workflow only when the request is about untangling/refactoring.
+
+If the prompt is not visible, confirm that the prompt file exists and reload VS Code. Prompt-file discovery depends on the installed Copilot version. In Kilo Code, continue to use the native `/nexora` command.
+
 ## What it examines
 
 - **Hidden links:** modules or values that must change together but are not represented by the code structure.
