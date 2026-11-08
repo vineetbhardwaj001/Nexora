@@ -151,6 +151,28 @@ node bin/nexora.js --help</code></pre></div></article>
             <article class="feature-card"><div class="feature-icon">🧩</div><h3>untangle</h3><p>Explicitly loads Caldo's <code>untangle-codebase</code> skill. It inventories hidden dependencies, needless coupling, surplus and special cases. Optional Comments and Tests work is opt-in.</p></article>
             <article class="feature-card"><div class="feature-icon">🏗️</div><h3>improve</h3><p>Routes to Nexora's scalable engineering workflow. Start with a read-only audit when implementation scope is not explicit; approve risky changes before they happen.</p></article>
           </div>
+          <h3>Focused prompt and command catalog</h3>
+          <p class="section-intro">Use these focused workflows when you want a specific task rather than the unified router. Their exact availability depends on the editor and its prompt/command support.</p>
+          <div class="compat-table-wrap">
+            <table class="compat-table">
+              <thead><tr><th>Prompt / command</th><th>Purpose</th><th>Where to look</th></tr></thead>
+              <tbody>
+                <tr><td><code>/exactsameuiux</code></td><td>Recreate a supplied UI reference with high visual fidelity.</td><td><code>.github/prompts/</code></td></tr>
+                <tr><td><code>/projectintelligence</code></td><td>Audit the repository and prepare project, API, database and integration context.</td><td><code>.github/prompts/</code></td></tr>
+                <tr><td><code>/frontendarchitecture</code></td><td>Plan a scalable frontend structure and migration sequence.</td><td><code>.github/prompts/</code></td></tr>
+                <tr><td><code>/backendapi</code></td><td>Trace backend routes and document verified API contracts.</td><td><code>.github/prompts/</code></td></tr>
+                <tr><td><code>/engineeringcouncil</code></td><td>Coordinate a risk-based engineering review and recommendations.</td><td><code>.github/prompts/</code></td></tr>
+                <tr><td><code>/test-my-product</code></td><td>Focused product QA entry point with optional MiroFish persona hypotheses.</td><td><code>.kilo/commands/</code></td></tr>
+                <tr><td><code>/product-qa-swarm</code></td><td>Run real-browser persona journeys and produce an evidence-based QA report.</td><td><code>.kilo/commands/</code></td></tr>
+                <tr><td><code>/pro-eng-scalable</code></td><td>Run the scalable engineering workflow in its supported modes.</td><td><code>.kilo/commands/</code></td></tr>
+                <tr><td><code>/professionalerrors</code></td><td>Improve error handling and recovery messages using actual API behavior.</td><td><code>.github/prompts/</code></td></tr>
+                <tr><td><code>/smartvalidation</code></td><td>Build accessible, contract-aware form validation.</td><td><code>.github/prompts/</code></td></tr>
+                <tr><td><code>/meaningfulmessages</code></td><td>Improve success, error, empty, warning and confirmation copy.</td><td><code>.github/prompts/</code></td></tr>
+                <tr><td><code>/design-ui</code></td><td>Analyze design references and propose a product-specific design system.</td><td><code>.github/prompts/</code></td></tr>
+                <tr><td><code>/frontend-only</code></td><td>Build frontend functionality against the existing backend without changing backend files by default.</td><td><code>.github/prompts/</code></td></tr>
+              </tbody>
+            </table>
+          </div>
           <div class="callout"><span class="callout-symbol" aria-hidden="true">!</span><p><strong>Evidence matters.</strong> The prompt does not make a browser, simulation, subagent or test run by itself. Report only work that the connected tool actually executed. Load testing is separate and requires explicit authorization and bounded staging limits.</p></div>
           <p class="section-intro">For the complete prompt catalog, open <a class="tiny-link" href="https://github.com/vineetbhardwaj001/Nexora/tree/feature/caldo-untangle-unified-command/.github/prompts" target="_blank" rel="noreferrer">the prompt files on GitHub</a>. For Caldo details, see <a class="tiny-link" href="UNTANGLE-CODEBASE.md">the untangling guide</a>.</p>
         </section>
