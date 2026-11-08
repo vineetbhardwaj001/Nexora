@@ -33,7 +33,8 @@
     "engineering-council": "ask-first",
     "pro-eng-scalable": "ask-first",
     "product-qa-swarm": "ask-first",
-    "mirofish-product-simulation": "ask-first"
+    "mirofish-product-simulation": "ask-first",
+    "untangle-codebase": "ask-first"
   },
   "policies": {
     "analyze_each_ui_reference_separately": true,
