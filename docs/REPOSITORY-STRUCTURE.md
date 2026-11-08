@@ -25,7 +25,8 @@ This guide explains the current repository layout and where each kind of change 
 │   ├── rules/nexora.md
 │   └── skills/<skill-name>/SKILL.md
 │       ├── clean-code-architecture/SKILL.md
-│       └── pro-eng-scalable/SKILL.md
+│       ├── pro-eng-scalable/SKILL.md
+│       └── untangle-codebase/SKILL.md
 ├── .kilo/                        # Kilo Code-specific rules
 │   ├── rules/nexora.md
 │   └── commands/pro-eng-scalable.md
@@ -62,6 +63,7 @@ This guide explains the current repository layout and where each kind of change 
 | Set up/use MiroFish for optional simulations | `docs/MIROFISH-INTEGRATION.md` |
 | Use the QA report template | `docs/PRODUCT-QA-REPORT-TEMPLATE.md` |
 | Run the coordinated project engineering workflow | `/pro-eng-scalable` from `.kilo/commands/pro-eng-scalable.md` |
+| Run Caldo's whole-codebase structural refactoring workflow | `/untangle-codebase` from `.kilo/commands/untangle-codebase.md` |
 | Maintain the universal engineering orchestrator | `.agents/skills/pro-eng-scalable/SKILL.md` |
 | Maintain Kilo Code slash workflows | `.kilo/commands/*.md` |
 | Change shared repository instructions | `AGENTS.md` and, if relevant, `.agent/CORE.md` |
