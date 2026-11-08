@@ -47,6 +47,7 @@ const FILES = [
   '.agents/skills/nexora-orchestrator/SKILL.md',
   '.kilo/commands/nexora.md',
   'THIRD-PARTY-NOTICES.md',
+  'docs/UNTANGLE-CODEBASE.md',
   '.kilo/commands/pro-eng-scalable.md',
   '.kilo/commands/product-qa-swarm.md',
   '.kilo/commands/test-my-product.md',
