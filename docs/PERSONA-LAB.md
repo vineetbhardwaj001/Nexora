@@ -6,7 +6,7 @@ Persona Lab is Nexora's local, MiroFish-inspired QA runtime. It separates three 
 2. **Real browser checks** — a small, bounded number of Playwright browser contexts navigate the actual target and capture screenshots, HTTP statuses, console errors and failed requests.
 3. **HTTP load testing** — a separate k6 script, disabled unless the operator supplies explicit staging authorization, an exact host allowlist, VU ceiling and duration.
 
-Persona profiles are not autonomous LLM agents, real people or browser sessions. Browser checks do not automatically execute all generated persona profiles. The runtime intentionally avoids pretending that 100 profiles equal 100 concurrent users.
+Persona profiles are not autonomous LLM agents or real people. Browser checks execute only the explicitly requested number of profiles in isolated contexts. The runtime intentionally avoids pretending that 100 profiles equal 100 concurrent users.
 
 ## Install into an existing product
 
@@ -42,10 +42,10 @@ npx playwright install chromium
 Then run:
 
 ```powershell
-node .\qa\cli.js run --url "https://your-preview-or-staging.example" --personas 100 --browser-personas 3 --workers 2 --max-pages 10
+node .\qa\cli.js run --url "https://your-preview-or-staging.example" --personas 100 --browser-personas 100 --workers 2 --max-pages 5
 ```
 
-The default is 100 generated profiles, 3 executed browser personas and 2 browser workers. Workers are capped at 3 and browser personas at 10. The runner performs read-only same-origin navigation and screenshots; it does not submit forms, create records, send messages, or trigger payments. Output includes personas.json, browser-results.json, README.md and evidence/.
+The default is 100 generated profiles, 3 executed browser personas and 2 browser workers. To execute all 100 profiles in separate browser contexts, use --browser-personas 100 --workers 2 --max-pages 5. Workers are capped at 3; browser contexts are opened in small batches rather than all at once. The runner performs read-only same-origin navigation and screenshots; it does not submit forms, create records, send messages, or trigger payments. Output includes personas.json, browser-results.json, README.md and evidence/.
 
 If the target requires authentication, configure approved test accounts and add a project-specific authenticated test flow before claiming protected journeys were covered. Never put passwords or tokens in command-line arguments, committed files or reports.
 
@@ -72,6 +72,6 @@ The script fails closed unless the authorization flag is true, environment is st
 - Persona generation is deterministic and rule-based, not a MiroFish social simulation or autonomous LLM swarm.
 - The browser crawler checks accessible same-origin pages; it does not infer business workflows or safely submit forms automatically.
 - It does not prove multi-tenant isolation, authorization correctness, accessibility conformance or real-user sentiment.
-- Browser contexts are deliberately limited for developer machines with modest RAM.
+- Browser workers are deliberately capped at 3 for developer machines with modest RAM; 100 persona contexts can run sequentially in a small worker pool.
 - MiroFish remains an optional, separately deployed AGPL-3.0 service. Nexora does not vendor its source or require its credentials.
 - Never report synthetic persona count as browser-user count, human participants or HTTP VUs.
