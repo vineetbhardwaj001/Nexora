@@ -1,6 +1,12 @@
 ---
 description: Project-aware customer persona testing with evidence-only reporting.
+agent: code
 ---
+
+# /nexora-test — Project-aware Product QA
+
+Arguments: $ARGUMENTS
+
 
 Read .agents/skills/nexora-project-aware-testing/SKILL.md and follow it exactly.
 
