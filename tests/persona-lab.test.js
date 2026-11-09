@@ -7,6 +7,7 @@ test('persona generator creates requested number of uniquely identified profiles
   const personas = generatePersonas(100, 'avr-demo');
   assert.equal(personas.length, 100);
   assert.equal(new Set(personas.map(persona => persona.id)).size, 100);
+  assert.equal(new Set(personas.map(persona => [persona.role, persona.goal, persona.device, persona.constraint, persona.journey].join('|'))).size, 100);
   assert.ok(personas.every(persona => persona.status === 'planned-not-executed'));
   assert.ok(personas.every(persona => persona.role && persona.goal && persona.device && persona.constraint));
 });
@@ -21,6 +22,24 @@ test('browser runner accepts only credential-free HTTP(S) URLs', () => {
   assert.equal(validateTarget('https://example.com').hostname, 'example.com');
   assert.throws(() => validateTarget('file:///C:/secret'), /Only http/);
   assert.throws(() => validateTarget('https://user:pass@example.com'), /credentials/);
+});
+
+test('Persona Lab plan command writes a deterministic JSON plan without browser execution', () => {
+  const fs = require('node:fs');
+  const os = require('node:os');
+  const path = require('node:path');
+  const { spawnSync } = require('node:child_process');
+  const root = path.resolve(__dirname, '..');
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), 'nexora-persona-plan-'));
+  try {
+    const result = spawnSync(process.execPath, [path.join(root, 'qa', 'cli.js'), 'plan', '--url', 'https://example.com', '--personas', '7', '--out', out], { cwd: root, encoding: 'utf8' });
+    assert.equal(result.status, 0, result.stderr);
+    const plan = JSON.parse(fs.readFileSync(path.join(out, 'personas.json'), 'utf8'));
+    assert.equal(plan.count, 7);
+    assert.equal(plan.executionStatus, 'personas-generated-not-human-participants');
+  } finally {
+    fs.rmSync(out, { recursive: true, force: true });
+  }
 });
 
 test('Persona Lab files are part of the Nexora installer manifest', () => {
