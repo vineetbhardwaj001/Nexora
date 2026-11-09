@@ -3,7 +3,6 @@
 const crypto = require('node:crypto');
 
 const ACTIONS = new Set(['navigate','click','fill','press_key','scroll','inspect','wait','ask_user','stop']);
-const SAFE_DEFAULT_ACTIONS = new Set(['navigate','click','fill','press_key','scroll','inspect','wait','ask_user','stop']);
 const MUTATING_WORDS = /\\b(pay|purchase|checkout|submit|send|delete|remove|cancel|book|confirm|create|update|save|upload|invite|refund|transfer)\\b/i;
 
 function fail(message) {
