@@ -24,7 +24,7 @@
 
 Nexora is an early-stage, tool-aware **agent-pack and skills project**. The goal is to help developers reuse thoughtful workflows—planning, UI/UX, frontend integration, testing, and security—across compatible AI coding environments, instead of locking their work to a single editor.
 
-> **Honest status:** Nexora is currently a starter kit and CLI, not a universal autonomous agent runtime. The documentation site and cross-tool architecture describe the intended direction; each adapter and feature must be implemented and tested against the target tool before being advertised as supported.
+> **Honest status:** Nexora is an agent toolkit and CLI with a bounded native Persona Lab MVP for synthetic scenario planning and real-browser smoke checks. It is not a universal autonomous agent runtime or an autonomous LLM swarm. Each adapter and feature must be implemented and tested against the target tool before being advertised as supported.
 
 ## Start here
 
@@ -46,6 +46,22 @@ node bin/nexora.js
 ```
 
 Nexora is being tested from a Git clone first. **npm publishing is not part of the current workflow.**
+
+### 3. Install Nexora into any existing project
+
+Nexora is designed to be project-agnostic. Choose any existing project directory; the installer does not assume AVR, a specific framework or a fixed folder:
+
+```powershell
+node .\bin\nexora.js init --path "C:\path\to\your-project" --yes
+```
+
+On your own machine, you can save a private default project path:
+
+```powershell
+node .\bin\nexora.js init --path "C:\path\to\your-project" --yes --save-default
+```
+
+That default is stored under the current user's home directory in `.nexora/config.json`, outside the repository. A later `node .\bin\nexora.js init --yes` reuses it. Each Nexora user can set their own path; no personal path is committed to GitHub.
 
 ### 3. Understand the project before installing it elsewhere
 
@@ -90,6 +106,18 @@ The repository includes reusable skill instructions in `.agents/skills/` and pro
 | `/meaningfulmessages` | Improve success, error, empty, warning and confirmation copy with honest, actionable messaging. |
 | `/design-ui` | Analyze design references separately and propose a coherent product-specific design system. |
 | `/frontend-only` | Build frontend functionality against the existing backend while keeping backend files read-only by default. |
+
+## Native Persona Lab — MiroFish-inspired QA runtime
+
+Nexora includes a local runtime that works without MiroFish credentials:
+
+```powershell
+node .\qa\cli.js plan --url "https://your-staging.example" --personas 100
+node .\qa\cli.js run --url "https://your-staging.example" --personas 100 --browser-personas 100 --workers 2 --max-pages 5
+```
+
+It generates up to 10,000 deterministic synthetic profiles and can execute a small, bounded Playwright browser cohort against the exact URL. It captures page status, screenshots, console errors and failed requests. Install Playwright in the target project if needed. **100 generated profiles are not 100 real people, autonomous LLM agents or HTTP virtual users.** The optional 100-browser-persona run uses separate contexts with a small worker pool, not 100 simultaneous browsers. The separate k6 harness is staging-only and requires explicit authorization. See [Persona Lab setup and safety](docs/PERSONA-LAB.md).
+
 
 These names are prompt identifiers, not a promise that every coding tool exposes identical slash-command UX. `/nexora` is the recommended unified Kilo Code command; focused legacy commands remain available. The Kilo Code `/pro-eng-scalable` workflow is defined in `.kilo/commands/pro-eng-scalable.md`; invoke it as `/pro-eng-scalable` and optionally pass a mode such as `audit-only` or `fix-bugs`. Other Kilo workflows and skills are documented in their native locations. Verify discovery in the IDE/version you use. If a prompt is not listed, open its file in `.github/prompts/` or read the corresponding skill's `SKILL.md`.
 

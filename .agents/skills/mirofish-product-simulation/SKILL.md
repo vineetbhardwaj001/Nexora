@@ -29,3 +29,14 @@ Repository layout observed: Python Flask backend under `backend/app`, API bluepr
 - Use a tiny synthetic seed and small simulation for integration smoke tests.
 - Record actual run ID and observed results.
 - If LLM/Zep credentials are not configured, mark simulation stage skipped and continue browser QA.
+
+
+## Nexora-native Persona Lab fallback
+
+Nexora now includes a separate local MVP under qa/ that does not require MiroFish, LLM credentials or Zep:
+- qa/personas.js creates deterministic synthetic scenario profiles (up to 10,000).
+- qa/runner.js uses an already-installed Playwright package to perform bounded, read-only same-origin navigation and capture evidence. It caps workers at 3 and supports up to 100 isolated browser persona contexts, processed in small batches rather than launched simultaneously.
+- qa/cli.js plan generates persona plans; qa/cli.js run executes only the explicitly configured small browser cohort.
+- load/k6-smoke.js is a separate fail-closed staging-only HTTP load harness.
+
+This MVP is not an autonomous LLM multi-agent social simulation. It can execute up to 100 generated profiles in separate browser contexts when explicitly requested, but those scripted journeys are not human participants or 100 concurrent HTTP users. Do not describe it as MiroFish. See docs/PERSONA-LAB.md for commands and limitations.

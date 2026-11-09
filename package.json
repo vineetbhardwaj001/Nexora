@@ -38,7 +38,10 @@
     ".kilo/",
     "kilo.jsonc",
     ".github/copilot-instructions.md",
-    ".github/prompts/"
+    ".github/prompts/",
+    "qa/",
+    "load/",
+    "docs/PERSONA-LAB.md"
   ],
   "scripts": {
     "test": "node --test"
