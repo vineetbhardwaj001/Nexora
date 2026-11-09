@@ -39,4 +39,4 @@ Nexora now includes a separate local MVP under qa/ that does not require MiroFis
 - qa/cli.js plan generates persona plans; qa/cli.js run executes only the explicitly configured small browser cohort.
 - load/k6-smoke.js is a separate fail-closed staging-only HTTP load harness.
 
-This MVP is not an autonomous LLM multi-agent social simulation, and it does not execute every generated persona in a browser. Do not describe it as MiroFish or claim that 100 generated personas mean 100 real/browser users. See docs/PERSONA-LAB.md for commands and limitations.
+This MVP is not an autonomous LLM multi-agent social simulation. It can execute up to 100 generated profiles in separate browser contexts when explicitly requested, but those scripted journeys are not human participants or 100 concurrent HTTP users. Do not describe it as MiroFish. See docs/PERSONA-LAB.md for commands and limitations.
