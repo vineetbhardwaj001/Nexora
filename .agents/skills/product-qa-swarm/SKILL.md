@@ -67,7 +67,7 @@ Summarize target actually opened, environment, roles, personas/journeys executed
 
 When the installed project contains qa/cli.js, use it for repeatable local QA:
 - Planning only: node qa/cli.js plan --url <exact-url> --personas 100
-- Browser checks: node qa/cli.js run --url <exact-url> --personas 100 --browser-personas 3 --workers 2
+- Browser checks: node qa/cli.js run --url <exact-url> --personas 100 --browser-personas 100 --workers 2 --max-pages 5 when the user requests the full 100-persona browser cohort; otherwise start with 3.
 - Require Playwright installed in the target project before browser execution.
 - The MVP performs read-only same-origin navigation and captures screenshots/status/errors; it does not safely infer or submit business forms.
 - Report synthetic profile count, browser personas executed and HTTP VUs separately. The runtime does not create autonomous LLM agents or human participants.
