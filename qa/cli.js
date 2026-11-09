@@ -37,6 +37,7 @@ async function main() {
   if (command === 'reason') {
     if (!options.report || !options.persona) throw new Error('reason requires --report <discovery-directory> and --persona <persona-id>.');
     const report = path.resolve(options.report);
+    if (options.url) validateTarget(options.url);
     const read = name => JSON.parse(fs.readFileSync(path.join(report, name), 'utf8'));
     const analysis = read('project-analysis.json');
     const personaBundle = read('personas.json');
@@ -54,7 +55,7 @@ async function main() {
     if (!options.file) throw new Error('validate-decision requires --file <decision.json>.');
     const file = path.resolve(options.file);
     const decision = JSON.parse(fs.readFileSync(file, 'utf8'));
-    const validated = validateDecision(decision, { allowStateChanges: options['allow-state-changes'] === 'true', environment: options.environment || 'unknown' });
+    const validated = validateDecision(decision, { allowStateChanges: options['allow-state-changes'] === 'true', environment: options.environment || 'unknown', allowedOrigins: options['allowed-origin'] ? [new URL(options['allowed-origin']).origin] : undefined });
     const record = createExecutionRecord(validated);
     const out = path.resolve(options.out || file.replace(/\.json$/i, '.validated.json'));
     fs.writeFileSync(out, JSON.stringify({ decision: validated, executionRecord: record }, null, 2) + '\n', { flag: 'wx' });
