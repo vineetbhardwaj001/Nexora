@@ -26,7 +26,7 @@ function outputDirectory(options) {
 async function main() {
   const [command, ...rest] = process.argv.slice(2);
   if (!['plan', 'run'].includes(command)) {
-    console.log('Nexora Persona Lab\n\nUsage:\n  node qa/cli.js plan --url https://your-preview.example --personas 100\n  node qa/cli.js run --url https://your-preview.example --personas 100 --browser-personas 100 --workers 2\n\nOptions: --url, --personas (1-10000), --browser-personas (1-10), --workers (1-3), --max-pages (1-20), --seed, --out');
+    console.log('Nexora Persona Lab\n\nUsage:\n  node qa/cli.js plan --url https://your-preview.example --personas 100\n  node qa/cli.js run --url https://your-preview.example --personas 100 --browser-personas 100 --workers 2\n\nOptions: --url, --personas (1-10000), --browser-personas (1-100), --workers (1-3), --max-pages (1-20), --seed, --out');
     if (command) process.exitCode = 1;
     return;
   }
