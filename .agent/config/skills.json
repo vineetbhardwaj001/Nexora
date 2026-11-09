@@ -35,7 +35,8 @@
     "product-qa-swarm": "ask-first",
     "mirofish-product-simulation": "ask-first",
     "untangle-codebase": "ask-first",
-    "nexora-orchestrator": "enabled"
+    "nexora-orchestrator": "enabled",
+    "nexora-project-aware-testing": "ask-first"
   },
   "policies": {
     "analyze_each_ui_reference_separately": true,
