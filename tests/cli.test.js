@@ -145,3 +145,27 @@ test('Caldo untangle skill and unified Nexora command are registered and install
   assert.match(copilotPrompt, /mode: agent/);
   assert.match(copilotPrompt, /nexora-orchestrator/);
 });
+
+
+test('CLI saves a private default project path outside the repository and reuses it', () => {
+  const os = require('node:os');
+  const { spawnSync } = require('node:child_process');
+  const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'nexora-default-project-'));
+  const configHome = path.join(temp, 'user-home');
+  const project = path.join(temp, 'product-project');
+  fs.mkdirSync(project, { recursive: true });
+  const env = { ...process.env, NEXORA_CONFIG_HOME: configHome, NO_COLOR: '1' };
+  try {
+    const first = spawnSync(process.execPath, [path.join(root, 'bin/nexora.js'), 'init', '--path', project, '--yes', '--save-default'], { cwd: root, env, encoding: 'utf8' });
+    assert.equal(first.status, 0, first.stderr);
+    const configPath = path.join(configHome, '.nexora', 'config.json');
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    assert.equal(config.defaultProject, project);
+
+    const second = spawnSync(process.execPath, [path.join(root, 'bin/nexora.js'), 'init', '--yes'], { cwd: root, env, encoding: 'utf8' });
+    assert.equal(second.status, 0, second.stderr);
+    assert.match(second.stdout, new RegExp(project.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  } finally {
+    fs.rmSync(temp, { recursive: true, force: true });
+  }
+});
