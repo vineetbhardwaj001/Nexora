@@ -13,3 +13,8 @@ Choose exactly one route for this request:
 Do not run multiple routes unless explicitly requested. Preserve user changes, use actual tool execution as evidence, and never claim tests, browser sessions, simulations or independent subagents ran without proof. Ask before destructive migrations, production actions, auth/security changes, paid services or external load testing.
 
 User request: ${input:request:What should Nexora do?}
+
+
+## Project-aware product testing
+
+For requests to test a product as its customers, also read .agents/skills/nexora-project-aware-testing/SKILL.md. Run node qa/cli.js discover --project . --personas 8 in the current workspace when available. Inspect project-analysis.json, customer-hypotheses.json, personas.json and skill-assignments.json. Verify routes and choose a relevant subset of the 100 skills. Do not confuse planning artifacts with executed tests. Keep statuses explicit and require browser evidence for pass/fail claims.
