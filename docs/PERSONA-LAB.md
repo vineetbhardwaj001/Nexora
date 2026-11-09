@@ -83,3 +83,12 @@ The script fails closed unless the authorization flag is true, environment is st
 - Browser workers are deliberately capped at 3 for developer machines with modest RAM; 100 persona contexts can run sequentially in a small worker pool.
 - MiroFish remains an optional, separately deployed AGPL-3.0 service. Nexora does not vendor its source or require its credentials.
 - Never report synthetic persona count as browser-user count, human participants or HTTP VUs.
+
+
+## Project-aware customer discovery and skill assignment
+
+See [Project-aware Persona Testing](PROJECT-AWARE-PERSONA-TESTING.md). The discovery command inspects repository metadata and file paths, creates customer-segment hypotheses, generates synthetic profiles and assigns a relevant subset of the 100 reusable QA skills:
+
+    node qa/cli.js discover --project . --personas 8
+
+This command is static planning only. It does not start a browser, call an LLM or execute product journeys. Every mission remains PLANNED_NOT_EXECUTED until the host agent performs a real test and records evidence. The 100 skills are reusable instructions, not 100 running agents.
