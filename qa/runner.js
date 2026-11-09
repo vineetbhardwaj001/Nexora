@@ -19,7 +19,7 @@ function safeName(value) {
 async function runBrowserAudit(options) {
   const target = validateTarget(options.url);
   const workers = Math.max(1, Math.min(3, Number(options.workers) || 2));
-  const browserPersonaCount = Math.max(1, Math.min(10, Number(options.browserPersonas) || 3));
+  const browserPersonaCount = Math.max(1, Math.min(100, Number(options.browserPersonas) || 3));
   const maxPages = Math.max(1, Math.min(20, Number(options.maxPages) || 10));
   const outputDir = path.resolve(options.output || path.join('reports', 'qa', new Date().toISOString().replace(/[:.]/g, '-')));
   fs.mkdirSync(path.join(outputDir, 'evidence'), { recursive: true });
@@ -34,6 +34,7 @@ async function runBrowserAudit(options) {
 
   const browser = await playwright.chromium.launch({ headless: true });
   const results = [];
+  const profiles = Array.isArray(options.personas) ? options.personas : [];
   const consoleErrors = [];
   const pageErrors = [];
   const networkFailures = [];
@@ -60,10 +61,18 @@ async function runBrowserAudit(options) {
       while (true) {
         const index = next++;
         if (index >= browserPersonaCount) return;
-        const personaId = 'BROWSER-' + String(index + 1).padStart(2, '0');
+        const persona = profiles[index] || { id: 'BROWSER-' + String(index + 1).padStart(3, '0'), role: 'exploratory visitor', goal: 'explore visible pages', device: 'desktop-1440', constraint: 'none', journey: 'explore then act' };
+        const personaId = persona.id || 'BROWSER-' + String(index + 1).padStart(3, '0');
+        const viewports = {
+          'desktop-1440': { width: 1440, height: 900 },
+          'laptop-1280': { width: 1280, height: 800 },
+          'tablet-768': { width: 768, height: 1024 },
+          'mobile-390': { width: 390, height: 844 },
+          'mobile-360': { width: 360, height: 800 }
+        };
         const context = await browser.newContext({
-          viewport: index % 2 ? { width: 390, height: 844 } : { width: 1365, height: 900 },
-          reducedMotion: index % 3 === 0 ? 'reduce' : 'no-preference'
+          viewport: viewports[persona.device] || viewports['desktop-1440'],
+          reducedMotion: persona.constraint === 'keyboard only' ? 'reduce' : 'no-preference'
         });
         const page = await context.newPage();
         page.on('console', message => { if (message.type() === 'error') consoleErrors.push({ url: page.url(), message: message.text() }); });
@@ -79,9 +88,9 @@ async function runBrowserAudit(options) {
             const pageName = safeName(new URL(url).pathname || 'home');
             const screenshot = path.join(outputDir, 'evidence', personaId.toLowerCase() + '-' + pageName + '.png');
             await page.screenshot({ path: screenshot, fullPage: true }).catch(() => {});
-            results.push({ id: personaId, worker: workerId, url, status, title, durationMs: Date.now() - started, outcome: status && status < 400 ? 'pass' : 'fail', screenshot: path.relative(outputDir, screenshot) });
+            results.push({ id: personaId, role: persona.role, goal: persona.goal, device: persona.device, constraint: persona.constraint, journey: persona.journey, worker: workerId, url, status, title, durationMs: Date.now() - started, outcome: status && status < 400 ? 'pass' : 'fail', screenshot: path.relative(outputDir, screenshot) });
           } catch (error) {
-            results.push({ id: personaId, worker: workerId, url, durationMs: Date.now() - started, outcome: 'fail', error: error.message });
+            results.push({ id: personaId, role: persona.role, goal: persona.goal, device: persona.device, worker: workerId, url, durationMs: Date.now() - started, outcome: 'fail', error: error.message });
           }
         }
         await context.close();
