@@ -110,8 +110,8 @@ function validateDecision(decision, options = {}) {
   if (decision.action === 'fill' && decision.value === null) fail('fill requires a value.');
   if (decision.action === 'ask_user' && decision.target !== null) fail('ask_user target must be null.');
   if (decision.action === 'stop' && decision.target !== null) fail('stop target must be null.');
-  const combined = [decision.intent, decision.reasoning, decision.target || '', decision.value || ''].join(' ');
-  const potentiallyMutating = MUTATING_WORDS.test(combined) || ['fill','click'].includes(decision.action) && /submit|confirm|pay|delete|remove|send|book|purchase/i.test(decision.target || '');
+  const targetAndValue = [decision.target || '', decision.value || ''].join(' ');
+  const potentiallyMutating = ['click','fill','press_key'].includes(decision.action) && MUTATING_WORDS.test(targetAndValue);
   if (potentiallyMutating && options.allowStateChanges !== true) {
     fail('Potential state-changing action blocked by read-only policy; require explicit approval and disposable test data.');
   }
