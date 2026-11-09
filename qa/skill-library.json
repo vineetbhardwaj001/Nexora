@@ -1,0 +1,1321 @@
+{
+  "schemaVersion": 1,
+  "title": "Nexora Reusable QA Skill Library",
+  "count": 100,
+  "status": "implemented-static-skill-catalog",
+  "note": "Reusable testing instructions, not 100 running agents. The host coding agent selects and applies relevant skills; execution requires evidence.",
+  "categories": [
+    "discovery",
+    "onboarding",
+    "ecommerce",
+    "booking",
+    "forms",
+    "usability",
+    "mobile",
+    "accessibility",
+    "security",
+    "reliability"
+  ],
+  "skills": [
+    {
+      "id": "DISCOVERY-01",
+      "name": "First-visit orientation",
+      "category": "discovery",
+      "instruction": "Inspect the real product for first-visit orientation. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "DISCOVERY-02",
+      "name": "Value-proposition clarity",
+      "category": "discovery",
+      "instruction": "Inspect the real product for value-proposition clarity. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "DISCOVERY-03",
+      "name": "Primary-action discovery",
+      "category": "discovery",
+      "instruction": "Inspect the real product for primary-action discovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "DISCOVERY-04",
+      "name": "Navigation-label comprehension",
+      "category": "discovery",
+      "instruction": "Inspect the real product for navigation-label comprehension. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "DISCOVERY-05",
+      "name": "Information-architecture scan",
+      "category": "discovery",
+      "instruction": "Inspect the real product for information-architecture scan. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "DISCOVERY-06",
+      "name": "Search-entry discovery",
+      "category": "discovery",
+      "instruction": "Inspect the real product for search-entry discovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "DISCOVERY-07",
+      "name": "Footer and policy discovery",
+      "category": "discovery",
+      "instruction": "Inspect the real product for footer and policy discovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "DISCOVERY-08",
+      "name": "Help-channel discovery",
+      "category": "discovery",
+      "instruction": "Inspect the real product for help-channel discovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "DISCOVERY-09",
+      "name": "Account-entry discovery",
+      "category": "discovery",
+      "instruction": "Inspect the real product for account-entry discovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "DISCOVERY-10",
+      "name": "Page-purpose recognition",
+      "category": "discovery",
+      "instruction": "Inspect the real product for page-purpose recognition. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-01",
+      "name": "Signup-flow inspection",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for signup-flow inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-02",
+      "name": "Login-flow inspection",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for login-flow inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-03",
+      "name": "Password-recovery inspection",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for password-recovery inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-04",
+      "name": "Email-verification state",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for email-verification state. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-05",
+      "name": "Profile-completion flow",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for profile-completion flow. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-06",
+      "name": "First-task completion",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for first-task completion. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-07",
+      "name": "Permission-request clarity",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for permission-request clarity. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-08",
+      "name": "Empty-workspace onboarding",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for empty-workspace onboarding. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-09",
+      "name": "Invite-acceptance flow",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for invite-acceptance flow. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ONBOARDING-10",
+      "name": "Onboarding-resume behaviour",
+      "category": "onboarding",
+      "instruction": "Inspect the real product for onboarding-resume behaviour. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-01",
+      "name": "Product-catalog browsing",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for product-catalog browsing. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-02",
+      "name": "Product-detail comprehension",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for product-detail comprehension. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-03",
+      "name": "Variant selection",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for variant selection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-04",
+      "name": "Inventory-availability clarity",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for inventory-availability clarity. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-05",
+      "name": "Price-and-discount calculation",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for price-and-discount calculation. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-06",
+      "name": "Cart-addition flow",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for cart-addition flow. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-07",
+      "name": "Cart-edit and removal",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for cart-edit and removal. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-08",
+      "name": "Shipping-cost discovery",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for shipping-cost discovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-09",
+      "name": "Checkout-step clarity",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for checkout-step clarity. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ECOMMERCE-10",
+      "name": "Order-confirmation visibility",
+      "category": "ecommerce",
+      "instruction": "Inspect the real product for order-confirmation visibility. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-01",
+      "name": "Service discovery",
+      "category": "booking",
+      "instruction": "Inspect the real product for service discovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-02",
+      "name": "Availability-calendar inspection",
+      "category": "booking",
+      "instruction": "Inspect the real product for availability-calendar inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-03",
+      "name": "Time-slot selection",
+      "category": "booking",
+      "instruction": "Inspect the real product for time-slot selection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-04",
+      "name": "Booking-review clarity",
+      "category": "booking",
+      "instruction": "Inspect the real product for booking-review clarity. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-05",
+      "name": "Appointment-confirmation visibility",
+      "category": "booking",
+      "instruction": "Inspect the real product for appointment-confirmation visibility. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-06",
+      "name": "Reschedule-flow inspection",
+      "category": "booking",
+      "instruction": "Inspect the real product for reschedule-flow inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-07",
+      "name": "Cancellation-policy discovery",
+      "category": "booking",
+      "instruction": "Inspect the real product for cancellation-policy discovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-08",
+      "name": "Duplicate-booking prevention",
+      "category": "booking",
+      "instruction": "Inspect the real product for duplicate-booking prevention. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-09",
+      "name": "Waitlist-discovery flow",
+      "category": "booking",
+      "instruction": "Inspect the real product for waitlist-discovery flow. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "BOOKING-10",
+      "name": "Booking-history retrieval",
+      "category": "booking",
+      "instruction": "Inspect the real product for booking-history retrieval. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-01",
+      "name": "Required-field comprehension",
+      "category": "forms",
+      "instruction": "Inspect the real product for required-field comprehension. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-02",
+      "name": "Inline-validation behaviour",
+      "category": "forms",
+      "instruction": "Inspect the real product for inline-validation behaviour. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-03",
+      "name": "Invalid-format feedback",
+      "category": "forms",
+      "instruction": "Inspect the real product for invalid-format feedback. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-04",
+      "name": "Boundary-value handling",
+      "category": "forms",
+      "instruction": "Inspect the real product for boundary-value handling. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-05",
+      "name": "Duplicate-submit prevention",
+      "category": "forms",
+      "instruction": "Inspect the real product for duplicate-submit prevention. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-06",
+      "name": "Long-input handling",
+      "category": "forms",
+      "instruction": "Inspect the real product for long-input handling. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-07",
+      "name": "Whitespace-input handling",
+      "category": "forms",
+      "instruction": "Inspect the real product for whitespace-input handling. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-08",
+      "name": "Multi-step-form recovery",
+      "category": "forms",
+      "instruction": "Inspect the real product for multi-step-form recovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-09",
+      "name": "Unsaved-change warning",
+      "category": "forms",
+      "instruction": "Inspect the real product for unsaved-change warning. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "FORMS-10",
+      "name": "Server-error recovery",
+      "category": "forms",
+      "instruction": "Inspect the real product for server-error recovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-01",
+      "name": "Task-completion friction",
+      "category": "usability",
+      "instruction": "Inspect the real product for task-completion friction. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-02",
+      "name": "Terminology comprehension",
+      "category": "usability",
+      "instruction": "Inspect the real product for terminology comprehension. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-03",
+      "name": "Visual-hierarchy scan",
+      "category": "usability",
+      "instruction": "Inspect the real product for visual-hierarchy scan. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-04",
+      "name": "Call-to-action clarity",
+      "category": "usability",
+      "instruction": "Inspect the real product for call-to-action clarity. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-05",
+      "name": "Loading-state comprehension",
+      "category": "usability",
+      "instruction": "Inspect the real product for loading-state comprehension. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-06",
+      "name": "Empty-state usefulness",
+      "category": "usability",
+      "instruction": "Inspect the real product for empty-state usefulness. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-07",
+      "name": "Error-message actionability",
+      "category": "usability",
+      "instruction": "Inspect the real product for error-message actionability. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-08",
+      "name": "Success-confirmation clarity",
+      "category": "usability",
+      "instruction": "Inspect the real product for success-confirmation clarity. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-09",
+      "name": "Back-navigation recovery",
+      "category": "usability",
+      "instruction": "Inspect the real product for back-navigation recovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "USABILITY-10",
+      "name": "Interruption-resume behaviour",
+      "category": "usability",
+      "instruction": "Inspect the real product for interruption-resume behaviour. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-01",
+      "name": "Narrow-viewport layout",
+      "category": "mobile",
+      "instruction": "Inspect the real product for narrow-viewport layout. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-02",
+      "name": "Touch-target inspection",
+      "category": "mobile",
+      "instruction": "Inspect the real product for touch-target inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-03",
+      "name": "Mobile-menu operation",
+      "category": "mobile",
+      "instruction": "Inspect the real product for mobile-menu operation. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-04",
+      "name": "Horizontal-overflow detection",
+      "category": "mobile",
+      "instruction": "Inspect the real product for horizontal-overflow detection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-05",
+      "name": "Virtual-keyboard interaction",
+      "category": "mobile",
+      "instruction": "Inspect the real product for virtual-keyboard interaction. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-06",
+      "name": "Sticky-element obstruction",
+      "category": "mobile",
+      "instruction": "Inspect the real product for sticky-element obstruction. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-07",
+      "name": "Mobile-form usability",
+      "category": "mobile",
+      "instruction": "Inspect the real product for mobile-form usability. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-08",
+      "name": "Orientation-change resilience",
+      "category": "mobile",
+      "instruction": "Inspect the real product for orientation-change resilience. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-09",
+      "name": "Responsive-table access",
+      "category": "mobile",
+      "instruction": "Inspect the real product for responsive-table access. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "MOBILE-10",
+      "name": "Mobile-content readability",
+      "category": "mobile",
+      "instruction": "Inspect the real product for mobile-content readability. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-01",
+      "name": "Keyboard-only navigation",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for keyboard-only navigation. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-02",
+      "name": "Visible-focus inspection",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for visible-focus inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-03",
+      "name": "Landmark and heading structure",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for landmark and heading structure. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-04",
+      "name": "Form-label association",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for form-label association. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-05",
+      "name": "Accessible-name inspection",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for accessible-name inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-06",
+      "name": "Contrast sampling",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for contrast sampling. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-07",
+      "name": "Reduced-motion preference",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for reduced-motion preference. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-08",
+      "name": "Zoom and reflow inspection",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for zoom and reflow inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-09",
+      "name": "Error-announcement inspection",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for error-announcement inspection. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "ACCESSIBILITY-10",
+      "name": "Dialog focus management",
+      "category": "accessibility",
+      "instruction": "Inspect the real product for dialog focus management. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "SECURITY-01",
+      "name": "Unauthenticated-route boundary",
+      "category": "security",
+      "instruction": "Inspect the real product for unauthenticated-route boundary. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "SECURITY-02",
+      "name": "Role-boundary observation",
+      "category": "security",
+      "instruction": "Inspect the real product for role-boundary observation. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "SECURITY-03",
+      "name": "Tenant-boundary test design",
+      "category": "security",
+      "instruction": "Inspect the real product for tenant-boundary test design. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "SECURITY-04",
+      "name": "Sensitive-data exposure scan",
+      "category": "security",
+      "instruction": "Inspect the real product for sensitive-data exposure scan. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "SECURITY-05",
+      "name": "Client-side validation hypothesis",
+      "category": "security",
+      "instruction": "Inspect the real product for client-side validation hypothesis. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "SECURITY-06",
+      "name": "Session-expiry behaviour",
+      "category": "security",
+      "instruction": "Inspect the real product for session-expiry behaviour. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "SECURITY-07",
+      "name": "Logout-state verification",
+      "category": "security",
+      "instruction": "Inspect the real product for logout-state verification. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "SECURITY-08",
+      "name": "Safe file-upload constraints",
+      "category": "security",
+      "instruction": "Inspect the real product for safe file-upload constraints. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "SECURITY-09",
+      "name": "Open-redirect signal review",
+      "category": "security",
+      "instruction": "Inspect the real product for open-redirect signal review. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "SECURITY-10",
+      "name": "Security-header observation",
+      "category": "security",
+      "instruction": "Inspect the real product for security-header observation. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "restricted-safe-checks-only"
+    },
+    {
+      "id": "RELIABILITY-01",
+      "name": "Refresh-state persistence",
+      "category": "reliability",
+      "instruction": "Inspect the real product for refresh-state persistence. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "RELIABILITY-02",
+      "name": "Direct-route availability",
+      "category": "reliability",
+      "instruction": "Inspect the real product for direct-route availability. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "RELIABILITY-03",
+      "name": "Network-failure recovery",
+      "category": "reliability",
+      "instruction": "Inspect the real product for network-failure recovery. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "RELIABILITY-04",
+      "name": "Retry-control behaviour",
+      "category": "reliability",
+      "instruction": "Inspect the real product for retry-control behaviour. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "RELIABILITY-05",
+      "name": "Slow-response feedback",
+      "category": "reliability",
+      "instruction": "Inspect the real product for slow-response feedback. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "RELIABILITY-06",
+      "name": "Broken-link observation",
+      "category": "reliability",
+      "instruction": "Inspect the real product for broken-link observation. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "RELIABILITY-07",
+      "name": "Asset-loading failure scan",
+      "category": "reliability",
+      "instruction": "Inspect the real product for asset-loading failure scan. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "RELIABILITY-08",
+      "name": "Console-error evidence capture",
+      "category": "reliability",
+      "instruction": "Inspect the real product for console-error evidence capture. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "RELIABILITY-09",
+      "name": "Request-failure evidence capture",
+      "category": "reliability",
+      "instruction": "Inspect the real product for request-failure evidence capture. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    },
+    {
+      "id": "RELIABILITY-10",
+      "name": "Cross-browser smoke comparison",
+      "category": "reliability",
+      "instruction": "Inspect the real product for cross-browser smoke comparison. Use observable UI behaviour and approved test data; never infer a pass from source code alone.",
+      "evidenceRequired": [
+        "exact URL or component",
+        "reproduction steps",
+        "observed result",
+        "screenshot or trace when available"
+      ],
+      "risk": "read-only-by-default"
+    }
+  ]
+}
