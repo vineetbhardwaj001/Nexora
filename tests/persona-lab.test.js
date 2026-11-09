@@ -32,7 +32,7 @@ test('Persona Lab plan command writes a deterministic JSON plan without browser 
   const root = path.resolve(__dirname, '..');
   const out = fs.mkdtempSync(path.join(os.tmpdir(), 'nexora-persona-plan-'));
   try {
-    const result = spawnSync(process.execPath, [path.join(root, 'qa', 'cli.js'), 'plan', '--url', 'https://example.com', '--personas', '7', '--out', out], { cwd: root, encoding: 'utf8' });
+    const result = spawnSync(process.execPath, [path.join(root, 'bin', 'nexora.js'), 'qa', 'plan', '--url', 'https://example.com', '--personas', '7', '--out', out], { cwd: root, encoding: 'utf8' });
     assert.equal(result.status, 0, result.stderr);
     const plan = JSON.parse(fs.readFileSync(path.join(out, 'personas.json'), 'utf8'));
     assert.equal(plan.count, 7);
