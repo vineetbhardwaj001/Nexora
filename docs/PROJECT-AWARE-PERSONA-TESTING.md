@@ -26,6 +26,38 @@ Use /nexora-test in Kilo Code or the nexora-test prompt in compatible VS Code/Gi
 
 The host agent verifies routes, inspects actual UI, selects missions and uses available browser control. Model reasoning is not proof that a test ran.
 
+## Host-model mission decision engine (Phase 4)
+
+Nexora delegates reasoning to the coding agent's own active model. This avoids requiring an additional provider key and keeps provider selection, model limits and account permissions under the host tool. Gemini and Hugging Face adapters are future work; neither is called by this implementation.
+
+### Create a decision request
+
+```powershell
+node .\\qa\\cli.js reason --report ".\\reports\\qa\\discovery-<timestamp>" --persona NX-P-0001 --url "https://approved-staging.example"
+```
+
+The CLI reads the selected persona and project analysis and writes a `decision-request-<persona-id>.json` packet. The host coding agent reads that packet and uses its own model to return one proposed next action. The proposal must include intent, reasoning, action, target, value, evidence to capture, success criteria and abort conditions.
+
+### Validate the proposal
+
+Save the model's JSON response to a new file, then run:
+
+```powershell
+node .\\qa\\cli.js validate-decision --file ".\\decision-NX-P-0001.json"
+```
+
+Validation checks the response schema, action type, URL protocol and optional origin allowlist. State-changing targets are blocked by default. An explicit staging approval and disposable test data are required before any state-changing workflow; production mutations are prohibited.
+
+### Important boundaries
+
+- `reason` creates a request packet; it does not invoke the model.
+- The host agent's reasoning is not browser evidence.
+- `validate-decision` validates a proposal only; it does not execute it.
+- Execution requires a real browser/tool action and captured output.
+- An action with evidence is still UNVERIFIED until its success criteria are asserted.
+- No API key, secret, credential or real personal data belongs in the decision packet.
+- No Gemini/Hugging Face provider integration is included in this phase.
+
 ## 100-skill catalog
 qa/skill-library.json contains 100 reusable definitions across discovery, onboarding, e-commerce, booking, forms, usability, mobile, accessibility, safe security checks and reliability.
 
