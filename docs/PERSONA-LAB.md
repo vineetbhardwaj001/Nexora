@@ -65,7 +65,7 @@ $env:NEXORA_LOAD_DURATION_SECONDS = "30"
 k6 run .\load\k6-smoke.js
 ```
 
-The script fails closed unless the authorization flag is true, environment is staging, hostname exactly matches the allowlist, HTTPS is used for remote targets, VUs are 1–100, and duration is 30–300 seconds. It ramps gradually, uses a read-only homepage GET and has error/latency thresholds. The operator must still approve the precise VU count, duration, expected request rate, test window and abort criteria. Start with 1–5 VUs; 100 VUs is not the default.
+The script fails closed unless the authorization flag is true, environment is staging, hostname exactly matches the allowlist, HTTPS is used for remote targets, VUs are 1–100, and duration is 30–300 seconds. It ramps gradually, uses a read-only homepage GET and has error/latency thresholds. Each VU sleeps for one second between requests, so the approximate request rate scales with the active VU count (about one homepage GET per VU per second; actual rate varies with response time). The operator must still approve the precise VU count, duration, expected request rate, test window and abort criteria. Start with 1–5 VUs; 100 VUs is not the default.
 
 ## Known MVP boundaries
 
