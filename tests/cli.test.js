@@ -164,7 +164,7 @@ test('CLI saves a private default project path outside the repository and reuses
 
     const second = spawnSync(process.execPath, [path.join(root, 'bin/nexora.js'), 'init', '--yes'], { cwd: root, env, encoding: 'utf8' });
     assert.equal(second.status, 0, second.stderr);
-    assert.match(second.stdout, new RegExp(project.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+    assert.ok(second.stdout.includes('Target:    ' + project));
   } finally {
     fs.rmSync(temp, { recursive: true, force: true });
   }
