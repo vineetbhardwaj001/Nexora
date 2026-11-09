@@ -62,7 +62,12 @@ async function main() {
       { personality:'cautious and skeptical', nature:'checks details and trust signals', patience:'high', technicalConfidence:'intermediate' },
       { personality:'impatient and goal-focused', nature:'prefers the shortest clear path', patience:'low', technicalConfidence:'intermediate' },
       { personality:'methodical and detail-oriented', nature:'checks labels, validation and edge conditions', patience:'high', technicalConfidence:'advanced' },
-      { personality:'pragmatic and independent', nature:'uses familiar patterns and self-service help', patience:'medium', technicalConfidence:'intermediate' }
+      { personality:'pragmatic and independent', nature:'uses familiar patterns and self-service help', patience:'medium', technicalConfidence:'intermediate' },
+      { personality:'social-proof seeker', nature:'looks for reviews, trust indicators and reassurance', patience:'medium', technicalConfidence:'beginner' },
+      { personality:'skeptical verifier', nature:'checks consistency and challenges unclear claims', patience:'high', technicalConfidence:'advanced' },
+      { personality:'anxious first-timer', nature:'needs predictable steps and clear recovery options', patience:'low', technicalConfidence:'beginner' },
+      { personality:'budget optimizer', nature:'compares value, fees and hidden costs before acting', patience:'medium', technicalConfidence:'intermediate' },
+      { personality:'keyboard-centric minimalist', nature:'prefers direct navigation and low-friction controls', patience:'medium', technicalConfidence:'advanced' }
     ];
     const interests = {
       ecommerce:['product research','style discovery','deal comparison'],
@@ -76,9 +81,13 @@ async function main() {
     };
     const personas = Array.from({length:count},(_,index)=>{
       const segment=segments[index%segments.length], style=styles[index%styles.length];
-      const assigned=candidates.filter((skill,skillIndex)=>(skillIndex+index)%3===0).slice(0,8);
+      const categoryOrder=Array.from(relevant);
+      const assigned=categoryOrder.map((category,categoryIndex)=>{
+        const pool=candidates.filter(skill=>skill.category===category);
+        return pool.length?pool[(index+categoryIndex)%pool.length]:null;
+      }).filter(Boolean).slice(0,8);
       const interestList=interests[analysis.domain.domain]||interests['general-web-app'];
-      return {id:'NX-P-'+String(index+1).padStart(4,'0'),segmentId:segment.id,role:segment.name,goal:segment.goal,...style,device:['mobile-390','desktop-1440','laptop-1280','tablet-768'][index%4],hobbyOrInterest:interestList[index%interestList.length],assignedSkillIds:assigned.map(s=>s.id),status:'PLANNED_NOT_EXECUTED',synthetic:true};
+      return {id:'NX-P-'+String(index+1).padStart(4,'0'),segmentId:segment.id,role:segment.name,goal:segment.goal,...style,device:['mobile-390','desktop-1440','laptop-1280','tablet-768','mobile-360'][index%5],technologyFamiliarity:style.technicalConfidence,contextConstraint:['slow-network','short-attention-window','keyboard-first','large-text-preference','interrupted-session'][index%5],hobbyOrInterest:interestList[index%interestList.length],assignedSkillIds:assigned.map(s=>s.id),status:'PLANNED_NOT_EXECUTED',synthetic:true};
     });
     const assignments=personas.map(p=>({personaId:p.id,skillIds:p.assignedSkillIds,selectionReason:'Matched to inferred domain, persona goal and relevant skill categories.',status:'PLANNED_NOT_EXECUTED'}));
     const missions=personas.map(p=>({personaId:p.id,title:'Explore the primary '+analysis.domain.domain+' journey as a '+p.role,goal:p.goal,startUrl:null,preconditions:['Exact target URL verified','Approved test account and synthetic data if authentication is required'],allowedActions:['Read-only navigation','Inspect visible UI','Capture screenshots and errors'],prohibitedActions:['Real payments','Real customer messages','Production record mutations','Deletion or destructive actions'],expectedOutcome:'Complete the relevant journey without an evidenced blocking issue.',status:'PLANNED_NOT_EXECUTED'}));
