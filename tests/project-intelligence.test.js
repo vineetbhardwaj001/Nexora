@@ -41,3 +41,25 @@ test('installer manifest includes project-aware assets',()=>{
  const cli=fs.readFileSync(path.join(__dirname,'..','bin','nexora.js'),'utf8');
  for(const file of ['qa/project-intelligence.js','qa/skill-library.json','.agents/skills/nexora-project-aware-testing/SKILL.md','.kilo/commands/nexora-test.md','.github/prompts/nexora-test.prompt.md'])assert.ok(cli.includes(file),'Missing installer entry: '+file);
 });
+
+test('discover CLI creates planning artifacts and never labels missions executed',()=>{
+ const {spawnSync}=require('node:child_process');
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'nexora-discover-cli-'));
+ const project=path.join(root,'project');
+ const out=path.join(root,'output');
+ fs.mkdirSync(path.join(project,'src','appointments'),{recursive:true});
+ fs.writeFileSync(path.join(project,'package.json'),JSON.stringify({name:'clinic-appointments',dependencies:{react:'18'}}));
+ fs.writeFileSync(path.join(project,'src','appointments','page.tsx'),'export default function Page(){}');
+ fs.writeFileSync(path.join(project,'README.md'),'Clinic appointment booking for patients.');
+ try{
+  const result=spawnSync(process.execPath,[path.join(__dirname,'..','qa','cli.js'),'discover','--project',project,'--personas','6','--out',out],{cwd:project,encoding:'utf8'});
+  assert.equal(result.status,0,result.stderr);
+  for(const file of ['project-analysis.json','customer-hypotheses.json','personas.json','skill-assignments.json','mission-plan.md'])assert.ok(fs.existsSync(path.join(out,file)),'Missing '+file);
+  const personas=JSON.parse(fs.readFileSync(path.join(out,'personas.json'),'utf8'));
+  assert.equal(personas.count,6);
+  assert.ok(personas.personas.every(persona=>persona.status==='PLANNED_NOT_EXECUTED'));
+  assert.match(fs.readFileSync(path.join(out,'mission-plan.md'),'utf8'),/Missions executed: 0/);
+  const second=spawnSync(process.execPath,[path.join(__dirname,'..','qa','cli.js'),'discover','--project',project,'--personas','6','--out',out],{cwd:project,encoding:'utf8'});
+  assert.notEqual(second.status,0,'Existing output must not be overwritten');
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
