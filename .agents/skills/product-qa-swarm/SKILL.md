@@ -61,3 +61,15 @@ Report counts separately: personas defined/executed, journeys, browser contexts,
 GO: critical journeys passed with sufficient coverage and no unresolved P0/P1. CONDITIONAL GO: limited P2/P3 or explicit accepted coverage gaps. NO-GO: reproducible P0/P1, broken critical flow, serious security/data-isolation failure or unsafe reliability/performance. INCONCLUSIVE: target inaccessible, credentials missing, unsafe environment or insufficient evidence. Always state coverage limitations.
 ## Final response
 Summarize target actually opened, environment, roles, personas/journeys executed, browser evidence, severity findings, load-test status and VU count, release recommendation and report location. Separate executed/passed, executed/failed, blocked/not run and recommendations. Never say '100 users tested' unless an authorized load test actually ran at that VU count. Never claim all agents tested if only sequential role passes ran.
+
+
+## Native Persona Lab runtime
+
+When the installed project contains qa/cli.js, use it for repeatable local QA:
+- Planning only: node qa/cli.js plan --url <exact-url> --personas 100
+- Browser checks: node qa/cli.js run --url <exact-url> --personas 100 --browser-personas 3 --workers 2
+- Require Playwright installed in the target project before browser execution.
+- The MVP performs read-only same-origin navigation and captures screenshots/status/errors; it does not safely infer or submit business forms.
+- Report synthetic profile count, browser personas executed and HTTP VUs separately. The runtime does not create autonomous LLM agents or human participants.
+- Keep k6 separate and disabled unless the exact staging host, allowlist, VU ceiling, duration, rate and abort criteria are explicitly approved.
+See docs/PERSONA-LAB.md for the operator guide.
