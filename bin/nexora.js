@@ -3,6 +3,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const os = require('node:os');
 const readline = require('node:readline/promises');
 const { execFile, execFileSync } = require('node:child_process');
 const { stdin, stdout } = require('node:process');
@@ -128,6 +129,7 @@ ${color(C.bold, 'INSTALL OPTIONS')}
   --yes                            Install missing files; skip conflicts
   --force                          Back up conflicting files, then replace
   --path <directory>               Select a target project directory
+  --save-default                    Save that target as your local default
 
 ${color(C.gray, 'Safety: existing files are not overwritten by default.')}
 `);
@@ -245,7 +247,9 @@ function parseArgs(args) {
       : args[0],
     yes: false,
     force: false,
-    target: process.cwd()
+    target: process.cwd(),
+    targetExplicit: false,
+    saveDefault: false
   };
   if (result.command === 'qa') {
     result.qaArgs = args.slice(1);
@@ -255,14 +259,20 @@ function parseArgs(args) {
     const arg = args[i];
     if (arg === '--yes' || arg === '-y') result.yes = true;
     else if (arg === '--force') result.force = true;
+    else if (arg === '--save-default') result.saveDefault = true;
     else if (arg === '--path') {
       if (!args[i + 1]) throw new Error('--path requires a directory');
       result.target = path.resolve(args[++i]);
+      result.targetExplicit = true;
     } else if (arg === '--version' || arg === '-v') result.command = 'version';
     else if (arg === '--help' || arg === '-h') result.command = 'help';
     else throw new Error('Unknown option: ' + arg);
   }
   if (result.yes && result.force) throw new Error('Use either --yes or --force, not both.');
+  if (result.command === 'init' && !result.targetExplicit) {
+    const saved = readUserConfig().defaultProject;
+    if (saved) result.target = path.resolve(saved);
+  }
   return result;
 }
 
@@ -277,6 +287,32 @@ function safeDestination(root, relative) {
 async function askOverwrite(rl, relative) {
   const answer = await rl.question(`Replace existing ${relative}? [y/N] `);
   return /^y(es)?$/i.test(answer.trim());
+}
+
+function userConfigPath() {
+  const home = process.env.NEXORA_CONFIG_HOME || os.homedir();
+  return path.join(home, '.nexora', 'config.json');
+}
+
+function readUserConfig() {
+  const configPath = userConfigPath();
+  try {
+    const parsed = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch (error) {
+    if (error.code === 'ENOENT') return {};
+    throw new Error('Cannot read Nexora user config at ' + configPath + ': ' + error.message);
+  }
+}
+
+function saveDefaultProject(target) {
+  const configPath = userConfigPath();
+  const config = readUserConfig();
+  config.defaultProject = path.resolve(target);
+  fs.mkdirSync(path.dirname(configPath), { recursive: true });
+  fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\\n', { mode: 0o600 });
+  console.log('Saved this default locally in ' + configPath);
+  console.log('This path is not written into the Nexora repository.');
 }
 
 async function init(opts) {
@@ -327,6 +363,7 @@ async function init(opts) {
     if (rl) rl.close();
   }
 
+  if (opts.saveDefault) saveDefaultProject(opts.target);
   banner();
   console.log(color(C.green, '  ✓ Installation finished'));
   console.log('  Target:    ' + opts.target);
