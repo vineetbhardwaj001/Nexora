@@ -11,7 +11,7 @@ Read `AGENTS.md`, `.agent/CORE.md`, `.agent/config/skills.json`, and `.agents/sk
 
 Choose exactly one route based on the request:
 
-1. **test / QA / website / product** — load `.agents/skills/product-qa-swarm/SKILL.md` and `.agents/skills/mirofish-product-simulation/SKILL.md`. Require the exact URL and environment. If Nexora Persona Lab exists, inspect docs/PERSONA-LAB.md and run the plan command:
+1. **test / QA / website / product** — load `.agents/skills/nexora-project-aware-testing/SKILL.md` first. Run `node qa/cli.js discover --project . --personas 8` when available, inspect the generated project/customer/persona/skill artifacts, then load `.agents/skills/product-qa-swarm/SKILL.md` and `.agents/skills/mirofish-product-simulation/SKILL.md`. Require the exact URL and environment. If Nexora Persona Lab exists, inspect docs/PERSONA-LAB.md and run the plan command:
 
    `node qa/cli.js plan --url <URL> --personas 100`
 
