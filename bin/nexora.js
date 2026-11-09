@@ -4,7 +4,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const readline = require('node:readline/promises');
-const { execFile } = require('node:child_process');
+const { execFile, execFileSync } = require('node:child_process');
 const { stdin, stdout } = require('node:process');
 
 const VERSION = require('../package.json').version;
@@ -67,6 +67,11 @@ const FILES = [
   '.github/prompts/engineeringcouncil.prompt.md',
   'docs/PRODUCT-QA-REPORT-TEMPLATE.md',
   'docs/MIROFISH-INTEGRATION.md',
+  'qa/personas.js',
+  'qa/runner.js',
+  'qa/cli.js',
+  'load/k6-smoke.js',
+  'docs/PERSONA-LAB.md',
   '.gitignore'
 ];
 
@@ -114,6 +119,8 @@ ${color(C.bold, 'USAGE')}
   npx nexora-agent-cli         Open interactive terminal menu
   npx nexora-agent-cli init    Install Nexora in the current project
   npx nexora-agent-cli doctor  Check an existing installation
+  npx nexora-agent-cli qa plan --url <URL> [--personas 100]
+  npx nexora-agent-cli qa run --url <URL> [--browser-personas 3]
   npx nexora-agent-cli list    List included files
   npx nexora-agent-cli --version Print version
 
@@ -240,6 +247,10 @@ function parseArgs(args) {
     force: false,
     target: process.cwd()
   };
+  if (result.command === 'qa') {
+    result.qaArgs = args.slice(1);
+    return result;
+  }
   for (let i = firstArgIsOption ? 0 : 1; i < args.length; i++) {
     const arg = args[i];
     if (arg === '--yes' || arg === '-y') result.yes = true;
@@ -430,6 +441,7 @@ async function menu() {
       case 'menu': await menu(); break;
       case 'init': await init(opts); break;
       case 'doctor': doctor(opts); break;
+      case 'qa': execFileSync(process.execPath, [path.join(ROOT, 'qa/cli.js'), ...opts.qaArgs], { cwd: process.cwd(), stdio: 'inherit' }); break;
       case 'list': list(); break;
       case 'version': console.log(VERSION); break;
       case 'help': help(); break;
