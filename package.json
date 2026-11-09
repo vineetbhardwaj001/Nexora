@@ -41,7 +41,8 @@
     ".github/prompts/",
     "qa/",
     "load/",
-    "docs/PERSONA-LAB.md"
+    "docs/PERSONA-LAB.md",
+    "docs/PROJECT-AWARE-PERSONA-TESTING.md"
   ],
   "scripts": {
     "test": "node --test"
