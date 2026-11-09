@@ -47,6 +47,22 @@ node bin/nexora.js
 
 Nexora is being tested from a Git clone first. **npm publishing is not part of the current workflow.**
 
+### 3. Install Nexora into any existing project
+
+Nexora is designed to be project-agnostic. Choose any existing project directory; the installer does not assume AVR, a specific framework or a fixed folder:
+
+```powershell
+node .\bin\nexora.js init --path "C:\path\to\your-project" --yes
+```
+
+On your own machine, you can save a private default project path:
+
+```powershell
+node .\bin\nexora.js init --path "C:\path\to\your-project" --yes --save-default
+```
+
+That default is stored under the current user's home directory in `.nexora/config.json`, outside the repository. A later `node .\bin\nexora.js init --yes` reuses it. Each Nexora user can set their own path; no personal path is committed to GitHub.
+
 ### 3. Understand the project before installing it elsewhere
 
 Read [AGENTS.md](AGENTS.md), [the core instructions](.agent/CORE.md), and [the skill configuration](.agent/config/skills.json). Back up project-specific agent files before merging instructions into another repository.
