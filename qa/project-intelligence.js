@@ -13,8 +13,8 @@ function walk(root,current=root,depth=0,out=[]){
   if(out.length>=MAX_FILES)break;
  }return out;
 }
-function classifyDomain(files,meta){
- const corpus=[meta.name||'',meta.description||'',...files.slice(0,1500)].join(' ').toLowerCase();
+function classifyDomain(files,meta,readme=''){
+ const corpus=[meta.name||'',meta.description||'',readme,...files.slice(0,1500)].join(' ').toLowerCase();
  const rules=[
  ['ecommerce',/\b(shop|store|cart|checkout|product|catalog|inventory|order|payment|commerce)\b/g],
  ['healthcare',/\b(patient|clinic|hospital|doctor|medical|health|appointment|reception)\b/g],
@@ -54,7 +54,7 @@ function analyzeProject(projectPath=process.cwd()){
  const readmePath=['README.md','readme.md','README.MD'].map(n=>path.join(root,n)).find(fs.existsSync);
  const readme=readmePath?fs.readFileSync(readmePath,'utf8').slice(0,20000):'';
  const product={name:pkg.name||path.basename(root),description:pkg.description||''};
- const domain=classifyDomain(files,product),corpus=[product.name,product.description,readme,files.join(' ')].join(' ');
+ const domain=classifyDomain(files,product,readme),corpus=[product.name,product.description,readme,files.join(' ')].join(' ');
  const routeFiles=detectRoutes(files),extensions=[...new Set(files.map(f=>path.extname(f).toLowerCase()).filter(Boolean))].sort();
  const features=[
  ['authentication',/\b(auth|login|signup|register|session|password)\b/i],
