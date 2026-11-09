@@ -19,7 +19,7 @@ function validate() {
   if (parsed.protocol !== 'https:' && parsed.hostname !== 'localhost' && parsed.hostname !== '127.0.0.1') throw new Error('Use HTTPS for non-local targets.');
   if (!allowlist.includes(parsed.hostname.toLowerCase())) throw new Error('Target hostname is not in NEXORA_LOAD_HOST_ALLOWLIST.');
   if (!Number.isInteger(vus) || vus < 1 || vus > 100) throw new Error('NEXORA_LOAD_VUS must be between 1 and 100.');
-  if (!Number.isInteger(durationSeconds) || durationSeconds < 5 || durationSeconds > 300) throw new Error('NEXORA_LOAD_DURATION_SECONDS must be between 5 and 300.');
+  if (!Number.isInteger(durationSeconds) || durationSeconds < 30 || durationSeconds > 300) throw new Error('NEXORA_LOAD_DURATION_SECONDS must be between 5 and 300.');
   if (/vercel\.app$|netlify\.app$|github\.io$/i.test(parsed.hostname)) throw new Error('Hosted preview aliases are blocked by default; use an explicitly approved staging hostname.');
   return parsed;
 }
