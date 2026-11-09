@@ -8,3 +8,6 @@ coverage/
 .DS_Store
 Thumbs.db
 *.log
+
+# Generated QA plans, evidence and reports
+reports/qa/
