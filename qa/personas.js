@@ -12,15 +12,14 @@ function generatePersonas(count = 100, seed = 'nexora') {
   }
   const hash = [...String(seed)].reduce((sum, char) => (sum * 31 + char.charCodeAt(0)) >>> 0, 7);
   return Array.from({ length: count }, (_, index) => {
-    const offset = index + hash;
-    const pick = (items, step) => items[(offset * step + Math.floor(offset / items.length)) % items.length];
+    const offset = (index + hash) % 50000;
     return {
       id: 'NX-' + String(index + 1).padStart(4, '0'),
-      role: pick(ROLES, 3),
-      goal: pick(GOALS, 7),
-      device: pick(DEVICES, 11),
-      constraint: pick(CONSTRAINTS, 13),
-      journey: pick(JOURNEYS, 17),
+      role: ROLES[offset % ROLES.length],
+      goal: GOALS[Math.floor(offset / 10) % GOALS.length],
+      device: DEVICES[Math.floor(offset / 100) % DEVICES.length],
+      constraint: CONSTRAINTS[Math.floor(offset / 500) % CONSTRAINTS.length],
+      journey: JOURNEYS[Math.floor(offset / 5000) % JOURNEYS.length],
       seed: String(seed),
       status: 'planned-not-executed'
     };
