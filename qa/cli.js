@@ -26,7 +26,7 @@ function outputDirectory(options) {
 async function main() {
   const [command, ...rest] = process.argv.slice(2);
   if (!['plan', 'run'].includes(command)) {
-    console.log('Nexora Persona Lab\n\nUsage:\n  node qa/cli.js plan --url https://your-preview.example --personas 100\n  node qa/cli.js run --url https://your-preview.example --personas 100 --browser-personas 3 --workers 2\n\nOptions: --url, --personas (1-10000), --browser-personas (1-10), --workers (1-3), --max-pages (1-20), --seed, --out');
+    console.log('Nexora Persona Lab\n\nUsage:\n  node qa/cli.js plan --url https://your-preview.example --personas 100\n  node qa/cli.js run --url https://your-preview.example --personas 100 --browser-personas 100 --workers 2\n\nOptions: --url, --personas (1-10000), --browser-personas (1-10), --workers (1-3), --max-pages (1-20), --seed, --out');
     if (command) process.exitCode = 1;
     return;
   }
@@ -52,6 +52,7 @@ async function main() {
   const browser = await runBrowserAudit({
     url: options.url,
     browserPersonas: options['browser-personas'] || 3,
+    personas,
     workers: options.workers || 2,
     maxPages: options['max-pages'] || 10,
     output: out
@@ -62,7 +63,7 @@ async function main() {
     '- Generated: ' + browser.summary.generatedAt,
     '- Target: ' + browser.summary.target,
     '- Synthetic personas generated: ' + personas.length + ' (not human participants)',
-    '- Browser personas executed: ' + browser.summary.browserPersonasExecuted,
+    '- Browser persona contexts executed: ' + browser.summary.browserPersonasExecuted,
     '- Browser workers: ' + browser.summary.browserWorkers,
     '- Pages discovered: ' + browser.summary.pagesDiscovered,
     '- Browser checks passed: ' + browser.summary.counts.pass,
@@ -88,7 +89,7 @@ async function main() {
   ].join('\n') + '\n';
   fs.writeFileSync(path.join(out, 'README.md'), report);
   console.log('QA report: ' + path.join(out, 'README.md'));
-  console.log('Browser journeys: ' + browser.summary.browserPersonasExecuted + '; HTTP VUs: 0.');
+  console.log('Browser persona contexts: ' + browser.summary.browserPersonasExecuted + '; HTTP VUs: 0.');
 }
 
 main().catch(error => {
