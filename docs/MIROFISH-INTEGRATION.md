@@ -63,7 +63,7 @@ MiroFish's current upstream source has Flask blueprints for `/api/graph`, `/api/
 
 ## Current limitations
 
-The PR adds the single Kilo command and integration instructions. It does not vendor MiroFish, deploy it, create provider credentials, implement and run a production-ready MiroFish HTTP client, or claim a completed simulation. Those require local service setup and API contract validation. If MiroFish is offline or credentials are absent, the command should continue with deterministic QA personas.
+Nexora does not vendor MiroFish, deploy it, create provider credentials or claim a completed MiroFish simulation. A separate native Persona Lab MVP is available in qa/: it generates deterministic synthetic profiles and performs bounded read-only Playwright navigation. It is not a social simulation or autonomous LLM swarm. If MiroFish is offline or credentials are absent, the command can use Persona Lab instead. See PERSONA-LAB.md for exact commands and limits.
 
 The browser tools available in a connected ChatGPT session may only allow reading open tabs; the Kilo/Playwright environment must supply actual browser control for click/type/screenshot/trace testing. Never call a page "browser-tested" unless those interactions occurred.
 
