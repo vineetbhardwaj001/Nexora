@@ -13,6 +13,8 @@ This guide explains the current repository layout and where each kind of change 
 ├── package.json                 # Node.js metadata and CLI test command
 ├── bin/
 │   └── nexora.js                 # Current terminal CLI entry point
+├── qa/                           # Persona Lab profile generation and Playwright runner
+├── load/                         # Separate, gated k6 load-test harness
 ├── tests/
 │   ├── cli.test.js               # Node.js CLI tests
 │   └── test_agent_config.py      # Python structural/configuration tests
