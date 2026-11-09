@@ -37,7 +37,16 @@ Do not manufacture demographics or claim market representativeness. Start with a
 ## Phase 3 — Skill assignment
 Read qa/skill-library.json. Select relevant skills based on product domain, features, route evidence, persona goal and risk. Record why each skill was selected. Do not execute every skill on every project. The catalog contains reusable instructions; it does not autonomously run them.
 
-## Phase 4 — Mission planning
+## Phase 4 — Host-model reasoning and mission decisions
+1. Use the coding agent's currently selected model as the reasoning provider. Do not require Gemini, Hugging Face, an API key or a paid external service.
+2. Create a decision packet for a persona: `node qa/cli.js reason --report <discovery-report-dir> --persona NX-P-0001 --url <exact-staging-url>`.
+3. Read the generated `decision-request-<persona-id>.json`. Use the host model to choose exactly one next action from its decision contract. Base the choice only on supplied repository evidence and actual observations; do not invent rendered UI state.
+4. Return JSON with all required fields: `intent`, `reasoning`, `action`, `target`, `value`, `evidenceToCapture`, `successCriteria`, and `abortIf`. Save it to a new file and validate it with `node qa/cli.js validate-decision --file <decision.json>`.
+5. A validated proposal is not an executed action. Only the host browser/tool may execute it. Inspect the actual tool result before deciding the next step.
+6. If the model is uncertain, the URL/environment is unverified, a selector is not observed, or a precondition is missing, choose `ask_user` or `stop`.
+7. Keep state-changing actions blocked by default. Do not pass `--allow-state-changes true` unless the user explicitly approved a staging environment and disposable test data. Production mutations remain prohibited.
+8. Do not put credentials, API keys, real personal data or secrets in decision JSON.
+
 For each persona define starting URL, role/test account, starting state, synthetic fixture, numbered intent steps, expected observable outcome, allowed/prohibited actions, evidence and abort condition. Prefer read-only journeys. State-changing tests require staging, approved disposable test data and explicit permission.
 
 ## Phase 5 — Real browser execution
