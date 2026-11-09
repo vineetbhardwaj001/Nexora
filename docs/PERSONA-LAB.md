@@ -8,17 +8,25 @@ Persona Lab is Nexora's local, MiroFish-inspired QA runtime. It separates three 
 
 Persona profiles are not autonomous LLM agents or real people. Browser checks execute only the explicitly requested number of profiles in isolated contexts. The runtime intentionally avoids pretending that 100 profiles equal 100 concurrent users.
 
-## Install into an existing product
+## Install into any product project
 
-From the Nexora repository, run PowerShell:
+Nexora is not tied to a specific framework, industry or project folder. It can be installed into an existing React, Next.js, Vue, Angular, Node, Python or other software project. Run the installer from the Nexora repository and choose the target folder:
 
 ```powershell
-node .\bin\nexora.js init --path "C:\New folder (4)\AVR-FRONTEND\AVR-FROTEND" --yes
+node .\bin\nexora.js init --path "C:\path\to\your-project" --yes
 ```
 
-The installer adds only missing files and skips existing files. Review skipped files before deciding whether to merge them manually. It does not replace existing project configuration.
+To save a private default project folder on your own computer, add `--save-default`:
 
-Open the **AVR-FROTEND** folder itself in VS Code after installation. Do not keep the Nexora repository as the only workspace root.
+```powershell
+node .\bin\nexora.js init --path "C:\path\to\your-project" --yes --save-default
+```
+
+The saved path is stored in the current user's `~/.nexora/config.json`, outside the repository. On Windows this is under the current user's home directory. It is not committed, uploaded or shared. After saving it, `node .\bin\nexora.js init --yes` uses that local default. Pass `--path` any time to override it.
+
+The installer adds only missing files and skips existing files. Review skipped files before merging manually. It does not replace existing project configuration by default.
+
+After installation, open the target project folder itself in VS Code or your preferred supported coding environment. Do not keep the Nexora repository as the only workspace root.
 
 ## Generate 100 synthetic personas (planning only)
 
