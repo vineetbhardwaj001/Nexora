@@ -97,7 +97,7 @@ Nexora includes a local runtime that works without MiroFish credentials:
 
 ```powershell
 node .\qa\cli.js plan --url "https://your-staging.example" --personas 100
-node .\qa\cli.js run --url "https://your-staging.example" --personas 100 --browser-personas 3 --workers 2
+node .\qa\cli.js run --url "https://your-staging.example" --personas 100 --browser-personas 100 --workers 2 --max-pages 5
 ```
 
 It generates up to 10,000 deterministic synthetic profiles and can execute a small, bounded Playwright browser cohort against the exact URL. It captures page status, screenshots, console errors and failed requests. Install Playwright in the target project if needed. **100 generated profiles are not 100 browser sessions, real people, autonomous LLM agents or HTTP virtual users.** The separate k6 harness is staging-only and requires explicit authorization. See [Persona Lab setup and safety](docs/PERSONA-LAB.md).
