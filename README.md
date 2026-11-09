@@ -97,6 +97,7 @@ The repository includes reusable skill instructions in `.agents/skills/` and pro
 | `/frontendarchitecture` | Plan a scalable, domain-oriented frontend folder structure and safe migration sequence. |
 | `/backendapi` | Trace backend routes and produce verified API contracts, permissions and frontend integration gaps. |
 | `/engineeringcouncil` | Run a whole-project specialist review, evidence-based debate, up to 100 risk-based scenarios, and founder/CEO/CTO recommendations. |
+| `/nexora-test` | Project-aware product QA: inspect the current project, infer customer hypotheses, generate synthetic personas, select skills from the 100-item catalog and execute only evidence-backed missions. |
 | `/nexora` | **Recommended single entry point**: routes a request to real-browser product QA (MiroFish optional), Caldo codebase untangling, or scalable engineering improvement. Examples: `/nexora test https://staging.example.com`, `/nexora untangle src/`, `/nexora improve audit-only`. |
 | `/test-my-product` | Single end-to-end entry point: optional MiroFish swarm simulation for user/persona hypotheses, then real-browser persona testing, UX/accessibility/security review, evidence report and separately authorized load testing. |
 | `/product-qa-swarm` | Open the actual supplied product URL in a real browser; run distinct persona journeys, functional/UX/accessibility/safe security reviews, and optional explicitly authorized 100+ virtual-user load tests. Produces an evidence-based report; does not pretend scripted personas are human testers. |
@@ -106,6 +107,18 @@ The repository includes reusable skill instructions in `.agents/skills/` and pro
 | `/meaningfulmessages` | Improve success, error, empty, warning and confirmation copy with honest, actionable messaging. |
 | `/design-ui` | Analyze design references separately and propose a coherent product-specific design system. |
 | `/frontend-only` | Build frontend functionality against the existing backend while keeping backend files read-only by default. |
+
+## Project-aware customer testing — /nexora-test
+
+Nexora includes a project-aware discovery and planning layer. Run:
+
+    node qa/cli.js discover --project . --personas 8
+
+It inspects repository metadata and file paths, creates product/domain hypotheses, suggests customer segments, generates synthetic personas with personality, decision style, technical confidence, device/context, relevant interests and patience, and assigns relevant skills from a 100-item catalog. It writes project-analysis.json, customer-hypotheses.json, personas.json, skill-assignments.json and mission-plan.md into a new timestamped reports/qa folder.
+
+Use `/nexora-test` in supported Kilo Code versions or the `nexora-test` prompt in compatible VS Code/GitHub Copilot versions. The host agent must verify route hints and use actual browser tooling for execution.
+
+**Honest boundary:** discovery is static and heuristic. The 100 catalog entries are reusable skill definitions, not 100 autonomous agents. The CLI does not call an LLM or execute business workflows. Missions remain PLANNED_NOT_EXECUTED until real browser/tool evidence exists. See [Project-aware Persona Testing](docs/PROJECT-AWARE-PERSONA-TESTING.md).
 
 ## Native Persona Lab — MiroFish-inspired QA runtime
 
