@@ -120,6 +120,17 @@ Use `/nexora-test` in supported Kilo Code versions or the `nexora-test` prompt i
 
 **Honest boundary:** discovery is static and heuristic. The 100 catalog entries are reusable skill definitions, not 100 autonomous agents. The CLI does not call an LLM or execute business workflows. Missions remain PLANNED_NOT_EXECUTED until real browser/tool evidence exists. See [Project-aware Persona Testing](docs/PROJECT-AWARE-PERSONA-TESTING.md).
 
+### Host-model mission reasoning — Phase 4
+
+The mission decision layer uses the coding agent's currently selected model (Kilo/VS Code host model) instead of requiring a separate LLM API. It creates a structured context packet, asks the host model for one next action, and validates the proposal against a strict schema and read-only safety policy.
+
+```powershell
+node .\\qa\\cli.js reason --report ".\\reports\\qa\\discovery-<timestamp>" --persona NX-P-0001 --url "https://your-approved-staging.example"
+node .\\qa\\cli.js validate-decision --file ".\\decision-NX-P-0001.json"
+```
+
+The `reason` command prepares a request for the host model; it does not itself call a model or browser. The coding agent must read the request, generate one JSON decision, and validate it. Validation does not execute the action. Only actual browser/tool output can establish execution or a pass. State-changing actions are blocked by default; production mutations remain prohibited. Gemini/Hugging Face adapters are not part of this phase.
+
 ## Native Persona Lab — MiroFish-inspired QA runtime
 
 Nexora includes a local runtime that works without MiroFish credentials:
