@@ -310,7 +310,7 @@ function saveDefaultProject(target) {
   const config = readUserConfig();
   config.defaultProject = path.resolve(target);
   fs.mkdirSync(path.dirname(configPath), { recursive: true });
-  fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\\n', { mode: 0o600 });
+  fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n', { mode: 0o600 });
   console.log('Saved this default locally in ' + configPath);
   console.log('This path is not written into the Nexora repository.');
 }
