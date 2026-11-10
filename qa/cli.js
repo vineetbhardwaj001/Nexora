@@ -7,6 +7,7 @@ const { generatePersonas } = require('./personas');
 const { runBrowserAudit, validateTarget } = require('./runner');
 const { analyzeProject } = require('./project-intelligence');
 const skillLibrary = require('./skill-library.json');
+const { buildDecisionRequest, validateDecision, createExecutionRecord } = require('./mission-engine');
 
 function parseArgs(args) {
   const options = {};
@@ -27,12 +28,41 @@ function outputDirectory(options) {
 
 async function main() {
   const [command, ...rest] = process.argv.slice(2);
-  if (!['plan', 'run', 'discover'].includes(command)) {
-    console.log('Nexora Persona Lab\n\nUsage:\n  node qa/cli.js discover --project . --personas 8\n  node qa/cli.js plan --url https://your-preview.example --personas 100\n  node qa/cli.js run --url https://your-preview.example --personas 100 --browser-personas 100 --workers 2\n\nOptions: --url, --personas (1-10000), --browser-personas (1-100), --workers (1-3), --max-pages (1-20), --seed, --out');
+  if (!['plan', 'run', 'discover', 'reason', 'validate-decision'].includes(command)) {
+    console.log('Nexora Persona Lab\n\nUsage:\n  node qa/cli.js discover --project . --personas 8\n  node qa/cli.js reason --report <directory> --persona NX-P-0001\n  node qa/cli.js validate-decision --file decision.json\n  node qa/cli.js plan --url https://your-preview.example --personas 100\n  node qa/cli.js run --url https://your-preview.example --personas 100 --browser-personas 100 --workers 2\n\nOptions: --url, --personas (1-10000), --browser-personas (1-100), --workers (1-3), --max-pages (1-20), --seed, --out, --allowed-origin');
     if (command) process.exitCode = 1;
     return;
   }
   const options = parseArgs(rest);
+  if (command === 'reason') {
+    if (!options.report || !options.persona) throw new Error('reason requires --report <discovery-directory> and --persona <persona-id>.');
+    const report = path.resolve(options.report);
+    if (options.url) validateTarget(options.url);
+    const read = name => JSON.parse(fs.readFileSync(path.join(report, name), 'utf8'));
+    const analysis = read('project-analysis.json');
+    const personaBundle = read('personas.json');
+    const persona = personaBundle.personas.find(item => item.id === options.persona);
+    if (!persona) throw new Error('Persona not found in discovery report: ' + options.persona);
+    const mission = { id: 'MISSION-' + persona.id, personaId: persona.id, title: 'Explore the primary ' + analysis.domain.domain + ' journey as a ' + persona.role, goal: persona.goal, startUrl: options.url || null, preconditions: ['Verify the exact target URL and environment before browser access','Use an approved test account and synthetic data if authentication is required'], allowedActions: ['Read-only navigation','Inspect visible UI','Capture screenshots and observable errors'], prohibitedActions: ['Real payments','Real customer messages','Deletion or destructive actions','Production record mutations'], expectedOutcome: 'Advance the persona goal only when observable evidence supports each step.' };
+    const request = buildDecisionRequest({ analysis, persona, mission });
+    const out = path.resolve(options.out || path.join(report, 'decision-request-' + persona.id + '.json'));
+    fs.writeFileSync(out, JSON.stringify(request, null, 2) + '\n', { flag: 'wx' });
+    console.log('Host-model decision request created: ' + out);
+    console.log('Provider: coding agent own model; decision status: DECISION_REQUEST_ONLY; browser actions executed: 0.');
+    return;
+  }
+  if (command === 'validate-decision') {
+    if (!options.file) throw new Error('validate-decision requires --file <decision.json>.');
+    const file = path.resolve(options.file);
+    const decision = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const validated = validateDecision(decision, { allowStateChanges: options['allow-state-changes'] === 'true', environment: options.environment || 'unknown', allowedOrigins: options['allowed-origin'] ? [new URL(options['allowed-origin']).origin] : undefined });
+    const record = createExecutionRecord(validated);
+    const out = path.resolve(options.out || file.replace(/\.json$/i, '.validated.json'));
+    fs.writeFileSync(out, JSON.stringify({ decision: validated, executionRecord: record }, null, 2) + '\n', { flag: 'wx' });
+    console.log('Decision schema and safety checks passed: ' + out);
+    console.log('This validates a proposal only. No browser action was executed and no outcome was verified.');
+    return;
+  }
   if (command === 'discover') {
     const project = path.resolve(options.project || process.cwd());
     const analysis = analyzeProject(project);

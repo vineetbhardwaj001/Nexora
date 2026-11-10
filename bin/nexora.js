@@ -69,6 +69,7 @@ const FILES = [
   'docs/PRODUCT-QA-REPORT-TEMPLATE.md',
   'docs/MIROFISH-INTEGRATION.md',
   'qa/project-intelligence.js',
+  'qa/mission-engine.js',
   'qa/skill-library.json',
   '.agents/skills/nexora-project-aware-testing/SKILL.md',
   '.kilo/commands/nexora-test.md',
