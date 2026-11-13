@@ -75,6 +75,8 @@ See [CLI and prompt command reference](docs/COMMANDS.md) for the complete invent
 | `node bin/nexora.js --help` | Installer help |
 | `node bin/nexora.js init --path <dir> --yes` | Install managed Nexora files |
 | `node bin/nexora.js doctor --path <dir>` | Inspect managed-file presence |
+| `node bin/nexora.js list` | List managed files |
+| `node bin/nexora.js version` | Print CLI version |
 | `node qa/cli.js --help` | Persona Lab help |
 | `node qa/cli.js plan --url <url> --personas N` | Generate profiles only |
 | `node qa/cli.js run --url <url> --personas N --browser-personas N --workers N --max-pages N` | Run bounded browser checks |
