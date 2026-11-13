@@ -9,10 +9,18 @@ Use this as the single task router behind the `/nexora` Kilo command. Route by t
 
 ## Routing
 
-- **Product testing / QA / "test my website"**: load `.agents/skills/product-qa-swarm/SKILL.md` and `.agents/skills/mirofish-product-simulation/SKILL.md`. If qa/cli.js is installed, use Persona Lab: run `node qa/cli.js plan --url <exact-url> --personas 100` for a plan, or `node qa/cli.js run --url <exact-url> --personas 100 --browser-personas 3 --workers 2` for bounded real-browser navigation. Run MiroFish only when its separately configured service is available. Browser verification remains mandatory for actual UI claims. Preserve the distinction between synthetic profiles, executed browser personas and HTTP virtual users.
+- **Product testing / QA / "test my website"**: first load `.agents/skills/nexora-project-aware-testing/SKILL.md` for project discovery, dynamic synthetic customer hypotheses, persona/skill assignment and evidence-led mission planning. Run `node qa/cli.js discover --project . --personas 8` when available. Then load `.agents/skills/product-qa-swarm/SKILL.md` and `.agents/skills/mirofish-product-simulation/SKILL.md`. If qa/cli.js is installed, use Persona Lab: run `node qa/cli.js plan --url <exact-url> --personas 100` for a plan, or `node qa/cli.js run --url <exact-url> --personas 100 --browser-personas 3 --workers 2` for bounded real-browser navigation. Run MiroFish only when its separately configured service is available. Browser verification remains mandatory for actual UI claims. Preserve the distinction between synthetic profiles, executed browser personas and HTTP virtual users.
 - **Untangle / restructure / reduce technical debt**: explicitly load `.agents/skills/untangle-codebase/SKILL.md`. Respect its `disable-model-invocation: true`: do not trigger it implicitly. Before execution, show the optional additions exactly and ask whether to include them: Comments — remove comments that only restate the code; Tests — remove tests that wouldn't catch a real bug, and fix the ones that fail without one. Only perform selected additions.
 - **General engineering audit / architecture / scoped fixes**: load `.agents/skills/pro-eng-scalable/SKILL.md` and relevant existing specialist skills; honor its mode and safety gates.
 - **Ambiguous request**: ask one concise question to identify whether the user wants product testing, codebase untangling, or engineering improvement.
+
+## Project-aware testing route
+
+- Discovery is static inspection and creates planning artifacts; it does not launch an LLM, browser or autonomous agent.
+- The QA catalog contains 100 reusable skill definitions, not 100 running agents. Select a relevant subset per project.
+- Customer segments are hypotheses, not market research or real customer feedback.
+- A mission remains `PLANNED_NOT_EXECUTED` until actual browser/tool evidence is recorded.
+- Use `/nexora-test` in supported Kilo Code versions or the `nexora-test` prompt in compatible VS Code/GitHub Copilot versions; verify command discovery locally.
 
 ## Shared safeguards
 
@@ -32,3 +40,5 @@ Use this as the single task router behind the `/nexora` Kilo command. Route by t
 - `/nexora untangle src/`
 - `/nexora improve audit-only`
 - `/nexora` — infer the route from the request, asking one question only if genuinely ambiguous.
+
+- `/nexora-test` — project-aware customer discovery, dynamic synthetic personas, 100-skill selection and evidence-based product QA.

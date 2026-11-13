@@ -68,6 +68,13 @@ const FILES = [
   '.github/prompts/engineeringcouncil.prompt.md',
   'docs/PRODUCT-QA-REPORT-TEMPLATE.md',
   'docs/MIROFISH-INTEGRATION.md',
+  'qa/project-intelligence.js',
+  'qa/mission-engine.js',
+  'qa/skill-library.json',
+  '.agents/skills/nexora-project-aware-testing/SKILL.md',
+  '.kilo/commands/nexora-test.md',
+  '.github/prompts/nexora-test.prompt.md',
+  'docs/PROJECT-AWARE-PERSONA-TESTING.md',
   'qa/personas.js',
   'qa/runner.js',
   'qa/cli.js',
@@ -120,6 +127,7 @@ ${color(C.bold, 'USAGE')}
   npx nexora-agent-cli         Open interactive terminal menu
   npx nexora-agent-cli init    Install Nexora in the current project
   npx nexora-agent-cli doctor  Check an existing installation
+  npx nexora-agent-cli qa discover --project . [--personas 8]
   npx nexora-agent-cli qa plan --url <URL> [--personas 100]
   npx nexora-agent-cli qa run --url <URL> [--browser-personas 3]
   npx nexora-agent-cli list    List included files
