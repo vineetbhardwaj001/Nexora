@@ -9,7 +9,7 @@ const pkg = require('../package.json');
 test('package exposes nexora CLI and supported Node version', () => {
   assert.equal(pkg.bin.nexora, 'bin/nexora.js');
   assert.equal(pkg.bin['nexora-agent-cli'], 'bin/nexora.js');
-  assert.equal(pkg.engines.node, '>=18');
+  assert.equal(pkg.engines.node, '>=22');
   assert.ok(fs.existsSync(path.join(root, pkg.bin.nexora)));
 });
 
