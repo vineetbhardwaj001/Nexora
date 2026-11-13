@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f6ef">
-  <meta name="description" content="Nexora user guide: quick start, reusable AI coding skills, tool compatibility, safety, and roadmap.">
+  <meta name="description" content="Nexora guide: reusable AI coding skills, installer, optional Persona Lab, supported commands and safety boundaries.">
   <meta property="og:title" content="Nexora Guide — Build with the tools you love">
   <meta property="og:description" content="A calmer way to organize reusable AI coding workflows across your favorite tools.">
   <meta property="og:type" content="website">
@@ -233,6 +233,17 @@ node bin/nexora.js --help</code></pre></div></article>
           <div>Made with care by <a href="https://github.com/vineetbhardwaj001" target="_blank" rel="noreferrer"><strong>Vineet Bhardwaj</strong></a> · <a href="https://github.com/vineetbhardwaj001/Nexora/blob/main/LICENSE">MIT License</a></div>
         </footer>
       </div>
+
+      <section class="section" id="persona-lab" data-search="persona lab synthetic profiles playwright browser testing load k6">
+        <div><span class="section-kicker">Optional local module</span><h2>Persona Lab: plans and bounded browser checks</h2>
+          <p class="section-intro">Persona Lab generates deterministic synthetic profiles. Its browser runner performs bounded, read-only same-origin navigation and captures screenshots and browser errors. It does not submit forms or mutate product data.</p>
+          <div class="callout"><span class="callout-symbol" aria-hidden="true">i</span><p><strong>Count carefully:</strong> 100 profiles != 100 real users != 100 LLM agents != 100 simultaneous browsers. Browser workers are capped at 3; k6 virtual users are a separate, staging-only opt-in load harness.</p></div>
+          <div class="code-block"><div class="code-head"><span>Persona Lab planning</span></div><pre><code>node qa/cli.js plan --url https://staging.example.com --personas 100
+node qa/cli.js run --url https://staging.example.com --personas 100 --browser-personas 3 --workers 2 --max-pages 5</code></pre></div>
+          <p>For prerequisites, options, report artifacts and safety gates, read <a href="PERSONA-LAB.md">the Persona Lab operator guide</a>, <a href="COMMANDS.md">commands reference</a> and <a href="SAFETY.md">safety policy</a>.</p>
+          <p><strong>Current-main boundary:</strong> <code>discover</code>, <code>reason</code> and <code>validate-decision</code> are not current-main CLI commands. See <a href="ROADMAP.md">the roadmap</a> for branch-only proposals.</p>
+        </div>
+      </section>
     </main>
   </div>
 
