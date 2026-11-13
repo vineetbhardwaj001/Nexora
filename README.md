@@ -21,7 +21,7 @@ Nexora helps structure an AI-assisted workflow; it does not make AI output infal
 
 Prerequisite: Node.js 22 or newer. The package has no required runtime dependencies for installer-only use.
 
-**macOS / Linux**
+### macOS / Linux
 
 ```bash
 git clone https://github.com/vineetbhardwaj001/Nexora.git
@@ -31,7 +31,7 @@ npm test
 node bin/nexora.js init --path "$HOME/code/my-project" --yes
 ```
 
-**Windows PowerShell**
+### Windows PowerShell
 
 ```powershell
 git clone https://github.com/vineetbhardwaj001/Nexora.git
