@@ -53,7 +53,7 @@ node .\bin\nexora.js init --path "$HOME\source\my-project" --yes
 - **Persona Lab:** [operator guide](https://github.com/vineetbhardwaj001/Nexora/blob/main/docs/PERSONA-LAB.md)
 - **MiroFish optional integration:** [guide](https://github.com/vineetbhardwaj001/Nexora/blob/main/docs/MIROFISH-INTEGRATION.md)
 - **Caldo untangle skill:** [guide](https://github.com/vineetbhardwaj001/Nexora/blob/main/docs/UNTANGLE-CODEBASE.md)
-- **Safety / k6:** [policy](https://github.com/vineetbhardwaj001/Nexora/blob/docs/cleanup-audit-2026-11-13/docs/SAFETY.md)
+- **Safety / k6:** [policy](https://github.com/vineetbhardwaj001/Nexora/blob/docs/cleanup-audit-final-ci-2026-11-13/docs/SAFETY.md)
 - **Architecture:** [guide](https://github.com/vineetbhardwaj001/Nexora/blob/docs/cleanup-audit-2026-11-13/docs/ARCHITECTURE.md)
 
 ## Commands
@@ -96,7 +96,7 @@ The current browser runner performs bounded same-origin navigation and observati
 - Docs site: https://vineetbhardwaj001.github.io/Nexora/
 - PR #6: https://github.com/vineetbhardwaj001/Nexora/pull/6
 - PR #7: https://github.com/vineetbhardwaj001/Nexora/pull/7
-- Cleanup branch: https://github.com/vineetbhardwaj001/Nexora/tree/docs/cleanup-audit-2026-11-13
+- Cleanup branch: https://github.com/vineetbhardwaj001/Nexora/tree/docs/cleanup-audit-final-ci-2026-11-13
 
 ## My Notes
 
