@@ -22,3 +22,9 @@ Before substantial work, read `.agent/CORE.md`, `.agent/config/skills.json`, and
 - Distinguish observed facts, assumptions, recommendations, and unverified findings.
 
 Definition of done: scope addressed, relevant checks run, responsive UX/accessibility/security considered, docs updated where appropriate, changed files listed, and remaining risks reported.
+
+## Current CLI and feature-status source of truth
+- Use `docs/COMMANDS.md` for supported installer, Persona Lab and tool-specific prompt entry points. Do not invent CLI subcommands from open PRs.
+- Use `docs/ROADMAP.md` for current-main versus planned work. A pull request is not merged functionality.
+- Persona Lab count wording must remain exact: **100 profiles != 100 real users != 100 LLM agents != 100 simultaneous browsers.**
+- Distinguish `.agent/` (core operating configuration and registry) from `.agents/` (portable shared rules and skill packages).
