@@ -41,7 +41,11 @@
     ".github/prompts/",
     "qa/",
     "load/",
-    "docs/PERSONA-LAB.md"
+    "docs/PERSONA-LAB.md",
+    "docs/COMMANDS.md",
+    "docs/ARCHITECTURE.md",
+    "docs/SAFETY.md",
+    "docs/ROADMAP.md"
   ],
   "scripts": {
     "test": "node --test"
