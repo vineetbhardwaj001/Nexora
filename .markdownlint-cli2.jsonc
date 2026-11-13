@@ -11,6 +11,7 @@
     "MD060": false
   },
   "ignores": [
-    ".agents/skills/untangle-codebase/SKILL.md"
+    ".agents/skills/untangle-codebase/SKILL.md",
+    "docs/notion-backup-2026-11-13.md"
   ]
 }
