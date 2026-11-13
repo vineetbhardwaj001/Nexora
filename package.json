@@ -24,7 +24,7 @@
   "author": "Nexora contributors",
   "type": "commonjs",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "bin": {
     "nexora": "bin/nexora.js",
