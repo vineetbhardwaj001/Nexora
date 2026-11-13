@@ -174,3 +174,20 @@ The code execution environment still cannot clone the repository (GitHub DNS loo
 - GitHub Actions: pending pull request creation/runner execution; no passing status is claimed.
 
 The audit is source inspection plus committed proposed changes, not a successful runtime verification report. Re-run all checks in GitHub Actions and a local checkout before merging.
+
+
+### First GitHub Actions result and corrective commits
+
+The first PR-triggered workflow run (#165) provided real execution evidence:
+- Python structural tests: passed.
+- Documentation-site asset/JS checks: passed.
+- Agent configuration validation: passed.
+- Security secret-pattern and tracked-env-file checks: passed.
+- Node test matrix initially failed on all three versions because an existing test still asserted `engines.node === ">=18"` and the new docs consistency test expected the README to list the `version` command. Both mismatches were corrected in later commits.
+- Markdown lint initially found duplicate headings and missing final newline in the raw Notion backup, plus emphasis-style headings in the new README. README headings were converted to proper headings; the raw backup was excluded from lint to preserve it as a faithful snapshot.
+
+The corrections are committed on this branch. The connector did not return a new PR-triggered workflow run for the corrected head commit, so **the corrected test suite and Markdown lint are awaiting a fresh CI run**. The initial workflow run remains failed; do not call the branch green based on the fixes alone.
+
+Additional integration correction:
+- Added `docs/COMMANDS.md`, `docs/ARCHITECTURE.md`, `docs/SAFETY.md` and `docs/ROADMAP.md` to both the installer manifest and npm package allowlist, because installed AGENTS/rules link to those references.
+- Updated the existing CLI regression test to expect Node >=22 and verify the technical guides are installable.
