@@ -144,3 +144,33 @@ It sends a read-only homepage GET, uses a ramping VU scenario, and applies reque
 ## Scope caveat
 
 This report is based on current main source/tree inspection plus PR/Notion metadata. The three requested local commands were not run because GitHub could not be cloned from this execution environment. No application or existing documentation files were modified during the audit; this audit report and Notion backup are standalone records.
+
+
+---
+
+## Implementation update — 2026-11-13 (cleanup branch)
+
+The approved identity is **Option C**: reusable AI coding-agent engineering toolkit with installer, portable skills and optional synthetic-persona QA module.
+
+Changes now committed to `docs/cleanup-audit-2026-11-13`:
+- Rewrote README to the requested 12-section structure; previous README preserved at `docs/archive/README-2026-11-13.md`.
+- Added `docs/COMMANDS.md`, `docs/ARCHITECTURE.md`, `docs/SAFETY.md`, `docs/ROADMAP.md`, and rewrote `docs/PERSONA-LAB.md`.
+- Added `docs/NOTION-PAGE.md` as a copy-ready mirror of the canonical Notion update.
+- Added explicit `node qa/cli.js --help` / `-h` support, unknown-command errors and the exact Persona Lab count disclaimer in CLI output.
+- Added `tests/cli-docs.test.js` to check README/commands against actual help output.
+- Added `tests/docs-links.test.js` to check local Markdown and HTML links/anchors.
+- Raised package engine floor to Node >=22; updated CI matrix to Node 22, 24 and 26. Node 26 is Active LTS as of 2026-11-13; 22 and 24 remain supported LTS lines.
+- Updated AGENTS, Kilo rules/command, docs landing page, docs guide and docs structure to match current capabilities and command boundaries.
+- The exact count statement is present in README, Persona Lab guide, CLI help and shared rules.
+
+### Verification after changes
+
+The code execution environment still cannot clone the repository (GitHub DNS lookup failure). Therefore:
+- `npm test`: NOT RUN.
+- `node bin/nexora.js --help`: NOT RUN.
+- `node qa/cli.js --help`: NOT RUN.
+- Markdownlint and Python structural tests: NOT RUN.
+- Link checker: IMPLEMENTED as `tests/docs-links.test.js`, NOT RUN.
+- GitHub Actions: pending pull request creation/runner execution; no passing status is claimed.
+
+The audit is source inspection plus committed proposed changes, not a successful runtime verification report. Re-run all checks in GitHub Actions and a local checkout before merging.
