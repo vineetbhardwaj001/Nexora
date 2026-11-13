@@ -9,7 +9,7 @@ const pkg = require('../package.json');
 test('package exposes nexora CLI and supported Node version', () => {
   assert.equal(pkg.bin.nexora, 'bin/nexora.js');
   assert.equal(pkg.bin['nexora-agent-cli'], 'bin/nexora.js');
-  assert.equal(pkg.engines.node, '>=18');
+  assert.equal(pkg.engines.node, '>=22');
   assert.ok(fs.existsSync(path.join(root, pkg.bin.nexora)));
 });
 
@@ -26,6 +26,9 @@ test('all installer source files exist', () => {
   assert.ok(match, 'FILES list must exist');
   const files = [...match[1].matchAll(/'([^']+)'/g)].map(m => m[1]);
   assert.ok(files.length >= 15);
+  for (const file of ['docs/COMMANDS.md', 'docs/ARCHITECTURE.md', 'docs/SAFETY.md', 'docs/ROADMAP.md']) {
+    assert.ok(files.includes(file), 'Installer should include the technical guide: ' + file);
+  }
   for (const file of files) {
     assert.ok(fs.existsSync(path.join(root, file)), 'Missing installer file: ' + file);
   }

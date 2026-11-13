@@ -25,9 +25,15 @@ function outputDirectory(options) {
 
 async function main() {
   const [command, ...rest] = process.argv.slice(2);
+  const usage = 'Nexora Persona Lab\n\nUsage:\n  node qa/cli.js plan --url https://staging.example.com --personas 100\n  node qa/cli.js run --url https://staging.example.com --personas 100 --browser-personas 3 --workers 2 --max-pages 5\n\nOptions: --url, --personas (1-10000), --browser-personas (1-100), --workers (1-3), --max-pages (1-20), --seed, --out\n\n100 profiles != 100 real users != 100 LLM agents != 100 simultaneous browsers.\nPlan generates profiles only. Run performs bounded, read-only browser navigation; it does not submit forms or mutate product data.';
+  if (!command || ['--help', '-h', 'help'].includes(command)) {
+    console.log(usage);
+    return;
+  }
   if (!['plan', 'run'].includes(command)) {
-    console.log('Nexora Persona Lab\n\nUsage:\n  node qa/cli.js plan --url https://your-preview.example --personas 100\n  node qa/cli.js run --url https://your-preview.example --personas 100 --browser-personas 100 --workers 2\n\nOptions: --url, --personas (1-10000), --browser-personas (1-100), --workers (1-3), --max-pages (1-20), --seed, --out');
-    if (command) process.exitCode = 1;
+    console.error('Unknown Persona Lab command: ' + command);
+    console.log(usage);
+    process.exitCode = 1;
     return;
   }
   const options = parseArgs(rest);

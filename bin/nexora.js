@@ -73,6 +73,10 @@ const FILES = [
   'qa/cli.js',
   'load/k6-smoke.js',
   'docs/PERSONA-LAB.md',
+  'docs/COMMANDS.md',
+  'docs/ARCHITECTURE.md',
+  'docs/SAFETY.md',
+  'docs/ROADMAP.md',
   '.gitignore'
 ];
 

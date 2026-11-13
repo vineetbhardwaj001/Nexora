@@ -60,7 +60,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "26"
 
       - name: Run markdownlint
         run: |
@@ -91,13 +91,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: ${{ matrix.node-version }}
 
-      - name: Run CLI tests
+      - name: Run CLI and documentation consistency tests
         run: npm test
 
-      - name: Smoke-test CLI help
-        run: node bin/nexora.js --help
+      - name: Smoke-test installer and Persona Lab help
+        run: |
+          node bin/nexora.js --help
+          node qa/cli.js --help
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [22, 24, 26]
 
 
   documentation-site-tests:

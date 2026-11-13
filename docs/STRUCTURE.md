@@ -56,3 +56,13 @@ Then visit `http://localhost:8000`.
 ## Deployment
 
 The workflow in `.github/workflows/docs-site.yml` validates and deploys the contents of `docs/` to GitHub Pages. The repository owner may need to enable GitHub Pages once in **Settings → Pages** and set the source to **GitHub Actions**. The website URL should only be treated as live after the deployment workflow succeeds.
+
+## Technical reference documents
+
+- [Commands](COMMANDS.md) — current CLI and prompt entry points.
+- [Architecture](ARCHITECTURE.md) — directory responsibilities and execution flow.
+- [Persona Lab](PERSONA-LAB.md) — synthetic profiles and bounded browser runner.
+- [Safety](SAFETY.md) — installer, browser and k6 guardrails.
+- [Roadmap](ROADMAP.md) — current implementation versus planned work.
+
+The static site is a quick introduction. The Markdown reference files are the source for exact commands and technical limits.

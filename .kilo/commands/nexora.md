@@ -33,3 +33,8 @@ Examples:
 - `/nexora untangle src/`
 - `/nexora improve audit-only`
 - `/nexora` followed by a natural-language task
+
+## Current CLI boundaries
+The installed Persona Lab CLI currently exposes only `plan` and `run` (plus `--help`). Do not invoke or document `discover`, `reason` or `validate-decision` as current-main commands; those are branch-only proposals until merged and verified. For exact usage and status, read `docs/COMMANDS.md`.
+
+Always state: **100 profiles != 100 real users != 100 LLM agents != 100 simultaneous browsers.**

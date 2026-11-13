@@ -1,265 +1,153 @@
 # Nexora
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Nexora-Universal%20Agent%20Kits-f3b84b?style=for-the-badge&labelColor=17251f" alt="Nexora">
-</p>
+**Reusable AI coding-agent skills and installer, with an optional synthetic-persona QA module.**
 
-<p align="center">
-  <strong>One thoughtful toolkit. Your coding environment.</strong><br>
-  Reusable agent instructions and skills for building real software with the AI coding tool you already love.
-</p>
+[![Alpha](https://img.shields.io/badge/status-alpha-orange)](https://github.com/vineetbhardwaj001/Nexora)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-<p align="center">
-  <a href="https://vineetbhardwaj001.github.io/Nexora/"><strong>Explore the Docs →</strong></a> ·
-  <a href="https://github.com/vineetbhardwaj001/Nexora/actions/workflows/ci.yml">CI</a> ·
-  <a href="https://github.com/vineetbhardwaj001/Nexora/actions/workflows/security.yml">Security</a> ·
-  <a href="LICENSE">MIT License</a>
-</p>
+## 1. What is Nexora?
 
-<p align="center">
-  <img alt="Kilo Code" src="https://img.shields.io/badge/Kilo%20Code-skills%20%2B%20commands-2f8f62">
-  <img alt="OpenCode" src="https://img.shields.io/badge/OpenCode-adapter%20planned-7b8e7a">
-  <img alt="Antigravity" src="https://img.shields.io/badge/Antigravity-skills%20and%20rules-8c83d6">
-</p>
+Nexora is an open-source toolkit for installing reusable engineering instructions and skills into compatible AI coding environments. It includes guided workflows for product thinking, UI/UX, frontend/backend engineering, QA and code quality. An optional local Persona Lab can generate synthetic test profiles and run bounded, read-only browser checks.
 
-Nexora is an early-stage, tool-aware **agent-pack and skills project**. The goal is to help developers reuse thoughtful workflows—planning, UI/UX, frontend integration, testing, and security—across compatible AI coding environments, instead of locking their work to a single editor.
+Nexora helps structure an AI-assisted workflow; it does not make AI output infallible.
 
-> **Honest status:** Nexora is an agent toolkit and CLI with a bounded native Persona Lab MVP for synthetic scenario planning and real-browser smoke checks. It is not a universal autonomous agent runtime or an autonomous LLM swarm. Each adapter and feature must be implemented and tested against the target tool before being advertised as supported.
+## 2. Why it exists
 
-## Start here
+- Useful engineering instructions often get scattered across prompts, repositories and tools.
+- Teams repeat the same discovery, architecture, validation and review setup for every project.
+- AI-generated plans and synthetic test scenarios can be mistaken for verified execution unless evidence and limits are explicit.
 
-### 1. Clone the repository
+## 3. Quick start
+
+Prerequisite: Node.js 22 or newer. The package has no required runtime dependencies for installer-only use.
+
+### macOS / Linux
 
 ```bash
 git clone https://github.com/vineetbhardwaj001/Nexora.git
 cd Nexora
-```
-
-### 2. Run the current CLI locally
-
-Requires Node.js 18 or newer.
-
-```bash
 npm install
 npm test
-node bin/nexora.js
+node bin/nexora.js init --path "$HOME/code/my-project" --yes
 ```
 
-Nexora is being tested from a Git clone first. **npm publishing is not part of the current workflow.**
-
-### 3. Install Nexora into any existing project
-
-Nexora is designed to be project-agnostic. Choose any existing project directory; the installer does not assume AVR, a specific framework or a fixed folder:
+### Windows PowerShell
 
 ```powershell
-node .\bin\nexora.js init --path "C:\path\to\your-project" --yes
+git clone https://github.com/vineetbhardwaj001/Nexora.git
+Set-Location .\Nexora
+npm install
+npm test
+node .\bin\nexora.js init --path "$HOME\source\my-project" --yes
 ```
 
-On your own machine, you can save a private default project path:
+The installer copies missing managed files into the target project and preserves existing files by default. Review the target project's Git diff after installation.
 
-```powershell
-node .\bin\nexora.js init --path "C:\path\to\your-project" --yes --save-default
-```
+## 4. Core features
 
-That default is stored under the current user's home directory in `.nexora/config.json`, outside the repository. A later `node .\bin\nexora.js init --yes` reuses it. Each Nexora user can set their own path; no personal path is committed to GitHub.
+| Feature | Status | How to use | Main files |
+|---|---|---|---|
+| Project installer | IMPLEMENTED | `node bin/nexora.js init --path <dir> --yes` | `bin/nexora.js` |
+| Guided agent rules | IMPLEMENTED | Open the target project in a compatible coding tool | `AGENTS.md`, `.agent/`, `.agents/rules/` |
+| Reusable skill library | IMPLEMENTED | Invoke the relevant skill through the supported tool workflow | `.agents/skills/` |
+| Kilo command pack | IMPLEMENTED | Use commands listed in [Commands](docs/COMMANDS.md) | `.kilo/commands/` |
+| GitHub Copilot prompt pack | IMPLEMENTED | Open a prompt file in a compatible Copilot workflow | `.github/prompts/` |
+| Persona profile planning | IMPLEMENTED | `node qa/cli.js plan --url <url> --personas 100` | `qa/personas.js`, `qa/cli.js` |
+| Read-only Playwright browser checks | IMPLEMENTED | Install Playwright in target project, then use `qa run` | `qa/runner.js` |
+| AI decision proposal engine | PLANNED ON MAIN | Not available on main; see open PR #6 | PR #6 / stacked PR #7 |
 
-### 3. Understand the project before installing it elsewhere
+**Count semantics:** 100 profiles != 100 real users != 100 LLM agents != 100 simultaneous browsers. Persona profiles are deterministic synthetic scenarios. The browser runner caps workers at 3 and executes the requested browser contexts in batches.
 
-Read [AGENTS.md](AGENTS.md), [the core instructions](.agent/CORE.md), and [the skill configuration](.agent/config/skills.json). Back up project-specific agent files before merging instructions into another repository.
+## 5. Modules
 
-## The idea
+- **Persona Lab — IMPLEMENTED (bounded MVP):** deterministic profile planning plus read-only Playwright navigation, screenshots and browser error collection. See [Persona Lab](docs/PERSONA-LAB.md).
+- **MiroFish adapter — PARTIAL / OPTIONAL:** an instruction skill describes a separately operated MiroFish simulation service. Nexora does not bundle or deploy MiroFish, and no completed native service adapter is claimed. See [MiroFish integration](docs/MIROFISH-INTEGRATION.md).
+- **Caldo untangle skill — IMPLEMENTED:** vendored MIT skill package for explicit, opt-in codebase refactoring. See [Untangle guide](docs/UNTANGLE-CODEBASE.md).
+- **k6 smoke harness — IMPLEMENTED (staging-only):** separate, fail-closed HTTP GET smoke test with authorization, staging and hostname gates. See [Safety](docs/SAFETY.md).
+- **Static docs site — IMPLEMENTED:** HTML/CSS/JS landing and guide pages deployed by GitHub Pages workflow when that workflow succeeds. See [Docs structure](docs/STRUCTURE.md).
 
-- **Portable knowledge:** keep reusable skills and workflow instructions in a canonical source.
-- **Tool-aware setup:** translate or install supported pieces into each coding tool's native format.
-- **Human-led development:** explain what will change, preserve user work, and ask before destructive or costly actions.
-- **Backend respect:** treat existing backend contracts as read-only by default when the task is frontend-only.
-- **Evidence over hype:** distinguish implemented features from roadmap ideas and report tests that actually ran.
+## 6. Commands reference
 
-## Coding-tool compatibility
+See [CLI and prompt command reference](docs/COMMANDS.md) for the complete inventory and overlap notes.
 
-| Tool | Intended integration | Important note |
-|---|---|---|
-| Kilo Code | Shared skills plus native configuration where supported | Native agent/subagent behavior depends on Kilo Code's current format and version. |
-| OpenCode | Shared skills plus native agent configuration where supported | A skill is not automatically the same as a native agent. |
-| Google Antigravity | Supported skills and workspace rules | Do not claim native subagent delegation where the tool does not provide it. |
-| Other tools | Evaluate adapter and format support first | No compatibility is implied just because a tool can read Markdown. |
-
-Compatibility must be verified against official documentation and a real local test. Generated configuration should never overwrite unrelated user files silently.
-
-## Prompt commands and reusable skills
-
-The repository includes reusable skill instructions in `.agents/skills/` and prompt files in `.github/prompts/`. In compatible VS Code/GitHub Copilot versions, these prompt files can be invoked by their prompt names in Chat; other IDEs may require selecting the workflow or reading the skill file directly.
-
-| Prompt command / name | What it does |
+| Command | Purpose |
 |---|---|
-| `/exactsameuiux` | Recreate a supplied screenshot with high visual fidelity; compare layout, spacing, typography, colors, components, assets and responsive states. |
-| `/projectintelligence` | Audit the complete repository and prepare project, API, database, integration and AI context reports without implementing features. |
-| `/frontendarchitecture` | Plan a scalable, domain-oriented frontend folder structure and safe migration sequence. |
-| `/backendapi` | Trace backend routes and produce verified API contracts, permissions and frontend integration gaps. |
-| `/engineeringcouncil` | Run a whole-project specialist review, evidence-based debate, up to 100 risk-based scenarios, and founder/CEO/CTO recommendations. |
-| `/nexora` | **Recommended single entry point**: routes a request to real-browser product QA (MiroFish optional), Caldo codebase untangling, or scalable engineering improvement. Examples: `/nexora test https://staging.example.com`, `/nexora untangle src/`, `/nexora improve audit-only`. |
-| `/test-my-product` | Single end-to-end entry point: optional MiroFish swarm simulation for user/persona hypotheses, then real-browser persona testing, UX/accessibility/security review, evidence report and separately authorized load testing. |
-| `/product-qa-swarm` | Open the actual supplied product URL in a real browser; run distinct persona journeys, functional/UX/accessibility/safe security reviews, and optional explicitly authorized 100+ virtual-user load tests. Produces an evidence-based report; does not pretend scripted personas are human testers. |
-| `/pro-eng-scalable` | Orchestrate existing Nexora skills for project discovery, scalable architecture, safe refactoring, bug fixes, security, performance and tests. Kilo Code workflow supports audit-only, architecture-only, fix-bugs, frontend-only, backend-only and full-improvement modes. |
-| `/professionalerrors` | Improve error handling and user-facing failure/recovery messages using actual API behavior. |
-| `/smartvalidation` | Build accessible, contract-aware form validation without inventing field constraints. |
-| `/meaningfulmessages` | Improve success, error, empty, warning and confirmation copy with honest, actionable messaging. |
-| `/design-ui` | Analyze design references separately and propose a coherent product-specific design system. |
-| `/frontend-only` | Build frontend functionality against the existing backend while keeping backend files read-only by default. |
+| `node bin/nexora.js --help` | Installer help |
+| `node bin/nexora.js init --path <dir> --yes` | Install managed Nexora files |
+| `node bin/nexora.js doctor --path <dir>` | Inspect managed-file presence |
+| `node bin/nexora.js qa plan --url <url> --personas N` | Forward to Persona Lab planning |
+| `node bin/nexora.js qa run --url <url> --personas N --browser-personas N --workers N --max-pages N` | Forward to bounded browser checks |
+| `node bin/nexora.js list` | List managed files |
+| `node bin/nexora.js version` | Print CLI version |
+| `node qa/cli.js --help` | Persona Lab help |
+| `node qa/cli.js plan --url <url> --personas N` | Generate profiles only |
+| `node qa/cli.js run --url <url> --personas N --browser-personas N --workers N --max-pages N` | Run bounded browser checks |
 
-## Native Persona Lab — MiroFish-inspired QA runtime
+The current main branch does **not** provide `discover`, `reason`, or `validate-decision` commands. Those are branch-only proposals in PR #6 / stacked PR #7, not main-branch commands.
 
-Nexora includes a local runtime that works without MiroFish credentials:
+## 7. What Nexora cannot do
 
-```powershell
-node .\qa\cli.js plan --url "https://your-staging.example" --personas 100
-node .\qa\cli.js run --url "https://your-staging.example" --personas 100 --browser-personas 100 --workers 2 --max-pages 5
-```
+- It cannot guarantee bug-free code or prevent every AI mistake.
+- Synthetic profiles are not recruited people, customer interviews or measured customer sentiment.
+- Persona profiles are not LLM agents and do not represent concurrent browser sessions.
+- A generated plan is not an executed test; a screenshot or page load is not proof that every user journey works.
+- The current browser runner does not submit forms, create records, send messages, make purchases or mutate application data.
+- It is not a full security audit, penetration test, accessibility certification or production-readiness guarantee.
+- MiroFish simulation, when separately configured, is hypothesis generation—not browser QA or HTTP load.
+- The k6 harness is a small authorized staging smoke test, not a general-purpose capacity certification.
 
-It generates up to 10,000 deterministic synthetic profiles and can execute a small, bounded Playwright browser cohort against the exact URL. It captures page status, screenshots, console errors and failed requests. Install Playwright in the target project if needed. **100 generated profiles are not 100 real people, autonomous LLM agents or HTTP virtual users.** The optional 100-browser-persona run uses separate contexts with a small worker pool, not 100 simultaneous browsers. The separate k6 harness is staging-only and requires explicit authorization. See [Persona Lab setup and safety](docs/PERSONA-LAB.md).
+## 8. Safety defaults
 
+- Installer preserves existing files unless the operator explicitly uses its overwrite option.
+- Browser QA uses bounded, read-only same-origin navigation; use a staging URL and sanitized test data.
+- Never place credentials in URLs, command arguments, committed files or reports.
+- k6 is separate and fails closed unless staging, explicit authorization, an exact host allowlist and bounded VU/duration settings are supplied.
+- Payments, emails, deletions, bookings and other consequential actions are out of scope for the current browser runner.
+- Read [Safety](docs/SAFETY.md) before running any external test.
 
-These names are prompt identifiers, not a promise that every coding tool exposes identical slash-command UX. `/nexora` is the recommended unified Kilo Code command; focused legacy commands remain available. The Kilo Code `/pro-eng-scalable` workflow is defined in `.kilo/commands/pro-eng-scalable.md`; invoke it as `/pro-eng-scalable` and optionally pass a mode such as `audit-only` or `fix-bugs`. Other Kilo workflows and skills are documented in their native locations. Verify discovery in the IDE/version you use. If a prompt is not listed, open its file in `.github/prompts/` or read the corresponding skill's `SKILL.md`.
-
-Example:
-
-```text
-/exactsameuiux Recreate the attached dashboard screenshot as closely as possible. Preserve its text and layout, use the existing project stack, and do not change backend files.
-```
-
-### One command for Nexora: `/nexora`
-
-Use `/nexora` in Kilo Code, or the `nexora` prompt in compatible VS Code/GitHub Copilot versions. Both use the same task-aware router.
-
-Use `/nexora` as the unified Kilo Code entry point. It routes each request to exactly one workflow instead of running every specialist on every task:
-
-- `/nexora test <URL>` — MiroFish may generate synthetic persona hypotheses when configured; the QA workflow must still open the actual product in a real browser and capture evidence.
-- `/nexora untangle [area]` — explicitly invokes Caldo AI's `untangle-codebase` skill to map hidden dependencies, needless coupling, surplus and special cases before refactoring. It asks whether to include the optional Comments and Tests additions; neither is assumed.
-- `/nexora improve [mode]` — invokes Nexora's scalable engineering workflow.
-
-The Caldo skill keeps its upstream `disable-model-invocation: true` opt-in guard and MIT attribution. See [third-party notices](THIRD-PARTY-NOTICES.md), [Caldo skill source](.agents/skills/untangle-codebase/SKILL.md), and [repository structure](docs/REPOSITORY-STRUCTURE.md). The existing `/test-my-product` and `/pro-eng-scalable` commands remain available as focused compatibility entry points.
-
-### Single-command MiroFish-assisted product testing
-
-Use `/nexora test <URL>` (recommended) or the focused compatibility command `/test-my-product` in Kilo Code. It optionally uses a separately running MiroFish service to generate diverse synthetic persona hypotheses, then validates journeys by opening the real product in a browser. MiroFish simulation is not browser automation or HTTP load testing. The integration is optional and requires separately configured LLM/Zep credentials. See [the MiroFish simulation adapter skill](.agents/skills/mirofish-product-simulation/SKILL.md).
-
-### Real product QA workflow
-
-Use `/product-qa-swarm` in Kilo Code. It requires the exact target URL and environment, opens the rendered product in a real browser, performs isolated persona journeys, captures evidence, and writes a timestamped QA report. Load testing is a separate opt-in stage; it must target an authorized staging environment and records virtual users separately from browser personas. See [the QA report template](docs/PRODUCT-QA-REPORT-TEMPLATE.md) and [the skill instructions](.agents/skills/product-qa-swarm/SKILL.md).
-
-## What Nexora helps with
-
-- **Idea → plan:** turn a rough idea into users, scope, acceptance criteria, and milestones.
-- **Reference-led UI/UX:** analyze design references before proposing a consistent interface.
-- **Frontend + existing backend:** map real routes, auth, and API contracts before connecting UI.
-- **Maintainable code:** choose meaningful component boundaries and project-domain folders.
-- **Quality checks:** plan tests, accessibility checks, security review, and release readiness.
-
-## Example: Clinic ERP agent pack
-
-A future example pack could contain skills for:
-1. Product architect — requirements, scope, and workflows.
-2. Frontend developer — React screens and accessible forms.
-3. Backend developer — API contracts and business rules.
-4. Database specialist — schemas, relationships, and indexes.
-5. QA engineer — integration and regression tests.
-6. Security reviewer — authorization and sensitive-data handling.
-
-Use synthetic patient data in demos and tests. This is an example of the intended pack design, not a claim that these six native agents are already implemented across every tool.
-
-## Repository map
+## 9. Repository map
 
 ```text
 .
-├── AGENTS.md
-├── .agent/
-│   ├── CORE.md
-│   ├── config/
-│   └── workflows/
+├── bin/                    # Installer CLI
+├── .agent/                 # Core config, registry and workflows
 ├── .agents/
-│   ├── rules/
-│   └── skills/
-│       ├── clean-code-architecture/
-│       └── pro-eng-scalable/
-├── .kilo/
-│   ├── rules/
-│   └── commands/
-│       └── pro-eng-scalable.md
+│   ├── rules/              # Shared agent rules
+│   └── skills/             # Reusable skill packages
+├── .kilo/                  # Kilo commands and rules
 ├── .github/
-│   ├── prompts/
-│   └── workflows/
-├── bin/
-├── tests/
-├── docs/
-│   ├── index.html
-│   ├── guide.html
-│   ├── STRUCTURE.md
-│   ├── REPOSITORY-STRUCTURE.md
-│   └── assets/
-│       ├── css/
-│       │   └── styles.css
-│       └── js/
-│           └── docs.js
+│   ├── prompts/            # Copilot prompt files
+│   └── workflows/          # CI, docs and security workflows
+├── qa/                     # Persona Lab generator, runner and CLI
+├── load/                   # Separate k6 staging smoke harness
+├── tests/                  # Node and Python tests
+├── docs/                   # Guides and static docs site
+├── AGENTS.md
+├── CONTRIBUTING.md
 ├── kilo.jsonc
 └── package.json
 ```
 
-## Safety by default
+Directory responsibilities and trust boundaries are described in [Architecture](docs/ARCHITECTURE.md).
 
-- Inspect repository state before editing.
-- Do not invent APIs or pretend sample data is production data.
-- Preserve user modifications and back up conflicts before replacing files.
-- Never commit API keys or print secrets in logs.
-- Ask before destructive changes, production deployment, database migrations, paid services, or scope-expanding tests.
-- Never claim a test passed unless it actually ran.
-- A model described as “free” must be verified against the provider's current pricing and limits. Do not silently fall back to paid models.
+## 10. Roadmap
 
-## Documentation
+- [ ] Stabilize installer and publish cross-tool compatibility evidence.
+- [ ] Merge and verify project-aware discovery and skill assignment (PR #6).
+- [ ] Integrate and verify the host-model decision proposal workflow (stacked PR #7).
+- [ ] Add an explicit, safe browser action executor with observable assertions.
+- [ ] Add an append-only evidence ledger linking claims to artifacts.
+- [ ] Add independent reviewer execution with separate evidence-based conclusions.
+- [ ] Improve Persona Lab journey coverage and authenticated staging fixtures.
+- [ ] Add verified optional MiroFish service adapter after upstream API and license review.
+- [ ] Expand k6 scenarios only with explicit staging authorization and abort controls.
 
-The documentation site is designed for quick onboarding, plain-language explanations, and copyable commands. Its HTML, CSS, and JavaScript are kept in separate files to make UI maintenance easier.
+Roadmap items are not current capabilities unless marked IMPLEMENTED above.
 
-- **Docs homepage:** [Nexora Docs](https://vineetbhardwaj001.github.io/Nexora/)
-- **Marketing homepage:** [`docs/index.html`](docs/index.html)
-- **Detailed guide:** [`docs/guide.html`](docs/guide.html)
-- **Styles:** [`docs/assets/css/styles.css`](docs/assets/css/styles.css)
-- **Interactions:** [`docs/assets/js/docs.js`](docs/assets/js/docs.js)
-- **Maintenance guide:** [`docs/STRUCTURE.md`](docs/STRUCTURE.md)
-- **Repository folder map:** [`docs/REPOSITORY-STRUCTURE.md`](docs/REPOSITORY-STRUCTURE.md)
-- **MiroFish integration:** [`docs/MIROFISH-INTEGRATION.md`](docs/MIROFISH-INTEGRATION.md)
-- **Local preview:** open `docs/index.html` for the landing page or `docs/guide.html` for the detailed guide.
-- **Source files:** browse the [docs folder](docs/) in GitHub.
+## 11. Contributing
 
-GitHub Pages deploys from the `docs-site.yml` workflow. If Pages has not been enabled for this repository, open **Settings → Pages** and select **GitHub Actions** as the build and deployment source.
+Read [CONTRIBUTING.md](CONTRIBUTING.md). Keep pull requests focused, preserve safety boundaries, add tests for behavior changes, and report the exact checks you ran. Never report unexecuted tests as passing.
 
-## Development and tests
+## 12. License
 
-```bash
-npm test
-node bin/nexora.js --help
-```
-
-GitHub Actions also validates key configuration, Markdown, structural tests, and baseline secret patterns. These checks are useful safeguards, not proof that every IDE integration works at runtime. See the [latest workflow runs](https://github.com/vineetbhardwaj001/Nexora/actions).
-
-## Roadmap
-
-- [ ] Validate shared skill loading in each supported coding tool/version.
-- [ ] Build tool-specific adapters with safe merge, backup, dry-run, and rollback.
-- [ ] Add adapter compatibility tests and clearer diagnostics.
-- [ ] Add agent-pack discovery and installation UX.
-- [ ] Design free-only model configuration with a verified zero-cost allowlist and fail-closed behavior. This is future work, not implemented functionality.
-- [ ] Establish release/versioning after local and cross-tool tests stabilize.
-
-## Contributing
-
-Bug reports, docs improvements, workflow fixes, and skills are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and submit focused changes with a clear use case. Do not include secrets, private data, or assets you do not have permission to share.
-
-## License
-
-Nexora is released under the [MIT License](LICENSE). Third-party projects retain their own licenses and terms.
-
----
-
-<p align="center">
-  Made with care for developers building useful things.<br>
-  <strong>Developed by Vineet Bhardwaj</strong> · <a href="https://github.com/vineetbhardwaj001">GitHub</a>
-</p>
+Nexora is distributed under the MIT License. Third-party components retain their own notices; see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
