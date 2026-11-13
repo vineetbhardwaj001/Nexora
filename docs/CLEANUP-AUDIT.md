@@ -191,3 +191,11 @@ The corrections are committed on this branch. The connector did not return a new
 Additional integration correction:
 - Added `docs/COMMANDS.md`, `docs/ARCHITECTURE.md`, `docs/SAFETY.md` and `docs/ROADMAP.md` to both the installer manifest and npm package allowlist, because installed AGENTS/rules link to those references.
 - Updated the existing CLI regression test to expect Node >=22 and verify the technical guides are installable.
+
+
+### Latest PR handoff
+
+- PR #8 and PR #9 were closed as superseded after their initial CI runs identified test expectation mismatches.
+- PR #10 is the active cleanup PR: https://github.com/vineetbhardwaj001/Nexora/pull/10
+- PR #10 head is based on the corrected README command aliases. Its fresh workflow status was not yet returned at the time this note was appended.
+- Do not merge until the latest Node 22/24/26 matrix, Markdown lint, structural checks, docs checks and security workflow are green.
